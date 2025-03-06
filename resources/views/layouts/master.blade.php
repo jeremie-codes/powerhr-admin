@@ -4,7 +4,7 @@
 
 <head>
     <meta charset="utf-8">
-    <title>@yield('title') | Trouvez l'emploi qui correspond à votre vie - Plateforme de recherche d'emploi</title>
+    <title>@yield('title') | PWHR</title>
 
 
     <meta name="theme-color" content="#888">
