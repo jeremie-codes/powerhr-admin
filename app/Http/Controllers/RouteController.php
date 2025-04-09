@@ -105,7 +105,7 @@ class RouteController extends Controller
 
         $prospects = Prospect::all();
         return view('index', [
-            'users' => $users,
+            'admins' => $users,
             'employees' => $users->filter(fn($user) => $user->is_employee),
             'candidates' => $users->filter(fn($user) => $user->is_candidate),
             'customers' => $users->filter(fn($user) => $user->is_customer),

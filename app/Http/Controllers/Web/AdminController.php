@@ -12,7 +12,7 @@ class AdminController extends Controller
 {
     public function create()
     {
-        return view('admi.create');
+        return view('admin.create');
     }
 
     public function index()

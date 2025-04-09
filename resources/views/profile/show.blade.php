@@ -1,4 +1,4 @@
-@extends('layouts.master')
+@extends('layouts.candidate.master')
 @section('title')
     {{ __('Profile') }}
 @endsection
