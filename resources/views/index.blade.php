@@ -13,7 +13,7 @@
                     class="flex items-center justify-center mx-auto rounded-full size-14 bg-custom-100 text-custom-500 dark:bg-custom-500/20">
                     <i data-lucide="wallet-2"></i>
                 </div>
-                <h5 class="mt-4 mb-2"><span class="counter-value" data-target="{{$jobs->count()}}">0</span></h5>
+                <h5 class="mt-4 mb-2"><span class="counter-value" data-target="{{count($jobs)}}">0</span></h5>
                 <p class="text-slate-500 dark:text-zink-200">Total Jobs</p>
             </div>
         </div><!--end col-->
@@ -23,7 +23,7 @@
                     class="flex items-center justify-center mx-auto text-purple-500 bg-purple-100 rounded-full size-14 dark:bg-purple-500/20">
                     <i data-lucide="package"></i>
                 </div>
-                <h5 class="mt-4 mb-2"><span class="counter-value" data-target="{{$candidates->count()}}">0</span></h5>
+                <h5 class="mt-4 mb-2"><span class="counter-value" data-target="{{count($candidates)}}">0</span></h5>
                 <p class="text-slate-500 dark:text-zink-200">Total Candidates</p>
             </div>
         </div><!--end col-->
