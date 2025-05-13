@@ -1,4 +1,4 @@
-@extends('layouts.master-without-nav')
+@extends('admin.layouts.master-without-nav')
 @section('title')
     {{ __('Forget Password') }}
 @endsection

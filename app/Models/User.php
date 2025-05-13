@@ -81,6 +81,11 @@ class User extends Authenticatable implements ReviewRateable, Viewable
         return $this->hasOne(Personne::class);
     }
 
+    public function jobuser(): HasOne
+    {
+        return $this->hasOne(JobUser::class);
+    }
+
     public function profile(): HasOne
     {
         return $this->hasOne(Profile::class);
@@ -100,4 +105,10 @@ class User extends Authenticatable implements ReviewRateable, Viewable
     {
         return $this->hasRole('employee');
     }
+
+    public function candidate(): HasOne
+    {
+        return $this->hasOne(Candidat::class);
+    }
+
 }

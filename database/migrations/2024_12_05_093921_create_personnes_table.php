@@ -15,17 +15,17 @@ return new class extends Migration
         Schema::create('personnes', function (Blueprint $table) {
             $table->id();
             $table->foreignIdFor(User::class)->constrained();
-            $table->string('matricule')->unique();
-            $table->string('nom');
-            $table->string('postNom');
-            $table->string('prenom');
-            $table->date('dateNaissance');
-            $table->string('sexe');
-            $table->string('nationalite');
-            $table->string('adresse');
-            $table->string('codePostal');
-            $table->string('ville');
-            $table->string('telephone');
+            $table->string('matricule')->unique()->nullable();
+            $table->string('nom')->nullable();
+            $table->string('postNom')->nullable();
+            $table->string('prenom')->nullable();
+            $table->date('dateNaissance')->nullable();
+            $table->string('sexe')->nullable();
+            $table->string('nationalite')->nullable();
+            $table->string('adresse')->nullable();
+            $table->string('codePostal')->nullable();
+            $table->string('ville')->nullable();
+            $table->string('telephone')->nullable();
             $table->timestamps();
             $table->softDeletes();
         });

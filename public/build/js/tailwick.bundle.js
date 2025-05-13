@@ -24,7 +24,7 @@ File: Common Plugins Js File
       loadScriptIfElementsExist("[data-provider]", 'build/libs/flatpickr/flatpickr.min.js');
 
     function pluginData() {
-
+ 
         // Toast UI Notification
         var toastExamples = document.querySelectorAll("[data-toast]");
         Array.from(toastExamples).forEach(function (element) {

@@ -12,6 +12,6 @@ class GuestLayout extends Component
      */
     public function render(): View
     {
-        return view('layouts.master-without-nav');
+        return view('admin.layouts.master-without-nav');
     }
 }

@@ -1,4 +1,4 @@
-@extends('layouts.master-without-nav')
+@extends('admin.layouts.master-without-nav')
 @section('title')
     {{ __('t-login') }}
 @endsection
@@ -49,11 +49,9 @@
                             </div>
                             <div>
                                 <div class="flex items-center gap-2">
-                                    <x-checkbox id="remember_me" name="remember" />
-                                    <label for="checkboxDefault1"
-                                        class="inline-block text-base font-medium align-middle cursor-pointer">Se souvenir
-                                        de moi
-                                        me</label>
+                                    <x-checkbox id="remember_me" name="remember"  />
+                                    <label for="remember_me"
+                                        class="inline-block text-base font-medium align-middle cursor-pointer">Se souvenir de moi.</label>
                                 </div>
                                 <x-input-error for="remember" />
                             </div>
@@ -67,7 +65,7 @@
                                 <p class="mb-0 text-slate-500 dark:text-zink-200">Vous n'avez pas de compte ? <a
                                         href="{{ route('register') }}"
                                         class="font-semibold underline transition-all duration-150 ease-linear text-slate-500 dark:text-zink-200 hover:text-custom-500 dark:hover:text-custom-500">
-                                        Créer un compte</a> </p>
+                                        Créez-en</a> </p>
                             </div>
                         </form>
                     </div>
@@ -81,7 +79,7 @@
                                 </a>
                             </div>
                             <div class="shrink-0">
-                                {{-- <x-language /> --}}
+                                <x-language />
                             </div>
                         </div>
                         <div class="mt-auto">
