@@ -34,6 +34,16 @@ Route::get('/access-denied', function () {
     return view('denied.show');
 })->name('access-denied');
 
+Route::get('/', function () {
+    return json_encode([
+        'status' => 'success',
+        'message' => 'Welcome to PowerHR API',
+        'version' => config('app.version'),
+        'author' => config('app.author'),
+    ]);
+    
+})->name('access-denied');
+
 Route::domain('admin.powerhr-drc.com')->group(function () {
     Route::middleware(['auth:sanctum', config('jetstream.auth_session'), 'verified', 'admin'])->group(function () {
         Route::resource('customers', ClientController::class);
