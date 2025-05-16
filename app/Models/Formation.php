@@ -11,14 +11,18 @@ class Formation extends Model
     use HasFactory, SoftDeletes;
 
         protected $fillable = [
-        'user_id',
-        'job_title',
+        'curriculum_id',
+        'title',
         'start_date',
         'end_date',
-        'company',
+        'school',
     ];
 
     public function user(){
         return $this->belongsTo(User::class);
+    }
+
+    public function curriculum(){
+        return $this->belongsTo(Curriculum::class);
     }
 }

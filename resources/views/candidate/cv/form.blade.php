@@ -4,91 +4,78 @@
 @endsection
 @section('content')
     <!-- page title -->
-    <x-page-title title="Model-1" pagetitle="Générer un Cv" />
-
-    <div class="grid items-center grid-cols-1 gap-5 mb-5 xl:grid-cols-12">
-        <div class="xl:col-span-2">
-            <h5 class="text-16">Nouveau CV</h5>
-        </div><!--end col-->
-        <div class="xl:col-span-3 xl:col-start-10">
-            <div class="flex justify-end gap-2">
-                <button type="button"
-                    class="text-slate-500 btn bg-slate-200 border-slate-200 hover:text-slate-600 hover:bg-slate-300 hover:border-slate-300 focus:text-slate-600 focus:bg-slate-300 focus:border-slate-300 focus:ring focus:ring-slate-100 active:text-slate-600 active:bg-slate-300 active:border-slate-300 active:ring active:ring-slate-100 dark:bg-zink-600 dark:hover:bg-zink-500 dark:border-zink-600 dark:hover:border-zink-500 dark:text-zink-200 dark:ring-zink-400/50"><i
-                        data-lucide="eye" class="inline-block size-4 mr-1"></i> <span
-                        class="align-middle">Voir</span></button>
-                <button type="button"
-                    class="text-white bg-purple-500 border-purple-500 btn hover:text-white hover:bg-purple-600 hover:border-purple-600 focus:text-white focus:bg-purple-600 focus:border-purple-600 focus:ring focus:ring-purple-100 active:text-white active:bg-purple-600 active:border-purple-600 active:ring active:ring-purple-100 dark:ring-purple-400/10"><i
-                        data-lucide="save" class="inline-block size-4 mr-1"></i> <span class="align-middle">Save & Download</span></button>
-            </div>
-        </div>
-    </div><!--end grid-->
+    <x-page-title title="Mes Informations" pagetitle="Générer un Cv" />
 
     <div class="card">
         <div class="card-body">
-            <form action="#!">
-                <h6 class="mb-4 text-gray-800 underline text-16 dark:text-zink-50">Identité:</h6>
+            <form action="{{ route('cv.store') }}" method="POST" enctype="multipart/form-data">
+                @csrf
+                <h6 class="mb-4 text-gray-800 underline text-16 dark:text-zink-50">Informations Persoonelles:</h6>
                 <div class="grid grid-cols-1 gap-5 xl:grid-cols-12">
                     <div class="xl:col-span-3">
-                        <label for="invoiceID" class="inline-block mb-2 text-base font-medium">Votre Nom de famille *</label>
-                        <input type="text" id="name" name="name"
-                            class="form-input border-slate-200 dark:border-zink-500 focus:outline-none focus:border-custom-500 disabled:bg-slate-100 dark:disabled:bg-zink-600 disabled:border-slate-300 dark:disabled:border-zink-500 dark:disabled:text-zink-200 disabled:text-slate-500 dark:text-zink-100 dark:bg-zink-700 dark:focus:border-custom-800 placeholder:text-slate-400 dark:placeholder:text-zink-200"
-                            placeholder="Entrez votre nom" required>
-                    </div><!--end col-->
-                    <div class="xl:col-span-3">
                         <label for="prenom" class="inline-block mb-2 text-base font-medium">Votre Prénom *</label>
-                        <input type="text" id="prenom" name="prenom"
+                        <input value="{{ $cv->firstname ?? null }}" type="text" id="prenom" name="firstname"
                             class="form-input border-slate-200 dark:border-zink-500 focus:outline-none focus:border-custom-500 disabled:bg-slate-100 dark:disabled:bg-zink-600 disabled:border-slate-300 dark:disabled:border-zink-500 dark:disabled:text-zink-200 disabled:text-slate-500 dark:text-zink-100 dark:bg-zink-700 dark:focus:border-custom-800 placeholder:text-slate-400 dark:placeholder:text-zink-200"
                             placeholder="Entrez votre prénom" required>
                     </div><!--end col-->
                     <div class="xl:col-span-3">
+                        <label for="invoiceID" class="inline-block mb-2 text-base font-medium">Votre Nom de famille complèt *</label>
+                        <input value="{{ $cv->lastname ?? null }}" type="text" id="name" name="lastname"
+                            class="form-input border-slate-200 dark:border-zink-500 focus:outline-none focus:border-custom-500 disabled:bg-slate-100 dark:disabled:bg-zink-600 disabled:border-slate-300 dark:disabled:border-zink-500 dark:disabled:text-zink-200 disabled:text-slate-500 dark:text-zink-100 dark:bg-zink-700 dark:focus:border-custom-800 placeholder:text-slate-400 dark:placeholder:text-zink-200"
+                            placeholder="Entrez votre nom" required>
+                    </div><!--end col-->
+                    <div class="xl:col-span-3">
                         <label for="email" class="inline-block mb-2 text-base font-medium">Votre E-mail</label>
-                        <input type="email"  id="email" name="email"
+                        <input value="{{ $cv->email ?? null }}" type="email"  id="email" name="email"
                             class="form-input border-slate-200 dark:border-zink-500 focus:outline-none focus:border-custom-500 disabled:bg-slate-100 dark:disabled:bg-zink-600 disabled:border-slate-300 dark:disabled:border-zink-500 dark:disabled:text-zink-200 disabled:text-slate-500 dark:text-zink-100 dark:bg-zink-700 dark:focus:border-custom-800 placeholder:text-slate-400 dark:placeholder:text-zink-200"
                             placeholder="example@mail.com" required>
                     </div><!--end col-->
                     <div class="xl:col-span-3">
                         <label for="phone" class="inline-block mb-2 text-base font-medium">Téléphone</label>
-                        <input type="text" id="phone" name="phone"
+                        <input value="{{ $cv->phone ?? null }}" type="text" id="phone" name="phone"
                             class="form-input border-slate-200 dark:border-zink-500 focus:outline-none focus:border-custom-500 disabled:bg-slate-100 dark:disabled:bg-zink-600 disabled:border-slate-300 dark:disabled:border-zink-500 dark:disabled:text-zink-200 disabled:text-slate-500 dark:text-zink-100 dark:bg-zink-700 dark:focus:border-custom-800 placeholder:text-slate-400 dark:placeholder:text-zink-200"
                             placeholder="243 890 567 890" maxlength="12" required>
                     </div><!--end col-->
                     <div class="xl:col-span-3">
                         <label for="lieu" class="inline-block mb-2 text-base font-medium">Lieu de naissance*</label>
-                        <input type="text" id="lieu" name="lieu"
+                        <input value="{{ $cv->lieunaissance ?? null }}" type="text" id="lieu" name="lieunaissance"
                             class="form-input border-slate-200 dark:border-zink-500 focus:outline-none focus:border-custom-500 disabled:bg-slate-100 dark:disabled:bg-zink-600 disabled:border-slate-300 dark:disabled:border-zink-500 dark:disabled:text-zink-200 disabled:text-slate-500 dark:text-zink-100 dark:bg-zink-700 dark:focus:border-custom-800 placeholder:text-slate-400 dark:placeholder:text-zink-200"
                             placeholder="Entrez votre lieu de naissance" required>
                     </div><!--end col-->
                     <div class="xl:col-span-3">
                         <label for="birthday" class="inline-block mb-2 text-base font-medium">Date de naissance *</label>
-                        <input type="date" id="birthday" name="birthday"
+                        <input value="{{ $cv->birthday ?? null }}" type="date" id="birthday" name="birthday"
                             class="form-input border-slate-200 dark:border-zink-500 focus:outline-none focus:border-custom-500 disabled:bg-slate-100 dark:disabled:bg-zink-600 disabled:border-slate-300 dark:disabled:border-zink-500 dark:disabled:text-zink-200 disabled:text-slate-500 dark:text-zink-100 dark:bg-zink-700 dark:focus:border-custom-800 placeholder:text-slate-400 dark:placeholder:text-zink-200"
                             placeholder="Date de naissance" data-provider="flatpickr" data-date-format="d M, Y"
                              required>
                     </div><!--end col-->
                     <div class="xl:col-span-3">
-                        <label for="origine" class="inline-block mb-2 text-base font-medium">Nationalité*</label>
-                        <select
+                        <label for="nationalité" class="inline-block mb-2 text-base font-medium">Nationalité*</label>
+                        <input value="{{ $cv->nationalité ?? null }}" type="text" id="nationalité" name="nationalité"
                             class="form-input border-slate-200 dark:border-zink-500 focus:outline-none focus:border-custom-500 disabled:bg-slate-100 dark:disabled:bg-zink-600 disabled:border-slate-300 dark:disabled:border-zink-500 dark:disabled:text-zink-200 disabled:text-slate-500 dark:text-zink-100 dark:bg-zink-700 dark:focus:border-custom-800 placeholder:text-slate-400 dark:placeholder:text-zink-200"
-                            data-choices data-choices-search-false name="origine" id="origine">
-                            <option selected>Congolaise</option>
-                            <option value="Paid">France</option>
-                        </select>
+                            placeholder="Votre pays d'origine" required>
                     </div><!--end col-->
                     <div class="xl:col-span-3">
-                        <label for="origine" class="inline-block mb-2 text-base font-medium">État civil*</label>
-                        <select
+                        <label for="etatcivil" class="inline-block mb-2 text-base font-medium">État civil*</label>
+                        <select value='{{ $cv->etatcivil ?? null }}'
                             class="form-input border-slate-200 dark:border-zink-500 focus:outline-none focus:border-custom-500 disabled:bg-slate-100 dark:disabled:bg-zink-600 disabled:border-slate-300 dark:disabled:border-zink-500 dark:disabled:text-zink-200 disabled:text-slate-500 dark:text-zink-100 dark:bg-zink-700 dark:focus:border-custom-800 placeholder:text-slate-400 dark:placeholder:text-zink-200"
-                            data-choices data-choices-search-false name="state" id="origine">
+                            data-choices data-choices-search-false name="etatcivil" id="etatcivil">
                             <option selected>Célibataire</option>
                             <option value="Paid">Marié</option>
                             <option value="Paid">Divorcé</option>
                         </select>
                     </div><!--end col-->
-                    <div class="xl:col-span-12">
-                        <label for="address" class="inline-block mb-2 text-base font-medium">Votre adresse</label>
+                    <div class="xl:col-span-6">
+                        <label for="adresse" class="inline-block mb-2 text-base font-medium">Votre adresse</label>
                         <textarea
                             class="form-input border-slate-200 dark:border-zink-500 focus:outline-none focus:border-custom-500 disabled:bg-slate-100 dark:disabled:bg-zink-600 disabled:border-slate-300 dark:disabled:border-zink-500 dark:disabled:text-zink-200 disabled:text-slate-500 dark:text-zink-100 dark:bg-zink-700 dark:focus:border-custom-800 placeholder:text-slate-400 dark:placeholder:text-zink-200"
-                            placeholder="Entrez votre adresse" id="address" name="address" rows="3"></textarea>
+                            placeholder="Entrez votre adresse" id="adresse" name="adresse" rows="3">{{ $cv->adresse ?? null }}</textarea>
+                    </div><!--end col-->
+                    <div class="xl:col-span-6">
+                        <label for="description" class="inline-block mb-2 text-base font-medium">Profil</label>
+                        <textarea
+                            class="form-input border-slate-200 dark:border-zink-500 focus:outline-none focus:border-custom-500 disabled:bg-slate-100 dark:disabled:bg-zink-600 disabled:border-slate-300 dark:disabled:border-zink-500 dark:disabled:text-zink-200 disabled:text-slate-500 dark:text-zink-100 dark:bg-zink-700 dark:focus:border-custom-800 placeholder:text-slate-400 dark:placeholder:text-zink-200"
+                            placeholder="Décrivez votre profil en quelques mots." id="description" name="description" rows="3">{{ $cv->description ?? null }}</textarea>
                     </div><!--end col-->
                 </div><!--end grid-->
 
@@ -115,6 +102,40 @@
                                     Action</th>
                             </tr>
                         </thead>
+                        @foreach ($cv->formation as $formation)
+                            <tbody class="before:block before:h-3 item-list">
+                                <tr class="item">
+                                    <td class="border border-slate-200 dark:border-zink-500">
+                                        <input type="text" id="formationtitle" name="title[]" value="{{ $formation->title }}"
+                                            class="px-3.5 py-2.5 border-none form-input border-slate-200 dark:border-zink-500 focus:outline-none focus:border-custom-500 disabled:bg-slate-100 dark:disabled:bg-zink-600 disabled:border-slate-300 dark:disabled:border-zink-500 dark:disabled:text-zink-200 disabled:text-slate-500 dark:text-zink-100 dark:bg-zink-700 dark:focus:border-custom-800 placeholder:text-slate-400 dark:placeholder:text-zink-200"
+                                            placeholder="Nom de la formation" required>
+                                    </td>
+                                    <td class="w-40 border border-slate-200 dark:border-zink-500">
+                                            <input type="date" id="startformation" name="start_dat[]" value="{{ $formation->start_date }}" data-provider="flatpickr" data-date-format="d M, Y"
+                                            class="px-3.5 py-2.5 border-none form-input border-slate-200 dark:border-zink-500 focus:outline-none focus:border-custom-500 disabled:bg-slate-100 dark:disabled:bg-zink-600 disabled:border-slate-300 dark:disabled:border-zink-500 dark:disabled:text-zink-200 disabled:text-slate-500 dark:text-zink-100 dark:bg-zink-700 dark:focus:border-custom-800 placeholder:text-slate-400 dark:placeholder:text-zink-200"
+                                            placeholder="Nom de l'emploi" required>
+                                    </td>
+                                    <td class="w-40 border border-slate-200 dark:border-zink-500">
+                                        <input type="date" id="endformation" name="end_dat[]" value="{{ $formation->end_date }}" data-provider="flatpickr" data-date-format="d M, Y"
+                                            class="px-3.5 py-2.5 border-none form-input border-slate-200 dark:border-zink-500 focus:outline-none focus:border-custom-500 disabled:bg-slate-100 dark:disabled:bg-zink-600 disabled:border-slate-300 dark:disabled:border-zink-500 dark:disabled:text-zink-200 disabled:text-slate-500 dark:text-zink-100 dark:bg-zink-700 dark:focus:border-custom-800 placeholder:text-slate-400 dark:placeholder:text-zink-200 item-price"
+                                            placeholder="$00.00" required>
+                                    </td>
+                                    <td class="w-40 border border-slate-200 dark:border-zink-500">
+                                        <input type="text" id="etablissement" name="school[]" value="{{ $formation->school }}"
+                                            class="px-3.5 py-2.5 border-none form-input border-slate-200 dark:border-zink-500 focus:outline-none focus:border-custom-500 disabled:bg-slate-100 dark:disabled:bg-zink-600 disabled:border-slate-300 dark:disabled:border-zink-500 dark:disabled:text-zink-200 disabled:text-slate-500 dark:text-zink-100 dark:bg-zink-700 dark:focus:border-custom-800 placeholder:text-slate-400 dark:placeholder:text-zink-200 item-discount"
+                                            placeholder="Nom de l'etablissement" required>
+                                    </td>
+                                    <td class="w-40 border border-slate-200 dark:border-zink-500">
+                                        <div class="flex justify-center text-center input-step">
+                                            <button type="button"
+                                                class="px-2 py-1.5 text-xs text-red-500 bg-red-100 btn hover:text-white hover:bg-red-600 focus:text-white focus:bg-red-600 focus:ring focus:ring-red-100 active:text-white active:bg-red-600 active:ring active:ring-red-100 dark:bg-red-500/20 dark:text-red-500 dark:hover:bg-red-500 dark:hover:text-white dark:focus:bg-red-500 dark:focus:text-white dark:active:bg-red-500 dark:active:text-white dark:ring-red-400/20 product-removal"><i
+                                                    data-lucide="trash-2" class="inline-block size-3 mr-1 align-middle"></i>
+                                                <span class="align-middle">Supprimer</span></button>
+                                        </div>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        @endforeach
                         <tbody class="before:block before:h-4" id="afterFormation">
                             <tr>
                                 <td colspan="6">
@@ -154,6 +175,39 @@
                                     Action</th>
                             </tr>
                         </thead>
+                        @foreach ($cv->experience as $experience)
+                            <tbody class="before:block before:h-3 item-list">
+                                <tr class="item">
+                                    <td class="border border-slate-200 dark:border-zink-500">
+                                        <input type="text" id="job_title" name="job_title[]" value="{{ $experience->job_title }}"
+                                            class="px-3.5 py-2.5 border-none form-input border-slate-200 dark:border-zink-500 focus:outline-none focus:border-custom-500 disabled:bg-slate-100 dark:disabled:bg-zink-600 disabled:border-slate-300 dark:disabled:border-zink-500 dark:disabled:text-zink-200 disabled:text-slate-500 dark:text-zink-100 dark:bg-zink-700 dark:focus:border-custom-800 placeholder:text-slate-400 dark:placeholder:text-zink-200" placeholder="Nom de l'emploi" required>
+                                    </td>
+                                    <td class="w-40 border border-slate-200 dark:border-zink-500">
+                                            <input type="date" id="startexperience" name="start_date[]" value="{{ $experience->start_date }}"
+                                            class="px-3.5 py-2.5 border-none form-input border-slate-200 dark:border-zink-500 focus:outline-none focus:border-custom-500 disabled:bg-slate-100 dark:disabled:bg-zink-600 disabled:border-slate-300 dark:disabled:border-zink-500 dark:disabled:text-zink-200 disabled:text-slate-500 dark:text-zink-100 dark:bg-zink-700 dark:focus:border-custom-800 placeholder:text-slate-400 dark:placeholder:text-zink-200"
+                                            placeholder="Nom de l'emploi" required>
+                                    </td>
+                                    <td class="w-40 border border-slate-200 dark:border-zink-500">
+                                        <input type="date" id="endexperience" name="end_date[]" value="{{ $experience->end_date }}"
+                                            class="px-3.5 py-2.5 border-none form-input border-slate-200 dark:border-zink-500 focus:outline-none focus:border-custom-500 disabled:bg-slate-100 dark:disabled:bg-zink-600 disabled:border-slate-300 dark:disabled:border-zink-500 dark:disabled:text-zink-200 disabled:text-slate-500 dark:text-zink-100 dark:bg-zink-700 dark:focus:border-custom-800 placeholder:text-slate-400 dark:placeholder:text-zink-200 item-price"
+                                            placeholder="$00.00" required>
+                                    </td>
+                                    <td class="w-40 border border-slate-200 dark:border-zink-500">
+                                        <input type="text" id="entreprise" name="company[]" value="{{ $experience->company }}"
+                                            class="px-3.5 py-2.5 border-none form-input border-slate-200 dark:border-zink-500 focus:outline-none focus:border-custom-500 disabled:bg-slate-100 dark:disabled:bg-zink-600 disabled:border-slate-300 dark:disabled:border-zink-500 dark:disabled:text-zink-200 disabled:text-slate-500 dark:text-zink-100 dark:bg-zink-700 dark:focus:border-custom-800 placeholder:text-slate-400 dark:placeholder:text-zink-200 item-discount"
+                                            placeholder="Nom de l'entreprise" required>
+                                    </td>
+                                    <td class="w-40 border border-slate-200 dark:border-zink-500">
+                                        <div class="flex justify-center text-center input-step">
+                                            <button type="button"
+                                                class="px-2 py-1.5 text-xs text-red-500 bg-red-100 btn hover:text-white hover:bg-red-600 focus:text-white focus:bg-red-600 focus:ring focus:ring-red-100 active:text-white active:bg-red-600 active:ring active:ring-red-100 dark:bg-red-500/20 dark:text-red-500 dark:hover:bg-red-500 dark:hover:text-white dark:focus:bg-red-500 dark:focus:text-white dark:active:bg-red-500 dark:active:text-white dark:ring-red-400/20 product-removal"><i
+                                                    data-lucide="trash-2" class="inline-block size-3 mr-1 align-middle"></i>
+                                                <span class="align-middle">Supprimer</span></button>
+                                        </div>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        @endforeach
                         <tbody class="before:block before:h-4" id="afterExperience">
                             <tr>
                                 <td colspan="6">
@@ -184,6 +238,26 @@
                                     Action</th>
                             </tr>
                         </thead>
+                        @foreach ($competences as $competence)
+                            <tbody class="before:block before:h-3 item-list">
+                                <tr class="item">
+                                    <td class="border border-slate-200 dark:border-zink-500">
+                                        <textarea
+                                            class="px-3.5 py-2.5 border-none form-input border-slate-200 dark:border-zink-500 focus:outline-none focus:border-custom-500 disabled:bg-slate-100 dark:disabled:bg-zink-600 disabled:border-slate-300 dark:disabled:border-zink-500 dark:disabled:text-zink-200 disabled:text-slate-500 dark:text-zink-100 dark:bg-zink-700 dark:focus:border-custom-800 placeholder:text-slate-400 dark:placeholder:text-zink-200"
+                                            placeholder="Décrivez votre compétence" id="competence" name="competence[]" rows="1">{{ $competence }}</textarea>
+                                    </td>
+                                    <td class="w-40 border border-slate-200 dark:border-zink-500">
+                                        <div class="flex justify-center text-center input-step">
+                                            <button type="button"
+                                                class="px-2 py-1.5 text-xs text-red-500 bg-red-100 btn hover:text-white hover:bg-red-600 focus:text-white focus:bg-red-600 focus:ring focus:ring-red-100 active:text-white active:bg-red-600 active:ring active:ring-red-100 dark:bg-red-500/20 dark:text-red-500 dark:hover:bg-red-500 dark:hover:text-white dark:focus:bg-red-500 dark:focus:text-white dark:active:bg-red-500 dark:active:text-white dark:ring-red-400/20 product-removal"><i
+                                                    data-lucide="trash-2" class="inline-block size-3 mr-1 align-middle"></i>
+                                                <span class="align-middle">Supprimer</span></button>
+                                        </div>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        @endforeach
+
                         <tbody class="before:block before:h-4" id="afterComptence">
                             <tr>
                                 <td colspan="6">
@@ -214,6 +288,26 @@
                                     Action</th>
                             </tr>
                         </thead>
+                        @foreach ($langues as $langue)
+                            <tbody class="before:block before:h-3 item-list">
+                                <tr class="item">
+                                    <td class="border border-slate-200 dark:border-zink-500">
+                                        <input type="text" name="langue[]" value="{{ $langue }}"
+                                            class="px-3.5 py-2.5 border-none form-input border-slate-200 dark:border-zink-500 focus:outline-none focus:border-custom-500 disabled:bg-slate-100 dark:disabled:bg-zink-600 disabled:border-slate-300 dark:disabled:border-zink-500 dark:disabled:text-zink-200 disabled:text-slate-500 dark:text-zink-100 dark:bg-zink-700 dark:focus:border-custom-800 placeholder:text-slate-400 dark:placeholder:text-zink-200 item-discount"
+                                            placeholder="langue" required>
+                                    </td>
+                                    <td class="w-40 border border-slate-200 dark:border-zink-500">
+                                        <div class="flex justify-center text-center input-step">
+                                            <button type="button"
+                                                class="px-2 py-1.5 text-xs text-red-500 bg-red-100 btn hover:text-white hover:bg-red-600 focus:text-white focus:bg-red-600 focus:ring focus:ring-red-100 active:text-white active:bg-red-600 active:ring active:ring-red-100 dark:bg-red-500/20 dark:text-red-500 dark:hover:bg-red-500 dark:hover:text-white dark:focus:bg-red-500 dark:focus:text-white dark:active:bg-red-500 dark:active:text-white dark:ring-red-400/20 product-removal">
+                                                <i data-lucide="trash-2" class="inline-block size-3 mr-1 align-middle"></i>
+                                                <span class="align-middle">Supprimer</span>
+                                            </button>
+                                        </div>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        @endforeach
                         <tbody class="before:block before:h-4" id="afterLangue">
                             <tr>
                                 <td colspan="6">
@@ -234,15 +328,12 @@
                     <button type="reset"
                         class="text-slate-500 btn bg-slate-200 border-slate-200 hover:text-slate-600 hover:bg-slate-300 hover:border-slate-300 focus:text-slate-600 focus:bg-slate-300 focus:border-slate-300 focus:ring focus:ring-slate-100 active:text-slate-600 active:bg-slate-300 active:border-slate-300 active:ring active:ring-slate-100 dark:bg-zink-600 dark:hover:bg-zink-500 dark:border-zink-600 dark:hover:border-zink-500 dark:text-zink-200 dark:ring-zink-400/50"><i
                             data-lucide="refresh-ccw" class="inline-block size-4 mr-1"></i> <span
-                            class="align-middle">Reset</span></button>
-                    <button type="button"
-                        class="text-white btn bg-custom-500 border-custom-500 hover:text-white hover:bg-custom-600 hover:border-custom-600 focus:text-white focus:bg-custom-600 focus:border-custom-600 focus:ring focus:ring-custom-100 active:text-white active:bg-custom-600 active:border-custom-600 active:ring active:ring-custom-100 dark:ring-custom-400/20"><i
-                            data-lucide="save" class="inline-block size-4 mr-1"></i> <span
-                            class="align-middle">Save</span></button>
-                    <button type="button"
-                        class="text-white bg-green-500 border-green-500 btn hover:text-white hover:bg-green-600 hover:border-green-600 focus:text-white focus:bg-green-600 focus:border-green-600 focus:ring focus:ring-green-100 active:text-white active:bg-green-600 active:border-green-600 active:ring active:ring-green-100 dark:ring-green-400/10"><i
-                            data-lucide="download" class="inline-block size-4 mr-1"></i> <span
-                            class="align-middle">Download</span></button>
+                            class="align-middle">Annuelr</span></button>
+                    <button type="submit"
+                        class="text-white btn bg-custom-500 border-custom-500 hover:text-white hover:bg-custom-600 hover:border-custom-600 focus:text-white focus:bg-custom-600 focus:border-custom-600 focus:ring focus:ring-custom-100 active:text-white active:bg-custom-600 active:border-custom-600 active:ring active:ring-custom-100 dark:ring-custom-400/20">
+                        <i data-lucide="save" class="inline-block size-4 mr-1"></i> 
+                        <span class="align-middle">Enregistrer</span>
+                    </button>
                 </div>
             </form>
         </div>
@@ -286,4 +377,11 @@
     <script src="{{ URL::asset('build/js/pages/invoice-create.init.js') }}"></script>
     <!-- App js -->
     <script src="{{ URL::asset('build/js/app.js') }}"></script>
+
+    <script>
+        @if(!empty($langues) || !empty($cv->competences) || !empty($cv->experiences) || !empty($cv->formations))
+            remove();
+        @endif
+    </script>
+
 @endpush

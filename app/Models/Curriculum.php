@@ -9,11 +9,12 @@ use Illuminate\Database\Eloquent\SoftDeletes;
 class Curriculum extends Model
 {
     use HasFactory, SoftDeletes;
+    protected $table = 'curriculums';
 
-        protected $fillable = [
+    protected $fillable = [
         'user_id',
-        'formation_id',
-        'experience_id',
+        'cv_path',
+        'model',
         'firstname',
         'lastname',
         'email',
@@ -34,5 +35,11 @@ class Curriculum extends Model
 
     public function user(){
         return $this->belongsTo(User::class);
+    }
+    public function experience(){
+        return $this->hasMany(Experience::class);
+    }
+    public function formation(){
+        return $this->hasMany(Formation::class);
     }
 }

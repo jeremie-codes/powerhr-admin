@@ -1,5 +1,6 @@
 <?php
 
+use App\Models\Curriculum;
 use App\Models\User;
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
@@ -14,10 +15,10 @@ return new class extends Migration
     {
         Schema::create('experiences', function (Blueprint $table) {
             $table->id();
-            $table->foreignIdFor(User::class);
+            $table->foreignIdFor(Curriculum::class);
             $table->string('job_title');
-            $table->string('start_date');
-            $table->string('end_date');
+            $table->datetimes('start_date');
+            $table->datetimes('end_date');
             $table->string('company');
             $table->timestamps();
             $table->softDeletes();

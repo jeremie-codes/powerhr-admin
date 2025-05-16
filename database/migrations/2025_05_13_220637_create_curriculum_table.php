@@ -17,20 +17,20 @@ return new class extends Migration
         Schema::create('curriculums', function (Blueprint $table) {
             $table->id();
             $table->foreignIdFor(User::class);
-            $table->foreignIdFor(Formation::class);
-            $table->foreignIdFor(Experience::class);
             $table->string('cv_path')->nullable();
+            $table->integer('model')->default(1);
             $table->string('firstname')->nullable();
             $table->string('lastname')->nullable();
             $table->string('email')->nullable();
             $table->string('phone')->nullable();
-            $table->string('birthday')->nullable();
+            $table->datetimes('birthday')->nullable();
             $table->string('lieunaissance')->nullable();
             $table->string('nationalité')->nullable();
             $table->string('etatcivil')->nullable();
             $table->string('adresse')->nullable();
             $table->json('competence')->nullable();
             $table->json('langue')->nullable();
+            $table->text('description')->nullable();
             $table->timestamps();
             $table->softDeletes();
 

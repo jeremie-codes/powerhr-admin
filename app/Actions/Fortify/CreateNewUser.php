@@ -42,29 +42,11 @@ class CreateNewUser implements CreatesNewUsers
                 Candidat::create(['user_id' => $user->id]);
 
                 Personne::create([
-                    'postNom' => '',
-                    'prenom' => '',
-                    'dateNaissance' => '2007-02-25',
-                    'sexe' => '',
-                    'nationalite' => '',
-                    'adresse' => '',
-                    'codePostal' => '',
-                    'ville' => '',
-                    'telephone' => '',
-                    'nom' => '',
-                    'user_id' => $user->id,
                     'matricule' => 'OFR' . rand(1000, 9999),
                 ]);
 
                 Profile::create([
-                    'title' => '',
-                    'bio' => '',
-                    'location' => '',
                     'is_available' => true,
-                    'website' => '',
-                    'linkedin' => '',
-                    'twitter' => '',
-                    'github' => '',
                     'user_id' => $user->id,
                 ]);
             });

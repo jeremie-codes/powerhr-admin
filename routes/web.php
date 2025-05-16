@@ -97,13 +97,15 @@ Route::domain('candidate.localhost')->group(function () {
         // Route::get("/jobs/{matricule}", [CandidatJobController::class, 'show'])->name('jobs.show');
     
         Route::get("/mon-cv", [GenerateController::class, 'index'])->name('generate.index');
-        Route::get("/model/{id}/edit", [GenerateController::class, 'show'])->name('generate.show');
+        Route::get("/model/{id}/selected", [GenerateController::class, 'select'])->name('model.selected');
         
-        Route::get('/cv/{id}/view', [CvController::class, 'view'])->name('cv.generer.pdf');
+        Route::get('/cv/view', [CvController::class, 'view'])->name('cv.generer.pdf');
         Route::get('/cv/{id}/download', [CvController::class, 'download'])->name('cv.telecharger.pdf');
+        Route::get('/cv/create', [GenerateController::class, 'create'])->name('cv.create');
+
         Route::post("/cv/store", [CvController::class, 'store'])->name('cv.store');
         Route::post("/cv/store_file", [CvController::class, 'store_file'])->name('cv.store_file');
-        Route::post("/cv/delete", [GenerateController::class, 'delete'])->name('cv.delete');
+        Route::post("/cv/{id}/delete", [CvController::class, 'delete'])->name('cv.delete');
        
     });
 });

@@ -11,7 +11,7 @@ class Experience extends Model
     use HasFactory, SoftDeletes;
 
     protected $fillable = [
-        'user_id',
+        'curriculum_id',
         'job_title',
         'start_date',
         'end_date',
@@ -20,5 +20,9 @@ class Experience extends Model
 
     public function user(){
         return $this->belongsTo(User::class);
+    }
+
+    public function curriculum(){
+        return $this->belongsTo(Curriculum::class);
     }
 }
