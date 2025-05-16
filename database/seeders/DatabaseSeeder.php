@@ -23,25 +23,25 @@ class DatabaseSeeder extends Seeder
      */
     public function run(): void
     {
-        User::factory(10)->create();
-
-        User::factory()->create([
-            'name' => 'Edgard',
-            'email' => 'edgard@powerhr.site',
-            'password' => Hash::make('123Power#Hr')
-        ]);
-
+        // User::factory(10)->create();
 
         Role::create(['name' => 'admin']);
         Role::create(['name' => 'candidate']);
         Role::create(['name' => 'employee']);
         Role::create(['name' => 'supervisor']);
         Role::create(['name' => 'customer']);
-        // Create a user with a single role
-        $user = User::factory()->withRoles('admin')->create();
 
-        // Create a user with multiple roles
-        $user = User::factory()->withRoles(['admin'])->create();
+        User::factory()->withRoles('admin')->create([
+            'name' => 'Edgard',
+            'email' => 'edgard@powerhr.site',
+            'password' => Hash::make('123Power#Hr')
+        ]);
+
+        // // Create a user with a single role
+        // $user = User::factory()->withRoles('admin')->create();
+
+        // // Create a user with multiple roles
+        // $user = User::factory()->withRoles(['admin'])->create();
 
         // Create multiple users with the same role
         $users = User::factory(20)->withRoles('candidate')->create();
