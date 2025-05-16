@@ -1,6 +1,6 @@
 <?php
 
-    namespace App\Http\Controllers\candidate;
+    namespace App\Http\Controllers\Candidate;
     
     use App\Http\Controllers\Controller;
     use App\Models\Candidates;
