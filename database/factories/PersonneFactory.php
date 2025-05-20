@@ -23,7 +23,7 @@ class PersonneFactory extends Factory
     public function definition(): array
     {
         return [
-            'matricule' => $this->faker->numerify('#########'),
+            // 'matricule' => $this->faker->numerify('#########'),
             'nom' => $this->faker->lastName,
             'postNom' => $this->faker->lastName,
             'prenom' => $this->faker->firstName,

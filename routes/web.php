@@ -86,7 +86,7 @@ Route::domain('client.powerhr.site')->group(function () {
     });
 });
 
-Route::domain('candidate.powerhr.site')->group(function () {
+Route::domain('candidat.powerhr.site')->group(function () {
     Route::middleware(['auth:sanctum', config('jetstream.auth_session'), 'verified',])->group(function () {
     
         Route::get("/", [CandidateController::class, 'index'])->name('candidate.index');
