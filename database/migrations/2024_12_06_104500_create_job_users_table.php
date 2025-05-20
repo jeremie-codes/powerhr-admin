@@ -18,7 +18,7 @@ return new class extends Migration
             $table->foreignIdFor(User::class);
             $table->foreignIdFor(Job::class);
             $table->boolean('is_active')->default(false);
-            $table->string('matricule');
+            $table->string('matricule')->unique();
             $table->dateTime('client_approved_at')->nullable();
             $table->dateTime('user_approved_at')->nullable();
             $table->dateTime('client_rejected_at')->nullable();

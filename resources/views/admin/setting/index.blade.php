@@ -207,18 +207,6 @@
         </div>
     </div>
 
-    <button type="button" data-toast data-toast-text="{{ session('success') }}"
-        data-toast-gravity="top" data-toast-position="center" data-toast-className="green"
-        data-toast-duration="3000"
-        class=" hidden text-slate-500 btn bg-slate-200 border-slate-200 hover:text-slate-600 hover:bg-slate-300 hover:border-slate-300 focus:text-slate-600 focus:bg-slate-300 focus:border-slate-300 focus:ring focus:ring-slate-100 active:text-slate-600 active:bg-slate-300 active:border-slate-300 active:ring active:ring-slate-100 dark:bg-zink-600 dark:hover:bg-zink-500 dark:border-zink-600 dark:hover:border-zink-500 dark:text-zink-200 dark:ring-zink-400/50">
-        Success
-    </button>
-
-    <button type="button" data-toast data-toast-text="{{ session('erro') }}" data-toast-gravity="top"
-            data-toast-position="center" data-toast-className="red" data-toast-duration="3000"
-            class="hidden text-slate-500 btn bg-slate-200 border-slate-200 hover:text-slate-600 hover:bg-slate-300 hover:border-slate-300 focus:text-slate-600 focus:bg-slate-300 focus:border-slate-300 focus:ring focus:ring-slate-100 active:text-slate-600 active:bg-slate-300 active:border-slate-300 active:ring active:ring-slate-100 dark:bg-zink-600 dark:hover:bg-zink-500 dark:border-zink-600 dark:hover:border-zink-500 dark:text-zink-200 dark:ring-zink-400/50">
-            Error
-    </button>
 @endsection
 @push('scripts')
     <script>

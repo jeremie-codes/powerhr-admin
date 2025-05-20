@@ -34,17 +34,7 @@ Route::get('/access-denied', function () {
     return view('denied.show');
 })->name('access-denied');
 
-Route::get('/', function () {
-    return json_encode([
-        'status' => 'success',
-        'message' => 'Welcome to PowerHR API',
-        'version' => config('app.version'),
-        'author' => config('app.author'),
-    ]);
-
-})->name('access-denied');
-
-// Route::domain('admin.powerhr-drc.com')->group(function () {
+Route::domain('admin.powerhr.site')->group(function () {
     Route::middleware(['auth:sanctum', config('jetstream.auth_session'), 'verified', 'admin'])->group(function () {
         Route::resource('customers', ClientController::class);
         Route::resource('users', UserController::class)->only([
@@ -70,52 +60,53 @@ Route::get('/', function () {
         Route::get("/", [AdminRouteController::class, 'index'])->name('dashboard');
         Route::get("{any}", [AdminRouteController::class, 'routes']);
     });
-// });
+});
 
-// Route::domain('client.powerhr-drc.com')->group(function () {
-//     Route::middleware(['auth:sanctum', config('jetstream.auth_session'), 'verified',])->group(function () {
+Route::domain('client.powerhr.site')->group(function () {
+    Route::middleware(['auth:sanctum', config('jetstream.auth_session'), 'verified',])->group(function () {
     
-//         Route::post('account/register', [ClientUserController::class, 'create'])->name('account.register');
+        Route::post('account/register', [ClientUserController::class, 'create'])->name('account.register');
 
-//         Route::middleware(['auth:sanctum', config('jetstream.auth_session'), 'verified',])->group(function () {
-//             Route::get("/", [ClientRouteController::class, 'index'])->name('dashboard');
-//             Route::resource('jobs', ClientJobController::class);
-//             Route::get('job/accept/{matricule}', [ClientJobController::class, 'accept'])->name('jobs.accept');
-//             Route::get('job/reject/{matricule}', [ClientJobController::class, 'reject'])->name('jobs.reject');
-//             Route::post('job/store', [ClientJobController::class, 'hireUser'])->name('jobs.hire');
-//             Route::resource('customer', CustomerController::class);
-//             Route::resource('candidates', ClientUserController::class);
-//             Route::get('/employes', [ClientUserController::class, 'employes'])->name('employes.index');
-//             Route::controller(FilterController::class)->name('filter.')->prefix('filter')->group(function () {
-//                 Route::get('create','create')->name('create');
-//                 Route::post('search','search')->name('search');
-//             });
-//             Route::get("{any}", [ClientRouteController::class, 'routes']);
-//         });
+        Route::middleware(['auth:sanctum', config('jetstream.auth_session'), 'verified',])->group(function () {
+            Route::get("/", [ClientRouteController::class, 'index'])->name('dashboard');
+            Route::resource('jobs', ClientJobController::class);
+            Route::get('job/accept/{matricule}', [ClientJobController::class, 'accept'])->name('jobs.accept');
+            Route::get('job/reject/{matricule}', [ClientJobController::class, 'reject'])->name('jobs.reject');
+            Route::post('job/store', [ClientJobController::class, 'hireUser'])->name('jobs.hire');
+            Route::resource('customer', CustomerController::class);
+            Route::resource('candidates', ClientUserController::class);
+            Route::get('/employes', [ClientUserController::class, 'employes'])->name('employes.index');
+            Route::controller(FilterController::class)->name('filter.')->prefix('filter')->group(function () {
+                Route::get('create','create')->name('create');
+                Route::post('search','search')->name('search');
+            });
+            Route::get("{any}", [ClientRouteController::class, 'routes']);
+        });
        
-//     });
-// });
+    });
+});
 
-// Route::domain('candidate.powerhr-drc.com')->group(function () {
-//     Route::middleware(['auth:sanctum', config('jetstream.auth_session'), 'verified',])->group(function () {
+Route::domain('candidate.powerhr.site')->group(function () {
+    Route::middleware(['auth:sanctum', config('jetstream.auth_session'), 'verified',])->group(function () {
     
-//         Route::get("/", [CandidateController::class, 'index'])->name('candidate.index');
-//         Route::post("/store", [CandidateController::class, 'store'])->name('candidate.store');
-//         Route::get("/canidatures", [CandidateController::class, 'candidature'])->name('candidature');
+        Route::get("/", [CandidateController::class, 'index'])->name('candidate.index');
+        Route::post("/store", [CandidateController::class, 'store'])->name('candidate.store');
+        Route::get("/canidatures", [CandidateController::class, 'candidature'])->name('candidature');
         
-//         Route::resource("/offerts", CandidatJobController::class);
-//         // Route::get("/jobs/{matricule}", [CandidatJobController::class, 'show'])->name('jobs.show');
+        Route::resource("/offerts", CandidatJobController::class);
+        Route::post("/offert/postule/{id}", [CandidatJobController::class, 'postuler'])->name('offert.postule');
+        Route::post("/offert/cancel/{id}", [CandidatJobController::class, 'cancel'])->name('offert.cancel');
     
-//         Route::get("/mon-cv", [GenerateController::class, 'index'])->name('generate.index');
-//         Route::get("/model/{id}/selected", [GenerateController::class, 'select'])->name('model.selected');
+        Route::get("/mon-cv", [GenerateController::class, 'index'])->name('generate.index');
+        Route::get("/model/{id}/selected", [GenerateController::class, 'select'])->name('model.selected');
         
-//         Route::get('/cv/view', [CvController::class, 'view'])->name('cv.generer.pdf');
-//         Route::get('/cv/{id}/download', [CvController::class, 'download'])->name('cv.telecharger.pdf');
-//         Route::get('/cv/create', [GenerateController::class, 'create'])->name('cv.create');
+        Route::get('/cv/view', [CvController::class, 'view'])->name('cv.generer.pdf');
+        Route::get('/cv/{id}/download', [CvController::class, 'download'])->name('cv.telecharger.pdf');
+        Route::get('/cv/create', [GenerateController::class, 'create'])->name('cv.create');
 
-//         Route::post("/cv/store", [CvController::class, 'store'])->name('cv.store');
-//         Route::post("/cv/store_file", [CvController::class, 'store_file'])->name('cv.store_file');
-//         Route::post("/cv/{id}/delete", [CvController::class, 'delete'])->name('cv.delete');
+        Route::post("/cv/store", [CvController::class, 'store'])->name('cv.store');
+        Route::post("/cv/store_file", [CvController::class, 'store_file'])->name('cv.store_file');
+        Route::post("/cv/{id}/delete", [CvController::class, 'delete'])->name('cv.delete');
        
-//     });
-// });
+    });
+});

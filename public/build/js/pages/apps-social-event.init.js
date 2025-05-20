@@ -9,12 +9,8 @@ File: apps social event init Js File
 
 var options = new List("eventList", {
     valueNames: [
-        "event_name",
-        "start_date",
-        "end_date",
-        "number",
-        "total",
-        "status"
+        "product_name",
+        "product_name",
     ],
 });
 

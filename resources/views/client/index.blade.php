@@ -29,6 +29,7 @@
         </div><!--end col-->
     </div><!--end grid-->
 @endsection
+
 @push('scripts')
     <!--apexchart js-->
     <script src="{{ URL::asset('build/libs/apexcharts/apexcharts.min.js') }}"></script>

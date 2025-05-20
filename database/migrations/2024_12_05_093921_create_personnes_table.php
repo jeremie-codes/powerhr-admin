@@ -15,7 +15,7 @@ return new class extends Migration
         Schema::create('personnes', function (Blueprint $table) {
             $table->id();
             $table->foreignIdFor(User::class)->constrained();
-            $table->string('matricule')->unique()->nullable();
+            // $table->string('matricule')->unique()->nullable();
             $table->string('nom')->nullable();
             $table->string('postNom')->nullable();
             $table->string('prenom')->nullable();

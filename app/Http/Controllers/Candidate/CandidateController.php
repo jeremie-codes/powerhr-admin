@@ -34,14 +34,18 @@ class CandidateController extends Controller
         $user = User::with('candidate', 'profile', 'personne')->findOrFail(Auth::user()->id);
         
         return view('candidate.index', [
-                     'user' => $user
+            'user' => $user
         ]);
     }
 
     public function candidature()
-    {
-        $jobs = Job::where('is_open', true)->latest()->paginate(10);
-        return view('candidate.candidature');
+    { 
+        $offerts = JobUser::where('user_id', Auth()->user()->id)->latest()->paginate(10);
+        $approved = JobUser::where('user_id', Auth()->user()->id)->where('client_approved_at', '!=', null)->count();
+        $rejected = JobUser::where('user_id', Auth()->user()->id)->where('client_rejected_at', '!=', null)->count();
+        $waiting = JobUser::where('user_id', Auth()->user()->id)->where('client_approved_at', null)->where('client_rejected_at', null)->count();
+
+        return view('candidate.candidature', compact('offerts', 'approved', 'rejected', 'waiting'));
     }
 
     /**
@@ -71,7 +75,7 @@ class CandidateController extends Controller
                 return !is_null($value) && $value !== '';
             });
 
-            $personneData['matricule'] = strtoupper(Str::random(8));
+            // $personneData['matricule'] = strtoupper(Str::random(8));
             
             $person = Personne::updateOrInsert(
                 ['user_id' => $user->id],

@@ -1,6 +1,6 @@
 @extends('candidate.layouts.candidate.master')
 @section('title')
-    {{ __('t-profile-candidat-title') }}
+    {{ __('Candidat') }}
 @endsection
 @section('content')
 
@@ -106,7 +106,7 @@
                 </li>
                 <li class="group">
                     <a href="javascript:void(0);" data-tab-toggle data-target="otherInfo"
-                        class="inline-block px-4 py-2 text-base transition-all duration-300 ease-linear rounded-t-md text-slate-500 dark:text-zink-200 border-b border-transparent group-[.active]:text-custom-500 dark:group-[.active]:text-custom-500 group-[.active]:border-b-custom-500 dark:group-[.active]:border-b-custom-500 hover:text-custom-500 dark:hover:text-custom-500 active:text-custom-500 dark:active:text-custom-500 -mb-[1px]">{{ __('t-others-informations') }}</a>
+                        class="inline-block px-4 py-2 text-base transition-all duration-300 ease-linear rounded-t-md text-slate-500 dark:text-zink-200 border-b border-transparent group-[.active]:text-custom-500 dark:group-[.active]:text-custom-500 group-[.active]:border-b-custom-500 dark:group-[.active]:border-b-custom-500 hover:text-custom-500 dark:hover:text-custom-500 active:text-custom-500 dark:active:text-custom-500 -mb-[1px]">{{ __('Autres Informations') }}</a>
                 </li>
             </ul>
         </div>
@@ -152,7 +152,7 @@
                                                         @if ($user->personne?->nationalite != '')
                                                             {{ $user->personne?->nationalite }}
                                                         @else
-                                                            {{ __('t-no-infomation') }}
+                                                            {{ __('Non défini') }}
                                                         @endif
                                                     </td>
                                                 </tr>
@@ -162,7 +162,7 @@
                                                         @if ($user->personne?->telephone != '')
                                                             {{ $user->personne?->telephone }}
                                                         @else
-                                                            {{ __('t-no-infomation') }}
+                                                            {{ __('Non défini') }}
                                                         @endif
                                                     </td>
                                                 </tr>
@@ -172,7 +172,7 @@
                                                         @if ($user->personne?->dateNaissance != '2007-02-25')
                                                             {{ $user->personne?->dateNaissance }}
                                                         @else
-                                                            {{ __('t-no-infomation') }}
+                                                            {{ __('Non défini') }}
                                                         @endif
                                                     </td>
                                                 </tr>
@@ -183,7 +183,7 @@
                                                             <a href="{{ $user->profile?->website }}" target="_blank"
                                                                 class="text-custom-500">{{ $user->profile?->website }}</a>
                                                         @else
-                                                            {{ __('t-no-infomation') }}
+                                                            {{ __('Non défini') }}
                                                         @endif
                                                     </td>
                                                 </tr>
@@ -198,7 +198,7 @@
                                                         @if ($user->personne?->adresse != '')
                                                             {{ $user->personne?->adresse }}
                                                         @else
-                                                            {{ __('t-no-infomation') }}
+                                                            {{ __('Non défini') }}
                                                         @endif
                                                     </td>
                                                 </tr>
@@ -324,8 +324,8 @@
                             </div>
                             <div class="flex justify-end gap-2">
                                 <button type="submit"
-                                    class="text-white transition-all duration-200 ease-linear btn bg-custom-500 border-custom-500 hover:text-white hover:bg-custom-600 hover:border-custom-600 focus:text-white focus:bg-custom-600 focus:border-custom-600 focus:ring focus:ring-custom-100 active:text-white active:bg-custom-600 active:border-custom-600 active:ring active:ring-custom-100">Mettre
-                                    a jour</button>
+                                    class="text-white transition-all duration-200 ease-linear btn bg-custom-500 border-custom-500 hover:text-white hover:bg-custom-600 hover:border-custom-600 focus:text-white focus:bg-custom-600 focus:border-custom-600 focus:ring focus:ring-custom-100 active:text-white active:bg-custom-600 active:border-custom-600 active:ring active:ring-custom-100">
+                                    Mettre à jour</button>
                             </div>
                         </form>
                     </div>
@@ -389,7 +389,54 @@
                             </div>
                             <div class="flex justify-end gap-2">
                                 <button type="submit"
-                                    class="text-white transition-all duration-200 ease-linear btn bg-custom-500 border-custom-500 hover:text-white hover:bg-custom-600 hover:border-custom-600 focus:text-white focus:bg-custom-600 focus:border-custom-600 focus:ring focus:ring-custom-100 active:text-white active:bg-custom-600 active:border-custom-600 active:ring active:ring-custom-100">Submit</button>
+                                    class="text-white transition-all duration-200 ease-linear btn bg-custom-500 border-custom-500 hover:text-white hover:bg-custom-600 hover:border-custom-600 focus:text-white focus:bg-custom-600 focus:border-custom-600 focus:ring focus:ring-custom-100 active:text-white active:bg-custom-600 active:border-custom-600 active:ring active:ring-custom-100">Soumettre</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <div class="card-body">
+                        <form action="{{ route('candidate.store') }}" method="POST">
+                            @csrf
+                            <div class="grid grid-cols-1 gap-x-5 md:grid-cols-2 xl:grid-cols-3">
+                                <div class="mb-4">
+                                    <label for="bio" class="inline-block mb-2 text-base font-medium">Bio <span class="text-red-500">*</span></label>
+                                    <input type="text" id="bio"
+                                        class="form-input border-slate-200 dark:border-zink-500 focus:outline-none focus:border-custom-500 disabled:bg-slate-100 dark:disabled:bg-zink-600 disabled:border-slate-300 dark:disabled:border-zink-500 dark:disabled:text-zink-200 disabled:text-slate-500 dark:text-zink-100 dark:bg-zink-700 dark:focus:border-custom-800 placeholder:text-slate-400 dark:placeholder:text-zink-200"
+                                        placeholder="..." name="webite" value="{{ $user->profile?->bio }}" >
+                                </div>
+                                <div class="mb-4">
+                                    <label for="website" class="inline-block mb-2 text-base font-medium">Site web <span class="text-red-500">*</span></label>
+                                    <input type="text" id="website"
+                                        class="form-input border-slate-200 dark:border-zink-500 focus:outline-none focus:border-custom-500 disabled:bg-slate-100 dark:disabled:bg-zink-600 disabled:border-slate-300 dark:disabled:border-zink-500 dark:disabled:text-zink-200 disabled:text-slate-500 dark:text-zink-100 dark:bg-zink-700 dark:focus:border-custom-800 placeholder:text-slate-400 dark:placeholder:text-zink-200"
+                                        placeholder="https://www.monsite.com" name="webite" value="{{ $user->profile?->website }}" >
+                                </div>
+                                <div class="mb-4">
+                                    <label for="linkedin" class="inline-block mb-2 text-base font-medium">Linked in
+                                        <span class="text-red-500">*</span></label>
+                                    <input type="text" name="linkedin"
+                                        class="form-input border-slate-200 dark:border-zink-500 focus:outline-none focus:border-custom-500 disabled:bg-slate-100 dark:disabled:bg-zink-600 disabled:border-slate-300 dark:disabled:border-zink-500 dark:disabled:text-zink-200 disabled:text-slate-500 dark:text-zink-100 dark:bg-zink-700 dark:focus:border-custom-800 placeholder:text-slate-400 dark:placeholder:text-zink-200"
+                                        placeholder="linkedin" required value="{{ $user->profile?->linkedin }}">
+                                </div>
+                                <div class="mb-4">
+                                    <label for="twitter" class="inline-block mb-2 text-base font-medium">Twitter <span
+                                            class="text-red-500">*</span></label>
+                                    <input type="text" id="twitter" name="twitter"
+                                        class="form-input border-slate-200 dark:border-zink-500 focus:outline-none focus:border-custom-500 disabled:bg-slate-100 dark:disabled:bg-zink-600 disabled:border-slate-300 dark:disabled:border-zink-500 dark:disabled:text-zink-200 disabled:text-slate-500 dark:text-zink-100 dark:bg-zink-700 dark:focus:border-custom-800 placeholder:text-slate-400 dark:placeholder:text-zink-200"
+                                        placeholder="twitter" required value="{{ $user->profile?->twitter }}">
+                                </div>
+                                <div class="mb-4">
+                                    <label for="github" class="inline-block mb-2 text-base font-medium">Github <span
+                                            class="text-red-500"></span></label>
+                                    <input type="number" id="github" name="github"
+                                        class="form-input border-slate-200 dark:border-zink-500 focus:outline-none focus:border-custom-500 disabled:bg-slate-100 dark:disabled:bg-zink-600 disabled:border-slate-300 dark:disabled:border-zink-500 dark:disabled:text-zink-200 disabled:text-slate-500 dark:text-zink-100 dark:bg-zink-700 dark:focus:border-custom-800 placeholder:text-slate-400 dark:placeholder:text-zink-200"
+                                        placeholder="Github" required value="{{ $user->profile?->github }}">
+                                </div>
+                            </div>
+                            <div class="flex justify-end gap-2">
+                                <button type="submit"
+                                    class="text-white transition-all duration-200 ease-linear btn bg-custom-500 border-custom-500 hover:text-white hover:bg-custom-600 hover:border-custom-600 focus:text-white focus:bg-custom-600 focus:border-custom-600 focus:ring focus:ring-custom-100 active:text-white active:bg-custom-600 active:border-custom-600 active:ring active:ring-custom-100">Enregistrer</button>
                             </div>
                         </form>
                     </div>
@@ -402,40 +449,7 @@
                 Swal.fire({!! Session::pull('alert.sweetalert') !!});
             </script>
         @endif
-
-
-    @if(session('success'))
-        <div
-            class="fixed sessionSuccess bottom-20 right-10 p-3 pr-12 text-sm text-green-500 border border-transparent rounded-md bg-green-50 dark:bg-green-400/20">
-            <button
-                class="absolute top-0 bottom-0 right-0 p-3 text-green-200 transition hover:text-green-500 dark:text-green-400/50 dark:hover:text-green-500"><i
-                    class="h-5"></i></button>
-            <span class="font-bold">{{ session('success') }} !</span>
-        </div>
-
-        <script>
-            setTimeout(() => {
-                document.querySelector('.sessionSuccess').classList.add('hidden')
-            }, 5000);
-        </script>
-    @endif
-
-    @if(session('error'))
-        <div
-            class="relative sessionError p-3 pr-12 text-sm text-red-500 border border-transparent rounded-md bg-red-50 dark:bg-red-400/20">
-            <button
-                class="absolute top-0 bottom-0 right-0 p-3 text-red-200 transition hover:text-red-500 dark:text-red-400/50 dark:hover:text-red-500"><i
-                    class="h-5"></i></button>
-            <span class="font-bold">{{ session('error') }} !</span>
-        </div>
-
-        <script>
-            setTimeout(() => {
-                document.querySelector('.sessionSuccess').classList.add('hidden')
-            }, 5000);
-        </script>
-    @endif
-
+    
     @endsection
     @push('scripts')
         <!-- apexcharts js -->

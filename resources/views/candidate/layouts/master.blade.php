@@ -53,6 +53,38 @@
             <!-- content -->
             @yield('content')
         </div>
+
+        @if(session('success'))
+            <div
+                class="fixed sessionSuccess right-10 p-3 pr-12 text-sm text-green-500 border border-transparent rounded-md bg-green-100 dark:bg-green-500/20" style="top: 80px;">
+                <button
+                    class="top-0 top-0 right-0 p-3 text-green-200 transition hover:text-green-500 dark:text-green-400/50 dark:hover:text-green-500"><i
+                        class="h-5"></i></button>
+                <span class="font-bold">{{ session('success') }} !</span>
+            </div>
+
+            <script>
+                setTimeout(() => {
+                    document.querySelector('.sessionSuccess').classList.add('hidden')
+                }, 5000);
+            </script>
+        @endif
+
+        @if(session('error'))
+            <div
+                class="fixed sessionError right-10 p-3 pr-12 text-sm text-red-500 border border-transparent rounded-md bg-red-100 dark:bg-red-400/20" style="top: 80px;">
+                <button
+                    class="top-0 bottom-0 right-0 p-3 text-red-200 transition hover:text-red-500 dark:text-red-400/50 dark:hover:text-red-500"><i
+                        class="h-5"></i></button>
+                <span class="font-bold">{{ !session('error') }} !</span>
+            </div>
+
+            <script>
+                setTimeout(() => {
+                    document.querySelector('.sessionSuccess').classList.add('hidden')
+                }, 5000);
+            </script>
+        @endif
     </div>
     <!-- End Page-content -->
     <!-- footer -->
