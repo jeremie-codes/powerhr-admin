@@ -142,8 +142,7 @@
                                                 data-bs-toggle="modal"
                                                 href="{{url('https://candidat.powerhr.site/login')}}"
                                                 role="button">
-                                                <i
-                                                    class="feather-log-in"></i>
+                                                <i class="feather-log-in"></i>
                                                 Postuler
                                             </a>
                                         </div>
@@ -153,8 +152,7 @@
                                             <a
                                                 href="{{url('https://client.powerhr.site/login')}}"
                                                 class="twm-nav-post-a-job">
-                                                <i
-                                                    class="feather-briefcase"></i>
+                                                <i class="feather-briefcase"></i>
                                                 Engager
                                             </a>
                                         </div>

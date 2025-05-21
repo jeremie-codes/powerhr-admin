@@ -1,0 +1,305 @@
+$flaticon-font: "flaticon";
+
+@font-face {
+    font-family: $flaticon-font;
+    src: url("./flaticon.ttf?5ea3101faf926de142b026c358df5aba") format("truetype"),
+url("./flaticon.woff?5ea3101faf926de142b026c358df5aba") format("woff"),
+url("./flaticon.woff2?5ea3101faf926de142b026c358df5aba") format("woff2"),
+url("./flaticon.eot?5ea3101faf926de142b026c358df5aba#iefix") format("embedded-opentype"),
+url("./flaticon.svg?5ea3101faf926de142b026c358df5aba#flaticon") format("svg");
+}
+
+i[class^="flaticon-"]:before, i[class*=" flaticon-"]:before {
+    font-family: flaticon !important;
+    font-style: normal;
+    font-weight: normal !important;
+    font-variant: normal;
+    text-transform: none;
+    line-height: 1;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+$flaticon-map: (
+    "dashboard": "\f101",
+    "project-management": "\f102",
+    "note": "\f103",
+    "customer-support": "\f104",
+    "job-search": "\f105",
+    "job-description": "\f106",
+    "job": "\f107",
+    "job-seeker": "\f108",
+    "search-interface-symbol": "\f109",
+    "magnifying-glass": "\f10a",
+    "sign-in": "\f10b",
+    "enter": "\f10c",
+    "edit": "\f10d",
+    "edit-1": "\f10e",
+    "resume": "\f10f",
+    "cv": "\f110",
+    "cv-1": "\f111",
+    "left-chevron": "\f112",
+    "chevron": "\f113",
+    "up-arrow": "\f114",
+    "down-arrow": "\f115",
+    "file": "\f116",
+    "upload": "\f117",
+    "right-quote": "\f118",
+    "left-quote": "\f119",
+    "map": "\f11a",
+    "map-1": "\f11b",
+    "map-2": "\f11c",
+    "plus": "\f11d",
+    "minus": "\f11e",
+    "envelope": "\f11f",
+    "email": "\f120",
+    "phone": "\f121",
+    "telephone": "\f122",
+    "smartphone": "\f123",
+    "smartphone-1": "\f124",
+    "hand-phone": "\f125",
+    "bars": "\f126",
+    "user": "\f127",
+    "computer": "\f128",
+    "coding": "\f129",
+    "hr": "\f12a",
+    "hr-manager": "\f12b",
+    "healthcare": "\f12c",
+    "repair": "\f12d",
+    "teacher": "\f12e",
+    "bank": "\f12f",
+    "deal": "\f130",
+    "tray": "\f131",
+    "tower": "\f132",
+    "lotus": "\f133",
+    "camera-tripod": "\f134",
+    "multimedia": "\f135",
+    "contract": "\f136",
+    "engineer": "\f137",
+    "pdf": "\f138",
+    "pdf-1": "\f139",
+    "doc": "\f13a",
+    "zip": "\f13b",
+    "apk": "\f13c",
+    "jpg": "\f13d",
+    "php": "\f13e",
+    "css": "\f13f",
+    "png": "\f140",
+    "xls": "\f141",
+    "ppt": "\f142",
+    "txt": "\f143",
+    "html-document": "\f144",
+    "bell": "\f145",
+    "bell-1": "\f146",
+);
+
+.flaticon-dashboard:before {
+    content: map-get($flaticon-map, "dashboard");
+}
+.flaticon-project-management:before {
+    content: map-get($flaticon-map, "project-management");
+}
+.flaticon-note:before {
+    content: map-get($flaticon-map, "note");
+}
+.flaticon-customer-support:before {
+    content: map-get($flaticon-map, "customer-support");
+}
+.flaticon-job-search:before {
+    content: map-get($flaticon-map, "job-search");
+}
+.flaticon-job-description:before {
+    content: map-get($flaticon-map, "job-description");
+}
+.flaticon-job:before {
+    content: map-get($flaticon-map, "job");
+}
+.flaticon-job-seeker:before {
+    content: map-get($flaticon-map, "job-seeker");
+}
+.flaticon-search-interface-symbol:before {
+    content: map-get($flaticon-map, "search-interface-symbol");
+}
+.flaticon-magnifying-glass:before {
+    content: map-get($flaticon-map, "magnifying-glass");
+}
+.flaticon-sign-in:before {
+    content: map-get($flaticon-map, "sign-in");
+}
+.flaticon-enter:before {
+    content: map-get($flaticon-map, "enter");
+}
+.flaticon-edit:before {
+    content: map-get($flaticon-map, "edit");
+}
+.flaticon-edit-1:before {
+    content: map-get($flaticon-map, "edit-1");
+}
+.flaticon-resume:before {
+    content: map-get($flaticon-map, "resume");
+}
+.flaticon-cv:before {
+    content: map-get($flaticon-map, "cv");
+}
+.flaticon-cv-1:before {
+    content: map-get($flaticon-map, "cv-1");
+}
+.flaticon-left-chevron:before {
+    content: map-get($flaticon-map, "left-chevron");
+}
+.flaticon-chevron:before {
+    content: map-get($flaticon-map, "chevron");
+}
+.flaticon-up-arrow:before {
+    content: map-get($flaticon-map, "up-arrow");
+}
+.flaticon-down-arrow:before {
+    content: map-get($flaticon-map, "down-arrow");
+}
+.flaticon-file:before {
+    content: map-get($flaticon-map, "file");
+}
+.flaticon-upload:before {
+    content: map-get($flaticon-map, "upload");
+}
+.flaticon-right-quote:before {
+    content: map-get($flaticon-map, "right-quote");
+}
+.flaticon-left-quote:before {
+    content: map-get($flaticon-map, "left-quote");
+}
+.flaticon-map:before {
+    content: map-get($flaticon-map, "map");
+}
+.flaticon-map-1:before {
+    content: map-get($flaticon-map, "map-1");
+}
+.flaticon-map-2:before {
+    content: map-get($flaticon-map, "map-2");
+}
+.flaticon-plus:before {
+    content: map-get($flaticon-map, "plus");
+}
+.flaticon-minus:before {
+    content: map-get($flaticon-map, "minus");
+}
+.flaticon-envelope:before {
+    content: map-get($flaticon-map, "envelope");
+}
+.flaticon-email:before {
+    content: map-get($flaticon-map, "email");
+}
+.flaticon-phone:before {
+    content: map-get($flaticon-map, "phone");
+}
+.flaticon-telephone:before {
+    content: map-get($flaticon-map, "telephone");
+}
+.flaticon-smartphone:before {
+    content: map-get($flaticon-map, "smartphone");
+}
+.flaticon-smartphone-1:before {
+    content: map-get($flaticon-map, "smartphone-1");
+}
+.flaticon-hand-phone:before {
+    content: map-get($flaticon-map, "hand-phone");
+}
+.flaticon-bars:before {
+    content: map-get($flaticon-map, "bars");
+}
+.flaticon-user:before {
+    content: map-get($flaticon-map, "user");
+}
+.flaticon-computer:before {
+    content: map-get($flaticon-map, "computer");
+}
+.flaticon-coding:before {
+    content: map-get($flaticon-map, "coding");
+}
+.flaticon-hr:before {
+    content: map-get($flaticon-map, "hr");
+}
+.flaticon-hr-manager:before {
+    content: map-get($flaticon-map, "hr-manager");
+}
+.flaticon-healthcare:before {
+    content: map-get($flaticon-map, "healthcare");
+}
+.flaticon-repair:before {
+    content: map-get($flaticon-map, "repair");
+}
+.flaticon-teacher:before {
+    content: map-get($flaticon-map, "teacher");
+}
+.flaticon-bank:before {
+    content: map-get($flaticon-map, "bank");
+}
+.flaticon-deal:before {
+    content: map-get($flaticon-map, "deal");
+}
+.flaticon-tray:before {
+    content: map-get($flaticon-map, "tray");
+}
+.flaticon-tower:before {
+    content: map-get($flaticon-map, "tower");
+}
+.flaticon-lotus:before {
+    content: map-get($flaticon-map, "lotus");
+}
+.flaticon-camera-tripod:before {
+    content: map-get($flaticon-map, "camera-tripod");
+}
+.flaticon-multimedia:before {
+    content: map-get($flaticon-map, "multimedia");
+}
+.flaticon-contract:before {
+    content: map-get($flaticon-map, "contract");
+}
+.flaticon-engineer:before {
+    content: map-get($flaticon-map, "engineer");
+}
+.flaticon-pdf:before {
+    content: map-get($flaticon-map, "pdf");
+}
+.flaticon-pdf-1:before {
+    content: map-get($flaticon-map, "pdf-1");
+}
+.flaticon-doc:before {
+    content: map-get($flaticon-map, "doc");
+}
+.flaticon-zip:before {
+    content: map-get($flaticon-map, "zip");
+}
+.flaticon-apk:before {
+    content: map-get($flaticon-map, "apk");
+}
+.flaticon-jpg:before {
+    content: map-get($flaticon-map, "jpg");
+}
+.flaticon-php:before {
+    content: map-get($flaticon-map, "php");
+}
+.flaticon-css:before {
+    content: map-get($flaticon-map, "css");
+}
+.flaticon-png:before {
+    content: map-get($flaticon-map, "png");
+}
+.flaticon-xls:before {
+    content: map-get($flaticon-map, "xls");
+}
+.flaticon-ppt:before {
+    content: map-get($flaticon-map, "ppt");
+}
+.flaticon-txt:before {
+    content: map-get($flaticon-map, "txt");
+}
+.flaticon-html-document:before {
+    content: map-get($flaticon-map, "html-document");
+}
+.flaticon-bell:before {
+    content: map-get($flaticon-map, "bell");
+}
+.flaticon-bell-1:before {
+    content: map-get($flaticon-map, "bell-1");
+}
