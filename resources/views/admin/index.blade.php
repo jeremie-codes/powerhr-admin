@@ -162,7 +162,16 @@
                                     </td>
                                 </tr>
                             @empty
-                                Aucune information disponible
+                                <div class="noresult">
+                                    <div class="py-6 text-center">
+                                        <i data-lucide="search"
+                                            class="size-6 mx-auto text-sky-500 fill-sky-100 dark:fill-sky-500/20"></i>
+                                        <h5 class="mt-2">Sorry! No Result Found</h5>
+                                        <p class="mb-0 text-slate-500 dark:text-zink-200">
+
+                                        </p>
+                                    </div>
+                                </div>
                             @endforelse
                         </tbody>
                     </table>
