@@ -37,7 +37,7 @@ class DatabaseSeeder extends Seeder
             'password' => Hash::make('123Power#Hr')
         ]);
 
-        User::factory()->withRoles('client')->create([
+        User::factory()->withRoles('employee')->create([
             'name' => 'Matsgate',
             'email' => 'mastagate@gmail.com',
             'password' => Hash::make('123Power#Hr')
