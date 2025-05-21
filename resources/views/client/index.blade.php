@@ -29,6 +29,14 @@
         </div><!--end col-->
     </div><!--end grid-->
 
+    {{-- Alerte if profile is empty --}}
+    @if (auth()->user()->profile == null)
+        <div class="p-5 mb-4 bg-red-100 text-red-500 border border-red-500 rounded dark:border-red-500/20 dark:bg-red-400/20" role="alert">
+            <strong>Alerte! </strong> Veuillez complétez votre profil d'Entreprise s'il vous plaît.
+            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+        </div>
+    @endif
+
     {{-- Last candidate recommanded --}}
     <div class="grid grid-cols-1 gap-x-5 xl:grid-cols-12">
         <div class="xl:col-span-12">

@@ -4,13 +4,7 @@
 @endsection
 @section('content')
     <!-- page title -->
-    <x-page-title title="Add New" pagetitle="Invoices" />
-
-    <div class="grid items-center grid-cols-1 gap-5 mb-5 xl:grid-cols-12">
-        <div class="xl:col-span-2">
-            <h5 class="text-16">New Invoice</h5>
-        </div><!--end col-->
-    </div><!--end grid-->
+    <x-page-title title="Profile" pagetitle="Entreprise profile" />
 
     <div class="card">
         <div class="card-body">
