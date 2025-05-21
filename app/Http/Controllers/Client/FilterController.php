@@ -13,12 +13,12 @@ class FilterController extends Controller
 {
     public function create()
     {
-        $skills = Skill::all();
+        // $skills = Skill::all();
 
 
-        return view('client.filter.create', [
-            'skills' => $skills
-        ]);
+        // return view('client.filter.create', [
+        //     'skills' => $skills
+        // ]);
         return view('client.filter.create',);
     }
 
