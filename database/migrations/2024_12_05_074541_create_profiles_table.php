@@ -14,14 +14,14 @@ return new class extends Migration
         Schema::create('profiles', function (Blueprint $table) {
             $table->id();
             $table->foreignIdFor(\App\Models\User::class)->constrained();
-            $table->string('title');
-            $table->string('location');
+            $table->string('title')->nullable();
+            $table->string('location')->nullable();
             $table->boolean('is_available')->default(true);
             $table->string('website')->nullable();
             $table->string('linkedin')->nullable();
             $table->string('twitter')->nullable();
             $table->string('github')->nullable();
-            $table->text('bio');
+            $table->text('bio')->nullable();
             $table->timestamps();
             $table->softDeletes();
         });
