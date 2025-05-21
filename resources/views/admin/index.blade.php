@@ -28,6 +28,7 @@
                 </p>
             </div>
         </div> --}}
+
         <div class="col-span-12 card md:col-span-6 lg:col-span-4 2xl:col-span-2">
             <div class="text-center card-body">
                 <div
@@ -40,6 +41,7 @@
                 </p>
             </div>
         </div><!--end col-->
+
         <div class="col-span-12 card md:col-span-6 lg:col-span-4 2xl:col-span-2">
             <div class="text-center card-body">
                 <div
@@ -52,6 +54,7 @@
                 </p>
             </div>
         </div><!--end col-->
+
         <div class="col-span-12 card md:col-span-6 lg:col-span-4 2xl:col-span-2">
             <div class="text-center card-body">
                 <div
@@ -64,6 +67,7 @@
                 </p>
             </div>
         </div><!--end col-->
+
         <div class="col-span-12 card 2xl:col-span-12">
             <div class="card-body">
                 <div class="grid items-center grid-cols-1 gap-3 mb-5 2xl:grid-cols-12">
@@ -165,9 +169,9 @@
                 </div>
             </div>
         </div><!--end col-->
-    </div><!--end grid-->
 
-@apexchartsScripts
+    </div><!--end grid-->
+@endsection
 @push('scripts')
     <!--apexchart js-->
     <script src="{{ URL::asset('build/libs/apexcharts/apexcharts.min.js') }}"></script>

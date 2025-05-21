@@ -216,6 +216,7 @@
     </div>
     
 @endsection
+
 @push('scripts')
     <!-- list js-->
     <script src="{{ URL::asset('build/libs/list.js/list.min.js') }}"></script>

@@ -34,7 +34,7 @@ Route::get('/access-denied', function () {
     return view('denied.show');
 })->name('access-denied');
 
-Route::domain('admin.powerhr.site')->group(function () {
+Route::domain('admin.localhost')->group(function () {
     Route::middleware(['auth:sanctum', config('jetstream.auth_session'), 'verified', 'admin'])->group(function () {
         Route::resource('customers', ClientController::class);
         Route::resource('users', UserController::class)->only([
@@ -62,13 +62,13 @@ Route::domain('admin.powerhr.site')->group(function () {
     });
 });
 
-Route::domain('client.powerhr.site')->group(function () {
+Route::domain('client.localhost')->group(function () {
     Route::middleware(['auth:sanctum', config('jetstream.auth_session'), 'verified',])->group(function () {
     
         Route::post('account/register', [ClientUserController::class, 'create'])->name('account.register');
 
         Route::middleware(['auth:sanctum', config('jetstream.auth_session'), 'verified',])->group(function () {
-            Route::get("/", [ClientRouteController::class, 'index'])->name('dashboard');
+            Route::get("/", [ClientRouteController::class, 'index'])->name('index');
             Route::resource('jobs', ClientJobController::class);
             Route::get('job/accept/{matricule}', [ClientJobController::class, 'accept'])->name('jobs.accept');
             Route::get('job/reject/{matricule}', [ClientJobController::class, 'reject'])->name('jobs.reject');
@@ -86,7 +86,7 @@ Route::domain('client.powerhr.site')->group(function () {
     });
 });
 
-Route::domain('candidat.powerhr.site')->group(function () {
+Route::domain('candidat.localhost')->group(function () {
     Route::middleware(['auth:sanctum', config('jetstream.auth_session'), 'verified',])->group(function () {
     
         Route::get("/", [CandidateController::class, 'index'])->name('candidate.index');
