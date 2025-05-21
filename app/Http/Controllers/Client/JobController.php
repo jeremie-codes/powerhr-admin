@@ -42,10 +42,8 @@ class JobController extends Controller
 
     public function create(){
         $categories = Category::all();
-        $skills = Skill::all();
         return view('client.job.create', [
             'categories' => $categories,
-            'skills' => $skills
         ]);
     }
 
