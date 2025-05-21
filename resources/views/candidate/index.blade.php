@@ -401,34 +401,31 @@
                             @csrf
                             <div class="grid grid-cols-1 gap-x-5 md:grid-cols-2 xl:grid-cols-3">
                                 <div class="mb-4">
-                                    <label for="bio" class="inline-block mb-2 text-base font-medium">Bio <span class="text-red-500">*</span></label>
+                                    <label for="bio" class="inline-block mb-2 text-base font-medium">Bio</label>
                                     <input type="text" id="bio"
                                         class="form-input border-slate-200 dark:border-zink-500 focus:outline-none focus:border-custom-500 disabled:bg-slate-100 dark:disabled:bg-zink-600 disabled:border-slate-300 dark:disabled:border-zink-500 dark:disabled:text-zink-200 disabled:text-slate-500 dark:text-zink-100 dark:bg-zink-700 dark:focus:border-custom-800 placeholder:text-slate-400 dark:placeholder:text-zink-200"
                                         placeholder="..." name="webite" value="{{ $user->profile?->bio }}" >
                                 </div>
                                 <div class="mb-4">
-                                    <label for="website" class="inline-block mb-2 text-base font-medium">Site web <span class="text-red-500">*</span></label>
+                                    <label for="website" class="inline-block mb-2 text-base font-medium">Site web</label>
                                     <input type="text" id="website"
                                         class="form-input border-slate-200 dark:border-zink-500 focus:outline-none focus:border-custom-500 disabled:bg-slate-100 dark:disabled:bg-zink-600 disabled:border-slate-300 dark:disabled:border-zink-500 dark:disabled:text-zink-200 disabled:text-slate-500 dark:text-zink-100 dark:bg-zink-700 dark:focus:border-custom-800 placeholder:text-slate-400 dark:placeholder:text-zink-200"
                                         placeholder="https://www.monsite.com" name="webite" value="{{ $user->profile?->website }}" >
                                 </div>
                                 <div class="mb-4">
-                                    <label for="linkedin" class="inline-block mb-2 text-base font-medium">Linked in
-                                        <span class="text-red-500">*</span></label>
+                                    <label for="linkedin" class="inline-block mb-2 text-base font-medium">Linked in</label>
                                     <input type="text" name="linkedin"
                                         class="form-input border-slate-200 dark:border-zink-500 focus:outline-none focus:border-custom-500 disabled:bg-slate-100 dark:disabled:bg-zink-600 disabled:border-slate-300 dark:disabled:border-zink-500 dark:disabled:text-zink-200 disabled:text-slate-500 dark:text-zink-100 dark:bg-zink-700 dark:focus:border-custom-800 placeholder:text-slate-400 dark:placeholder:text-zink-200"
                                         placeholder="linkedin" required value="{{ $user->profile?->linkedin }}">
                                 </div>
                                 <div class="mb-4">
-                                    <label for="twitter" class="inline-block mb-2 text-base font-medium">Twitter <span
-                                            class="text-red-500">*</span></label>
+                                    <label for="twitter" class="inline-block mb-2 text-base font-medium">Twitter</label>
                                     <input type="text" id="twitter" name="twitter"
                                         class="form-input border-slate-200 dark:border-zink-500 focus:outline-none focus:border-custom-500 disabled:bg-slate-100 dark:disabled:bg-zink-600 disabled:border-slate-300 dark:disabled:border-zink-500 dark:disabled:text-zink-200 disabled:text-slate-500 dark:text-zink-100 dark:bg-zink-700 dark:focus:border-custom-800 placeholder:text-slate-400 dark:placeholder:text-zink-200"
                                         placeholder="twitter" required value="{{ $user->profile?->twitter }}">
                                 </div>
                                 <div class="mb-4">
-                                    <label for="github" class="inline-block mb-2 text-base font-medium">Github <span
-                                            class="text-red-500"></span></label>
+                                    <label for="github" class="inline-block mb-2 text-base font-medium">Github</label>
                                     <input type="number" id="github" name="github"
                                         class="form-input border-slate-200 dark:border-zink-500 focus:outline-none focus:border-custom-500 disabled:bg-slate-100 dark:disabled:bg-zink-600 disabled:border-slate-300 dark:disabled:border-zink-500 dark:disabled:text-zink-200 disabled:text-slate-500 dark:text-zink-100 dark:bg-zink-700 dark:focus:border-custom-800 placeholder:text-slate-400 dark:placeholder:text-zink-200"
                                         placeholder="Github" required value="{{ $user->profile?->github }}">
