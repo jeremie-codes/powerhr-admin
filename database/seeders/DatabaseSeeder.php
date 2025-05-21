@@ -43,6 +43,10 @@ class DatabaseSeeder extends Seeder
             'password' => Hash::make('123Power#Hr')
         ]);
 
+        $this->call([
+            CategorySeeder::class,
+        ]);
+        
         // // Create a user with a single role
         // $user = User::factory()->withRoles('admin')->create();
 

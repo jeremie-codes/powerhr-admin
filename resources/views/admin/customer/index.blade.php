@@ -54,30 +54,30 @@
                                                     <h6 class="mb-1">
                                                         <a href="{{ route('customers.show', $customer->id) }}"
                                                             class="name">
-                                                            {{ $customer?->customer?->name }}
+                                                            {{ $customer?->customer?->name ?? "Undefined" }}
                                                         </a>
                                                     </h6>
                                                     <p class="text-slate-500 dark:text-zink-200">
-                                                        {{ $customer?->customer?->activity }}
+                                                        {{ $customer?->customer?->activity ?? "Undefined" }}
                                                     </p>
                                                 </div>
                                             </div>
                                         </td>
                                         <td class="px-3.5 py-2.5 first:pl-5 last:pr-5 location">
-                                            {{ $customer?->customer?->city }}
+                                            {{ $customer?->customer?->city ?? "Undefined" }}
                                         </td>
                                         <td class="px-3.5 py-2.5 first:pl-5 last:pr-5 email">
-                                            {{ $customer?->customer?->contact_email }}
+                                            {{ $customer?->customer?->contact_email ?? "Undefined" }}
                                         </td>
                                         <td class="px-3.5 py-2.5 first:pl-5 last:pr-5 phone-number">
-                                            {{ $customer?->customer?->contact_phone }}
+                                            {{ $customer?->customer?->contact_phone ?? "Undefined" }}
                                         </td>
                                         <td class="px-3.5 py-2.5 first:pl-5 last:pr-5 joining-date">
-                                            {{ date('d-m-Y', strtotime($customer?->customer?->created_at)) }}
+                                            {{ date('d-m-Y', strtotime($customer?->customer?->created_at)) ?? "Undefined" }}
                                         </td>
                                         <td class="px-3.5 py-2.5 first:pl-5 last:pr-5"><span
                                             class="px-2.5 py-0.5 text-xs font-medium rounded border bg-green-100 border-transparent text-green-500 dark:bg-green-500/20 dark:border-transparent inline-flex items-center status">
-                                            <i data-lucide="check-circle" class="size-3 mr-1.5"></i> actif</span>
+                                            <i data-lucide="check-circle" class="size-3 mr-1.5"></i> actif </span>
                                         </td>
 
                                     </tr>

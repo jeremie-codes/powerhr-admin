@@ -134,11 +134,11 @@
                                     </td>
                                     <td
                                         class="px-3.5 py-2.5 first:pl-5 last:pr-5 border-y border-slate-200 dark:border-zink-500 Role">
-                                        {{$hiring->job->user->customer->name ?? "No name"}} 
+                                        {{$hiring->job->user->customer->name ?? "Undefined"}} 
                                     </td>
                                     <td
                                         class="px-3.5 py-2.5 first:pl-5 last:pr-5 border-y border-slate-200 dark:border-zink-500 Email">
-                                        {{$hiring->job->title}} 
+                                        {{$hiring->job->title ?? "Undefined"}} 
                                     </td>
                                     <td
                                         class="px-3.5 py-2.5 first:pl-5 last:pr-5 border-y border-slate-200 dark:border-zink-500 Phone">
@@ -146,11 +146,11 @@
                                     </td>
                                     <td
                                         class="px-3.5 py-2.5 first:pl-5 last:pr-5 border-y border-slate-200 dark:border-zink-500 Country">
-                                        {{$hiring->job->location}}
+                                        {{$hiring->job->location ?? "Undefined"}}
                                     </td>
                                     <td
                                         class="px-3.5 py-2.5 first:pl-5 last:pr-5 border-y border-slate-200 dark:border-zink-500 JoinDate">
-                                        {{date('d-m-Y', strtotime($hiring->job->created_at))}}
+                                        {{ date('d-m-Y', strtotime($hiring->job->created_at )) ?? "Undefined" }}
                                     </td>
                                     <td
                                         class="px-3.5 py-2.5 first:pl-5 last:pr-5 border-y border-slate-200 dark:border-zink-500 Action">
