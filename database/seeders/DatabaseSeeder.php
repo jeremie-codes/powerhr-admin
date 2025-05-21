@@ -37,6 +37,12 @@ class DatabaseSeeder extends Seeder
             'password' => Hash::make('123Power#Hr')
         ]);
 
+        User::factory()->withRoles('client')->create([
+            'name' => 'Matsgate',
+            'email' => 'mastagate@gmail.com',
+            'password' => Hash::make('123Power#Hr')
+        ]);
+
         // // Create a user with a single role
         // $user = User::factory()->withRoles('admin')->create();
 
@@ -44,19 +50,19 @@ class DatabaseSeeder extends Seeder
         // $user = User::factory()->withRoles(['admin'])->create();
 
         // Create multiple users with the same role
-        $users = User::factory(20)->withRoles('candidate')->create();
-        $employees = User::factory(20)->withRoles('employee')->create();
-        $customers = User::factory(10)->withRoles('customer')->create();
+        // $users = User::factory(20)->withRoles('candidate')->create();
+        // $employees = User::factory(20)->withRoles('employee')->create();
+        // $customers = User::factory(10)->withRoles('customer')->create();
 
 
-        Personne::factory(10)->create();
-        Profile::factory(10)->create();
+        // Personne::factory(10)->create();
+        // Profile::factory(10)->create();
 
 
-        Job::factory(10)->create();
+        // Job::factory(10)->create();
 
         //Client::factory(10)->create();
 
-        Prospect::factory(1)->create();
+        // Prospect::factory(1)->create();
     }
 }
