@@ -40,7 +40,7 @@ class CreateNewCustomer implements CreatesNewUsers
             ])->assignRole('customer'), function (User $user) {
                 $this->createTeam($user);
                 
-                // Client::create(['user_id' => $user->id]);
+                Client::create(['user_id' => $user->id]);
             });
         });
     }

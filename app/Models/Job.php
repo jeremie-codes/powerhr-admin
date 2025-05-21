@@ -17,7 +17,7 @@ class Job extends Model implements Viewable
         'title', 'description', 'salary', 'user_id', 'is_current',
         'is_open', 'skills', 'available_until', 'location',
         'duration', 'work_type', 'contract_type',
-        'id_number', 'category_id',
+        'id_number', 'category_id', 'matricule'
     ];
 
     protected $casts = [

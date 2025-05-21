@@ -48,6 +48,7 @@ class JobController extends Controller
     }
 
     public function store(Request $request){
+        // dd($request->all());
         $request->validate([
             'title' => 'required',
             'category_id' => 'required',
@@ -64,9 +65,9 @@ class JobController extends Controller
         try {
             $job = Job::create([
                 'title' => $request->title,
-                'description' => $request->description,
+                'description' => $request->description ?? null,
                 'category_id' => $request->category_id,
-                'skills' => implode(',', $request->skills),
+                'skills' => $request->skills,
                 'salary' => $request->salary,
                 'location' => $request->location,
                 'user_id' => Auth::user()->id,
@@ -79,9 +80,14 @@ class JobController extends Controller
                 'matricule' => $request->id_number,
             ]);
 
-            return redirect()->route('jobs.show',$job->matricule);
+            // dd('ss');
+
+            // return redirect()->back()->with('success', 'Offre d\'emploi créée avec succès !');
+            return redirect()->route('jobs.show', $job->matricule)->with('success', 'Offre d\'emploi créée avec succès !');
         } catch (\Throwable $th) {
             //throw $th;
+            return redirect()->back()->with('error', 'Erreur lors de la création de l\'offre, ' . $th->getMessage());
+            // dd($th->getMessage());
         }
     }
 

@@ -104,15 +104,15 @@
                             </div><!--end col-->
                             <div class="xl:col-span-4">
                                 <label for="genderSelect" class="inline-block mb-2 text-base font-medium">
-                                    Work Type
+                                    Type de travail
                                 </label>
                                 <select
                                     class="form-input border-slate-200 dark:border-zink-500 focus:outline-none focus:border-custom-500 disabled:bg-slate-100 dark:disabled:bg-zink-600 disabled:border-slate-300 dark:disabled:border-zink-500 dark:disabled:text-zink-200 disabled:text-slate-500 dark:text-zink-100 dark:bg-zink-700 dark:focus:border-custom-800 placeholder:text-slate-400 dark:placeholder:text-zink-200"
                                     data-choices data-choices-search-false name="work_type" id="genderSelect">
                                     <option value="">Select type</option>
                                     <option value="hybride">Hybride</option>
-                                    <option value="on-site">On-site</option>
-                                    <option value="remote">Remote</option>
+                                    <option value="presentiel">Presentiel</option>
+                                    <option value="presentiel">Distante</option>
                                 </select>
                             </div><!--end col-->
                             <div class="lg:col-span-2 xl:col-span-12">
@@ -120,7 +120,7 @@
                                     <label for="productDescription"
                                         class="inline-block mb-2 text-base font-medium">Description</label>
                                     <textarea
-                                        name="description"
+                                        name="description" required
                                         class="form-input border-slate-200 dark:border-zink-500 focus:outline-none focus:border-custom-500 disabled:bg-slate-100 dark:disabled:bg-zink-600 disabled:border-slate-300 dark:disabled:border-zink-500 dark:disabled:text-zink-200 disabled:text-slate-500 dark:text-zink-100 dark:bg-zink-700 dark:focus:border-custom-800 placeholder:text-slate-400 dark:placeholder:text-zink-200"
                                         id="productDescription" placeholder="Enter Description" rows="5"></textarea>
                                 </div>
@@ -151,7 +151,7 @@
                                     Skills
                                 </label>
                                 <input type="text" class="form-input border-slate-200 dark:border-zink-500 focus:outline-none focus:border-custom-500 disabled:bg-slate-100 dark:disabled:bg-zink-600 disabled:border-slate-300 dark:disabled:border-zink-500 dark:disabled:text-zink-200 disabled:text-slate-500 dark:text-zink-100 dark:bg-zink-700 dark:focus:border-custom-800 placeholder:text-slate-400 dark:placeholder:text-zink-200"
-                                    id="choices-multiple-groups" name="skills[]" >
+                                    id="choices-multiple-groups" name="skills" required>
                                 {{--!
                                 <select
                                     class="form-input border-slate-200 dark:border-zink-500 focus:outline-none focus:border-custom-500 disabled:bg-slate-100 dark:disabled:bg-zink-600 disabled:border-slate-300 dark:disabled:border-zink-500 dark:disabled:text-zink-200 disabled:text-slate-500 dark:text-zink-100 dark:bg-zink-700 dark:focus:border-custom-800 placeholder:text-slate-400 dark:placeholder:text-zink-200"
