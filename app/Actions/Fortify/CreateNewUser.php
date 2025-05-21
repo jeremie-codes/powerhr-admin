@@ -7,6 +7,7 @@ use App\Models\User;
 use App\Models\Candidat;
 use App\Models\Personne;
 use App\Models\Profile;
+use App\Models\Curriculum;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
@@ -42,6 +43,11 @@ class CreateNewUser implements CreatesNewUsers
                 Candidat::create(['user_id' => $user->id]);
 
                 Personne::create(['user_id' => $user->id]);
+
+                Curriculum::create([
+                    'user_id' => $user->id,
+                    'model' => 1
+                ]);
 
                 Profile::create([
                     'is_available' => true,
