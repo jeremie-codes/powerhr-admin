@@ -19,10 +19,11 @@ class CustomerController extends Controller
     {
             try {
                 
+                $userId = Auth::user()->customer->id;
 
-                if (Auth::user()->customer) {
-                    $customer = Client::find(Auth::user()->customer->id);
-                    $customer->update([
+                $customer = Client::updateOrInsert(
+                    ['user_id' => $userId],
+                    [
                         'name' => $request->name,
                         'adress' => $request->address,
                         'activity' => $request->activity,
@@ -37,30 +38,10 @@ class CustomerController extends Controller
                         'country' => $request->country,
                     ]);
 
-                    return redirect()->route('customer.create');
-                } else {
-                    $customer = Client::create([
-                        'name' => $request->name,
-                        'adress' => $request->address,
-                        'activity' => $request->activity,
-                        'phone' => $request->phone,
-                        'logo' => $request->logo,
-                        'contact_name' => $request->contact_name,
-                        'contact_phone' => $request->contact_phone,
-                        'contact_email' => $request->contact_email,
-                        'website' => $request->website,
-                        'description' => $request->description,
-                        'city' => $request->city,
-                        'country' => $request->country,
-                        'user_id' => Auth::user()->id,
-                    ]);
-                }
-                return redirect()->route('customer.create');
+                return redirect()->back()->with('success', 'Profile Modifié avec succès');
             }catch (Exception $e) {
-                return $e->getMessage();
+                return redirect()->back()->with('error', 'Erreur lors de la modification du profile, ' . $e->getMessage());
             }
-        
-        
-        return redirect()->route('customer.create');
+                
     }
 }

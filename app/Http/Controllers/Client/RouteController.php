@@ -13,9 +13,17 @@ class RouteController extends Controller
     public function index() {
         $jobs = Job::with('user', 'category')->where('user_id', Auth::user()->id)->latest()-> get();
         $candidates = JobUser::whereIn('job_id', $jobs->pluck('id'))->get();
+        $lastmembers = JobUser::with(['job', 'user' => function ($query) {
+            $query->with('personne', 'profile', 'ratings');
+        }])
+        ->whereHas('job', function ($query) {
+            $query->where('user_id', auth()->id());
+        })
+        ->limit(5);
         return view('client.index',[
             'jobs' => $jobs,
             'candidates' => $candidates,
+            'lastmembers' => $lastmembers
         ]);
     }
 

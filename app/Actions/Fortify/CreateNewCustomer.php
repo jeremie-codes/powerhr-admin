@@ -5,6 +5,7 @@ namespace App\Actions\Fortify;
 use App\Models\Team;
 use App\Models\User;
 use App\Models\Candidates;
+use App\Models\Client;
 use App\Models\Personne;
 use App\Models\Profile;
 use Illuminate\Support\Facades\DB;
@@ -38,7 +39,8 @@ class CreateNewCustomer implements CreatesNewUsers
                 'password' => Hash::make($input['password'])
             ])->assignRole('customer'), function (User $user) {
                 $this->createTeam($user);
-                // dd('client créé!');
+                
+                Client::create(['user_id' => $user->id]);
             });
         });
     }

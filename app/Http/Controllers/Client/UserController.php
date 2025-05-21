@@ -20,12 +20,11 @@ class UserController extends Controller
         $members = JobUser::with(['job', 'user' => function ($query) {
             $query->with('personne', 'profile', 'ratings');
         }])
-            ->whereHas('job', function ($query) {
-                $query->where('user_id', auth()->id());
-            })
-            ->paginate(20);
+        ->whereHas('job', function ($query) {
+            $query->where('user_id', auth()->id());
+        })
+        ->paginate(20);
 
-        // dd($members);
 
         return view('client.user.index', [
             'members' => $members
