@@ -31,11 +31,11 @@ class DatabaseSeeder extends Seeder
         Role::create(['name' => 'supervisor']);
         Role::create(['name' => 'customer']);
 
-        // User::factory()->withRoles('admin')->create([
-        //     'name' => 'Edgard',
-        //     'email' => 'edgard@powerhr.site',
-        //     'password' => Hash::make('123Power#Hr')
-        // ]);
+        User::factory()->withRoles('admin')->create([
+            'name' => 'Edgard',
+            'email' => 'edgard@powerhr.site',
+            'password' => Hash::make('123Power#Hr')
+        ]);
 
         User::factory()->withRoles('client')->create([
             'name' => 'Matsgate',
