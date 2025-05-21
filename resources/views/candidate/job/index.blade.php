@@ -154,7 +154,8 @@
                 </table>
             </div>
             <div class="flex flex-col items-center gap-4 px-4 mt-4 md:flex-row" id="pagination-element">
-                <div class="grow">
+                <div class="mb-4 grow md:mb-0">
+                    <p class="text-slate-500 dark:text-zink-200"><b>{{ jobs->count() }}</b> Results</p>
                 </div>
 
                 <div class="col-sm-auto mt-sm-0">
