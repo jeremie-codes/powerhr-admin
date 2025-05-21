@@ -162,13 +162,13 @@
                             </div>
                         </div>
                     </div>
-                    <div class="flex flex-col items-center mt-8 md:flex-row">
+                    {{-- <div class="flex flex-col items-center mt-8 md:flex-row">
                         <div class="mb-4 grow md:mb-0">
                         </div>
                         <ul class="flex flex-wrap items-center gap-2">
                             {{$lastmembers->links()}}
                         </ul>
-                    </div>
+                    </div> --}}
                 </div>
             </div><!--end card-->
         </div><!--end col-->

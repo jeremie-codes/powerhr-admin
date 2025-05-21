@@ -19,7 +19,7 @@ class RouteController extends Controller
         ->whereHas('job', function ($query) {
             $query->where('user_id', auth()->id());
         })
-        ->limit(5);
+        ->limit(5)->get();
         return view('client.index',[
             'jobs' => $jobs,
             'candidates' => $candidates,
