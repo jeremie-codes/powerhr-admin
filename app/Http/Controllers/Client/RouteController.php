@@ -7,6 +7,7 @@ use App\Models\JobUser;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use App\Http\Controllers\Controller;
+use App\Models\Client;
 
 class RouteController extends Controller
 {
@@ -20,10 +21,12 @@ class RouteController extends Controller
             $query->where('user_id', auth()->id());
         })
         ->limit(5)->get();
+        $profile = Client::where('user_id', Auth::user()->id)->first() ?? null;
         return view('client.index',[
             'jobs' => $jobs,
             'candidates' => $candidates,
-            'lastmembers' => $lastmembers
+            'lastmembers' => $lastmembers,
+            'profile' => $profile,
         ]);
     }
 
