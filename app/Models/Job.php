@@ -37,28 +37,28 @@ class Job extends Model implements Viewable
         return $this->belongsTo(Category::class);
     }
 
-    public function findMatchingUsers()
-    {
-        // Récupérer tous les utilisateurs avec leurs skills
-        $jobSkills = $this->skills;
-        if (is_string($jobSkills)) {
-            $jobSkills = explode(',', $jobSkills);
-        }
+    // public function findMatchingUsers()
+    // {
+    //     // Récupérer tous les utilisateurs avec leurs skills
+    //     $jobSkills = $this->skills;
+    //     if (is_string($jobSkills)) {
+    //         $jobSkills = explode(',', $jobSkills);
+    //     }
         
-        $users = User::with('skills', 'personne','profile')
-        ->whereHas('skills', function ($query) use ($jobSkills) {
-            $query->whereIn('name', $jobSkills);
-        })
-        ->withCount([
-            'skills as matching_skills_count' => function ($query) use ($jobSkills) {
-                $query->whereIn('name', $jobSkills);
-            }
-        ])
-        ->orderByDesc('matching_skills_count')
-        ->get();
+    //     $users = User::with('skills', 'personne','profile')
+    //     ->whereHas('skills', function ($query) use ($jobSkills) {
+    //         $query->whereIn('name', $jobSkills);
+    //     })
+    //     ->withCount([
+    //         'skills as matching_skills_count' => function ($query) use ($jobSkills) {
+    //             $query->whereIn('name', $jobSkills);
+    //         }
+    //     ])
+    //     ->orderByDesc('matching_skills_count')
+    //     ->get();
 
-        return $users;
-    }
+    //     return $users;
+    // }
 
     public function candidates()
     {

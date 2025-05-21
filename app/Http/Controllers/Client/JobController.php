@@ -30,12 +30,12 @@ class JobController extends Controller
     public function show(string $matricule)
     {
         $job = Job::with('user', 'candidates')-> where('matricule', $matricule)->firstOrFail();
-        $matchingUsers = $job->findMatchingUsers();
+        // $matchingUsers = $job->findMatchingUsers();
         //return [$job, $matchingUsers];
         $view = views($job)->count();
         return view('client.job.show',[
             'job' => $job,
-            'matchingUsers' => $matchingUsers,
+            // 'matchingUsers' => $matchingUsers,
             'view' => $view
         ]);
     }
