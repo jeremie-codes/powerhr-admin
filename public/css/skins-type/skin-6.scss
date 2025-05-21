@@ -1,0 +1,507 @@
+/*===GENERAL===*/
+$clr-dark:#17171d;
+$clr-primary:#1967d2;
+$clr-secondry:#171d28;
+$clr-bg-light:#f9f9f9;
+$clr-white:#fff;
+$clr-gray:#f9fcff;
+$clr-light-purple:#f0f6fe ;
+
+.header-style-3.h-page-11-hdr{
+	.main-bar{
+	 max-width: 1800px; 
+	}
+	.header-nav-btn-section{
+	 .twm-nav-btn-right{
+		 .twm-nav-post-a-job {
+		  background-color: $clr-dark;
+		 }
+	 }
+	 .twm-nav-btn-left{
+		 .twm-nav-sign-up{
+			 color: $clr-white;
+			 background-color: $clr-primary;
+		 }
+	 } 
+	}
+	
+	 .header-search{
+		 a.header-search-icon{
+			 color: $clr-dark;
+		 }
+	 }
+ 
+	 .navbar-toggler{
+		 .icon-bar {
+			 background: $clr-dark;
+		 }	
+	 }
+ 
+	 .header-nav{
+		 .nav{
+			 li{
+				 a{
+					 color: $clr-dark;
+				 }
+			 }
+			 > li:hover{
+				 > a {
+					 color: $clr-primary;
+				 }
+			 } 
+			 > li{
+				 .sub-menu {
+					 li:hover{
+						 > a {
+							 color: $clr-primary;
+						 }
+					 } 
+				 }
+			 } 	
+		 } 
+ 
+		  
+	 } 
+ }
+ 
+
+ .header-style-3.h-page-12-hdr{
+	&.hdr-hpage-12
+	.is-fixed {
+		.main-bar.color-fill{
+			background-color: $clr-primary;
+		}
+	}
+   .main-bar{
+    max-width: 1800px;
+   }
+   .header-nav-btn-section{
+    .twm-nav-btn-right{
+        .twm-nav-post-a-job {
+         background-color: $clr-dark;
+        }
+    }
+    .twm-nav-btn-left{
+        .twm-nav-sign-up{
+            color: $clr-dark;
+            background-color: #f7f7f7;
+        }
+    } 
+   }
+   
+    .header-search{
+        a.header-search-icon{
+            color: $clr-white;
+        }
+    }
+
+	.navbar-toggler{
+		.icon-bar {
+			background: $clr-dark;
+		}	
+	}
+
+    .header-nav{
+		.nav{
+            li{
+                a{
+                    color: $clr-dark;
+                }
+            }
+			> li:hover{
+				> a {
+					color: $clr-dark;
+				}
+			} 
+			> li{
+				.sub-menu {
+					li:hover{
+						> a {
+							color: $clr-primary;
+						}
+					} 
+				}
+			} 	
+		} 
+
+		 
+	} 
+}
+
+/*Banner home 14*/
+.header-style-3.h-page-14-hdr{
+	.is-fixed {
+		.main-bar.color-fill{
+			background-color: $clr-white;
+		}
+	}
+   .main-bar{
+    max-width: 1800px;
+   }
+   .header-nav-btn-section{
+    .twm-nav-btn-right{
+        .twm-nav-post-a-job {
+         background-color: $clr-primary;
+		 color: $clr-white;
+        }
+    }
+    .twm-nav-btn-left{
+        .twm-nav-sign-up{
+            color: $clr-white;
+            background-color: $clr-secondry;
+        }
+    } 
+   }
+   
+    .header-search{
+        a.header-search-icon{
+            color: #cfcfcf;
+        }
+    }
+
+	.navbar-toggler{
+		.icon-bar {
+			background: $clr-dark;
+		}	
+	}
+
+    .header-nav{
+		.nav{
+            li{
+                a{
+                    color: $clr-dark;
+                }
+            }
+			> li:hover{
+				> a {
+					color: $clr-dark;
+				}
+			} 
+			> li{
+				.sub-menu {
+					li:hover{
+						> a {
+							color: $clr-primary;
+						}
+					} 
+				}
+			} 	
+		} 
+
+		 
+	} 
+}
+
+.is-fixed {
+	.main-bar.color-fill{
+		.vnav-btn{
+			color: $clr-dark;
+			&:hover{
+				color: $clr-primary;
+			}
+		}
+	}
+}
+
+
+
+.footer-dark{
+	background-color: $clr-dark;
+    .ftr-nw-content{
+ 
+		.ftr-nw-form{
+			.ftr-nw-subcribe-btn{
+				background-color: $clr-primary;
+			}
+		}
+		.form-control {
+			background-color: $clr-white;
+		}
+	}
+    .widget-title {
+        color: $clr-primary;
+        &:before{
+            background-color: $clr-primary;
+        }
+    }
+    .social-icons{
+        margin: 0px;
+        li{
+            a {
+                color:$clr-primary;
+                &:hover {
+                    color: $clr-white;
+                }
+            }
+        }
+    }
+	.widget_services{
+		ul{
+			li{
+				a:hover{
+					color: $clr-primary;
+				}
+			}
+		}  
+	} 
+}
+
+
+
+/* Home Page 15 Banner Section Css Start */
+.twm-home1-banner-section.twm-bnr-hpage-15{
+	>{
+		.row{
+			.twm-bnr-left-section{
+				.twm-bnr-title-large{
+					color: $clr-dark;
+				}
+			}
+		}
+	}
+}
+
+.twm-bnr-hpage-15{
+	&:before {
+		background-color:$clr-primary;
+	}
+	&:after {
+		background-color: $clr-light-purple;
+	}
+}
+
+.twm-bnr-15-carousal{
+	&::before{
+		background-color: $clr-light-purple;
+	}
+}
+
+
+/*Home Page 15 Start*/
+.header-style-3.h-page-15-hdr{
+	&.hdr-hpage-12
+	.is-fixed {
+		.main-bar.color-fill{
+			background-color: $clr-primary;
+		}
+	}
+   .main-bar{
+    max-width: 1800px;
+   }
+   .header-nav-btn-section{
+    .twm-nav-btn-right{
+        .twm-nav-post-a-job {
+         background-color: $clr-primary;
+        }
+    }
+    .twm-nav-btn-left{
+        .twm-nav-sign-up{
+            color: $clr-white;
+            background-color: $clr-dark;
+        }
+    } 
+   }
+   
+    .header-search{
+        a.header-search-icon{
+            color: $clr-dark;
+        }
+    }
+
+	.navbar-toggler{
+		.icon-bar {
+			background: $clr-dark;
+		}	
+	}
+
+    .header-nav{
+		.nav{
+            li{
+                a{
+                    color: $clr-dark;
+                }
+            }
+			> li:hover{
+				> a {
+					color: $clr-dark;
+				}
+			} 
+			> li{
+				.sub-menu {
+					li:hover{
+						> a {
+							color: $clr-primary;
+						}
+					} 
+				}
+			} 	
+		} 
+
+		 
+	} 
+}
+
+
+.header-style-3.h-page-15-hdr{
+	.is-fixed{
+		.main-bar.color-fill{
+			.logo-header{
+				background-color: $clr-primary;	
+			}
+			
+		}
+	}
+} 
+
+
+/*------------------------------------------------------------------
+	Home Page 16
+------------------------------------------------------------------*/
+/* Home Page 16 Banner Section Css Start*/
+.twm-home16-banner-section{
+	.row{
+		.twm-bnr-left-section{
+			.twm-bnr-title-small{
+				color: $clr-dark;
+			}
+			.twm-bnr-title-large{
+				color: $clr-dark;
+			}
+		}
+		.twm-h-page-16-bnr-right-section{
+			&:before{
+				background-color: $clr-primary;
+			}
+			.twm-bnr-blocks-position-1{
+				&:after{
+					background-color: $clr-primary;
+				}
+			}
+			.twm-bnr-blocks-position-2{
+				&:before{
+					background-color: $clr-primary;
+				}
+			}
+			.twm-bnr-blocks-position-3{
+				&:before{
+					background-color: $clr-primary;
+				}
+			}
+		}
+	}
+
+	.twm-img-bg-circle-area{
+		.twm-img-bg-circle1{
+			span{
+				background-color: $clr-primary;
+			}
+		}
+		.twm-img-bg-circle2{
+			span{
+				background-color: $clr-primary;
+				opacity: 0.4;
+			}
+		}
+		.twm-img-bg-circle3{
+			span{
+				background-color: $clr-primary;
+				opacity: 0.1;
+			}
+		}
+	}
+}
+
+/*Mega Menu Start*/
+.has-mega-menu{
+	.mega-menu{
+		> li {
+			ul {
+				li {
+					&:hover>a {
+						color: $clr-primary;
+					}
+				}
+			}
+		}
+	}
+}
+
+
+/* -------------------------------------------------------------------------------------
+   Home Page 17 Start
+   ---------------------------------------------------------------------------------------*/
+
+/* Home Page 17 Banner Section Css Start */
+.twm-home-17-banner-section{
+	background-color:$clr-light-purple;
+	>{
+		.container{
+			.row{
+				.twm-bnr-right-section{
+					.twm-bnr-title-large{
+						color: $clr-dark;
+						span{
+							background-color: $clr-primary;
+						}
+					}
+				}
+			}
+		}
+	}
+
+	.twm-bnr-left-section{
+		.twm-bnr-left-content{
+			.bnr-bg-circle{
+				span{
+					background-color: $clr-white;
+					&:after{
+						background-color: $clr-primary;
+					}
+					&:before{
+						background-color: $clr-primary;
+					}
+				}
+			}
+		}
+	}
+}
+
+.twm-home-17-v-text-wrap{
+	.twm-17-v-text{
+		span{
+			text-shadow: 0px 0px 10px rgba(0, 0, 0, 0.05);
+		}
+	}
+	&:after{
+		background-color: $clr-dark;
+	}
+}
+
+.header-search-icon.dark{
+	color: $clr-dark;
+}
+
+
+
+/*------------------------------------------------------------------
+	Home Page 18
+------------------------------------------------------------------*/
+/* Home Page 18 Banner Section Css Start*/
+.twm-home18-banner-section{
+	.row{
+		.twm-bnr-left-section{
+			.twm-bnr-title-large{
+				color: $clr-dark;
+			}
+		}
+		.twm-h-page-18-bnr-right-section{
+			.twm-shape-l{
+				border: 40px solid $clr-primary;
+			}
+			.twm-shape-2{
+				border: 40px solid $clr-secondry;
+			}
+		}
+	}
+
+}
