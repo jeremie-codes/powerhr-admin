@@ -19,7 +19,7 @@ class CustomerController extends Controller
     {
             try {
                 
-                $userId = Auth::user()->customer->id;
+                $userId = Auth::user()->id;
 
                 $customer = Client::updateOrInsert(
                     ['user_id' => $userId],
