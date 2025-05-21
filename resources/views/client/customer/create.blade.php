@@ -20,7 +20,7 @@
                 <div class="grid grid-cols-1 gap-5 xl:grid-cols-12">
                     <div class="xl:col-span-3">
                         <label for="legalRegistrationNo" class="inline-block mb-2 text-base font-medium">
-                            Name
+                            Organisation Name
                         </label>
                         <input type="text" id="legalRegistrationNo"
                             name="name"
