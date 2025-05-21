@@ -76,7 +76,7 @@
                 <button
                     class="top-0 bottom-0 right-0 p-3 text-red-200 transition hover:text-red-500 dark:text-red-400/50 dark:hover:text-red-500"><i
                         class="h-5"></i></button>
-                <span class="font-bold">{{ !session('error') }} !</span>
+                <span class="font-bold">{{ session('error') }} !</span>
             </div>
 
             <script>
