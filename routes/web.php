@@ -34,11 +34,11 @@ Route::get('/access-denied', function () {
     return view('denied.show');
 })->name('access-denied');
 
-Route::domain('localhost')->group(function () {
+Route::domain('powerhr.site')->group(function () {
     Route::get("/", [RouteController::class, 'index'])->name('pages.index');
 });
 
-Route::domain('admin.localhost')->group(function () {
+Route::domain('admin.powerhr.site')->group(function () {
     Route::middleware(['auth:sanctum', config('jetstream.auth_session'), 'verified', 'admin'])->group(function () {
         Route::resource('customers', ClientController::class);
         Route::resource('users', UserController::class)->only([
@@ -66,7 +66,7 @@ Route::domain('admin.localhost')->group(function () {
     });
 });
 
-Route::domain('client.localhost')->group(function () {
+Route::domain('client.powerhr.site')->group(function () {
     Route::middleware(['auth:sanctum', config('jetstream.auth_session'), 'verified', 'client'])->group(function () {
     
         Route::post('account/register', [ClientUserController::class, 'create'])->name('account.register');
@@ -90,7 +90,7 @@ Route::domain('client.localhost')->group(function () {
     });
 });
 
-Route::domain('candidat.localhost')->group(function () {
+Route::domain('candidat.powerhr.site')->group(function () {
     Route::middleware(['auth:sanctum', config('jetstream.auth_session'), 'verified', 'candidate'])->group(function () {
     
         Route::get("/", [CandidateController::class, 'index'])->name('candidate.index');
