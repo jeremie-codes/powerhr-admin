@@ -41,9 +41,7 @@ class CreateNewUser implements CreatesNewUsers
 
                 Candidat::create(['user_id' => $user->id]);
 
-                Personne::create([
-                    'matricule' => 'OFR' . rand(1000, 9999),
-                ]);
+                Personne::create(['user_id' => $user->id]);
 
                 Profile::create([
                     'is_available' => true,
