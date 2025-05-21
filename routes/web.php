@@ -34,7 +34,9 @@ Route::get('/access-denied', function () {
     return view('denied.show');
 })->name('access-denied');
 
-Route::get("/", [RouteController::class, 'index'])->name('pages.index');
+Route::domain('powerhr.site')->group(function () {
+    Route::get("/", [RouteController::class, 'index'])->name('pages.index');
+});
 
 Route::domain('admin.powerhr.site')->group(function () {
     Route::middleware(['auth:sanctum', config('jetstream.auth_session'), 'verified', 'admin'])->group(function () {

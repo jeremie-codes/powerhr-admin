@@ -34,7 +34,7 @@ class FortifyServiceProvider extends ServiceProvider
 
         if (Str::startsWith($host, 'client.')) {
             Fortify::createUsersUsing(CreateNewCustomer::class);
-        } else {
+        } elseif (Str::startsWith($host, 'admin.') || Str::startsWith($host, 'candidat.')) {
             Fortify::createUsersUsing(CreateNewUser::class);
         }
 
