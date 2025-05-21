@@ -33,4 +33,16 @@ class ClientFactory extends Factory
             'user_id' => User::factory()->customer(),
         ];
     }
+
+     /**
+     * Assign roles to the user.
+     *
+     * @param string|array|Role $roles
+     */
+    public function withRoles($roles): static
+    {
+        return $this->afterCreating(function (User $user) use ($roles) {
+            $user->assignRole($roles);
+        });
+    }
 }
