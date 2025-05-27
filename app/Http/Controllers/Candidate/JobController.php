@@ -35,7 +35,7 @@
         public function show(string $matricule)
         {
             $job = Job::with('user', 'candidates')-> where('matricule', $matricule)->firstOrFail();
-            $matchingUsers = $job->findMatchingUsers();
+            // $matchingUsers = $job->findMatchingUsers();
             $minutes = 5;
             $view = views($job)->cooldown($minutes)->record();
             $jobuser = JobUser::where('user_id', Auth::user()->id)->where('job_id', $job->id)->first();
@@ -43,7 +43,7 @@
             // dd($jobuser);
             return view('candidate.job.show',[
                 'job' => $job,
-                'matchingUsers' => $matchingUsers,
+                // 'matchingUsers' => $matchingUsers,
                 'view' => $view,
                 'jobuser' => $jobuser,
             ]);
