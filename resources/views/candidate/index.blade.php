@@ -443,8 +443,8 @@
             <div class="overflow-x-auto">
                 <div class="card">
                     <div class="card-body">
-                        {{-- <form action="{{ route('documents.upload') }}" method="POST" enctype="multipart/form-data"> --}}
-                        <form action="{{ route('candidate.store') }}" method="POST" enctype="multipart/form-data" x-data="{ fileName: null, filePreview: null }">
+                        <form action="{{ route('documents.upload') }}" method="POST" enctype="multipart/form-data" x-data="{ fileName: null, filePreview: null }">
+                        {{-- <form action="{{ route('candidate.store') }}" method="POST" enctype="multipart/form-data" x-data="{ fileName: null, filePreview: null }"> --}}
                             @csrf
 
                             <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
@@ -524,7 +524,7 @@
                                     </tr>
                                 </thead>
                                 <tbody class="bg-white divide-y divide-gray-100">
-                                    {{-- @foreach ($documents as $doc)
+                                    @forelse ($documents as $doc)
                                         <tr>
                                             <td class="px-4 py-2">{{ ucfirst(str_replace('_', ' ', $doc->type)) }}</td>
                                             <td class="px-4 py-2">{{ $doc->created_at->format('d/m/Y H:i') }}</td>
@@ -532,7 +532,7 @@
                                                 <a href="{{ asset('storage/documents/' . $doc->filename) }}" arget="_blank"
                                                     class="text-blue-600 hover:underline flex items-center">
                                                      <i data-lucide="file" class="block size-4 mx-auto text-slate-500 fill-slate-200 dark:text-zink-200 dark:fill-zink-500"></i>
-                                                     <span>Voir</span>
+                                                     <span class="align-midlle">Voir</span>
                                                 </a>
 
                                                 <a href="#!" target="_blank"
@@ -541,61 +541,53 @@
                                                 </a>
 
                                                 <!-- Bouton Supprimer -->
-                                                <button onclick="openModal({{ $doc->id }})" data-lucide="trash" class="text-red-600 hover:underline flex items-center size-4"></button>
+                                                <a data-modal-target="deleteModal{{ $doc->id }}"
+                                                    class="block px-2 text-base transition-all duration-200 ease-linear text-red-600 dropdown-item hover:bg-red-100 hover:text-red-500 focus:bg-red-100 focus:text-red-500 dark:text-zink-100 dark:hover:bg-zink-500 dark:hover:text-zink-200 dark:focus:bg-zink-500 dark:focus:text-zink-200"
+                                                    href="#!">
+                                                    <i data-lucide="trash-2"
+                                                        class="inline-block size-4 ltr:mr-1 rtl:ml-1"></i>
+                                                </a>
                                             </td>
                                         </tr>
-                                    @endforeach --}}
+
+                                         <div id="deleteModal{{ $doc->id }}" modal-center
+                                            class="fixed flex flex-col hidden transition-all duration-300 ease-in-out left-2/4 z-drawer -translate-x-2/4 -translate-y-2/4 show">
+                                            <div class="w-screen md:w-[25rem] bg-white shadow rounded-md dark:bg-zink-600">
+                                                <div class="max-h-[calc(theme('height.screen')_-_180px)] overflow-y-auto px-6 py-8">
+                                                    <div class="float-right">
+                                                        <button data-modal-close="deleteModal{{ $doc->id }}"
+                                                            class="transition-all duration-200 ease-linear text-slate-500 hover:text-red-500"><i
+                                                                data-lucide="x" class="size-5"></i></button>
+                                                    </div>
+                                                    <img src="{{ URL::asset('build/images/delete.png') }}" alt="" class="block h-12 mx-auto">
+                                                    <div class="mt-5 text-center">
+                                                        <h5 class="mb-1">Êtes-vous sûre?</h5>
+                                                        <p class="text-slate-500 dark:text-zink-200">Etes-vous de supprimer ce document ?</p>
+                                                        <div class="flex justify-center gap-2 mt-6">
+                                                            <button type="reset" data-modal-close="deleteModal{{ $doc->id }}"
+                                                                class="bg-white text-slate-500 btn hover:text-slate-500 hover:bg-slate-100 focus:text-slate-500 focus:bg-slate-100 active:text-slate-500 active:bg-slate-100 dark:bg-zink-600 dark:hover:bg-slate-500/10 dark:focus:bg-slate-500/10 dark:active:bg-slate-500/10">Annuler</button>
+                                                            <form method="POST" action="{{ route('documents.delete', $doc->id) }}">
+                                                                @csrf
+                                                                @method('DELETE')
+                                                                <button type="submit"
+                                                                    class="text-white bg-red-500 border-red-500 btn hover:text-white hover:bg-red-600 hover:border-red-600 focus:text-white focus:bg-red-600 focus:border-red-600 focus:ring focus:ring-red-100 active:text-white active:bg-red-600 active:border-red-600 active:ring active:ring-red-100 dark:ring-custom-400/20">
+                                                                    Oui, Supprimer!
+                                                                </button>
+                                                            </form>
+                                                            
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    @empty
                                         <tr>
-                                            <td class="px-4 py-2">Titre du document </td>
-                                            <td class="px-4 py-2">{{ now()->format('d/m/Y H:i') }}</td>
-                                            <td class="px-4 py-2 flex items-center gap-3">
-                                                <a href="#!" target="_blank"
-                                                    class="text-blue-600 hover:underline flex items-center">
-                                                     <i data-lucide="file" class="block size-4 mx-auto text-slate-500 fill-slate-200 dark:text-zink-200 dark:fill-zink-500"></i>
-                                                     <span>Voir</span>
-                                                </a>
-
-                                                <a href="#!" target="_blank"
-                                                    class="text-blue-600 hover:underline flex items-center">
-                                                     <i data-lucide="download" class="block size-4 mx-auto text-slate-500 fill-slate-200 dark:text-zink-200 dark:fill-zink-500"></i>
-                                                </a>
-
-                                                <!-- Bouton Supprimer -->
-                                                <button onclick="openModal({{ '1' }})" data-lucide="trash" class="text-red-600 hover:underline flex items-center size-4"></button>
-                                            </td>
+                                            <td colspan="3" class="px-4 py-2 text-center text-gray-500">Aucun document trouvé !</td>
                                         </tr>
+                                    @endforelse
                                 </tbody>
                             </table>
                         </div>
-
-                        <!-- Modal de confirmation -->
-                        <div id="deleteModal" class="fixed z-50 inset-0 bg-black bg-opacity-50 hidden flex items-center justify-center">
-                            <div class="bg-white p-6 rounded shadow-lg max-w-md w-full">
-                                <h2 class="text-lg font-semibold mb-4">Confirmer la suppression</h2>
-                                <p class="mb-4">Êtes-vous sûr de vouloir supprimer ce document ? Cette action est irréversible.</p>
-                                {{-- <form method="POST" action="{{ route('documents.delete') }}"> --}}
-                                <form method="POST" action="{{ url('') }}">
-                                    @csrf
-                                    @method('DELETE')
-                                    <input type="hidden" name="document_id" id="document_id">
-                                    <div class="flex justify-end gap-2">
-                                        <button type="button" onclick="closeModal()" class="px-4 py-2 bg-gray-200 rounded">Annuler</button>
-                                        <button type="submit" class="px-4 py-2 bg-red-600 text-white rounded hover:bg-red-700">Supprimer</button>
-                                    </div>
-                                </form>
-                            </div>
-                        </div>
-
-                        <script>
-                            function openModal(id) {
-                                document.getElementById('document_id').value = id;
-                                document.getElementById('deleteModal').classList.remove('hidden');
-                            }
-
-                            function closeModal() {
-                                document.getElementById('deleteModal').classList.add('hidden');
-                            }
-                        </script>
 
                     </div>
                 </div>

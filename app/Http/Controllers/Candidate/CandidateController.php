@@ -21,8 +21,11 @@ class CandidateController extends Controller
     public function index()
     {
         $user = User::with('candidate', 'profile', 'personne')->findOrFail(Auth::user()->id);
+        $documents = \App\Models\Document::where('user_id', auth()->id())->get();
+
         return view('candidate.index', [
-            'user' => $user
+            'user' => $user,
+            'documents' => $documents,
         ]);
     }
      
