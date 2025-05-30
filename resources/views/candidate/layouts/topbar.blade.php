@@ -29,50 +29,8 @@
                     </a>
                 </div>
 
-                <button type="button"
-                    class="inline-flex relative justify-center items-center p-0 text-topbar-item transition-all w-[37.5px] h-[37.5px] duration-75 ease-linear bg-topbar rounded-md btn hover:bg-slate-100 group-data-[topbar=dark]:bg-topbar-dark group-data-[topbar=dark]:border-topbar-dark group-data-[topbar=dark]:text-topbar-item-dark group-data-[topbar=dark]:hover:bg-topbar-item-bg-hover-dark group-data-[topbar=dark]:hover:text-topbar-item-hover-dark group-data-[topbar=brand]:bg-topbar-brand group-data-[topbar=brand]:border-topbar-brand group-data-[topbar=brand]:text-topbar-item-brand group-data-[topbar=brand]:hover:bg-topbar-item-bg-hover-brand group-data-[topbar=brand]:hover:text-topbar-item-hover-brand group-data-[topbar=dark]:dark:bg-zink-700 group-data-[topbar=dark]:dark:text-zink-200 group-data-[topbar=dark]:dark:border-zink-700 group-data-[topbar=dark]:dark:hover:bg-zink-600 group-data-[topbar=dark]:dark:hover:text-zink-50 group-data-[layout=horizontal]:flex group-data-[layout=horizontal]:md:hidden hamburger-icon"
-                    id="topnav-hamburger-icon">
-                    <i data-lucide="chevrons-left" class="w-5 h-5 group-data-[sidebar-size=sm]:hidden"></i>
-                    <i data-lucide="chevrons-right" class="hidden w-5 h-5 group-data-[sidebar-size=sm]:block"></i>
-                </button>
-
-                <div class="flex gap-3 ms-auto">
-                    <div class="relative flex items-center dropdown h-header">
-                        <button type="button"
-                            class="inline-flex justify-center items-center p-0 text-topbar-item transition-all w-[37.5px] h-[37.5px] duration-200 ease-linear bg-topbar rounded-md dropdown-toggle btn hover:bg-topbar-item-bg-hover hover:text-topbar-item-hover group-data-[topbar=dark]:bg-topbar-dark group-data-[topbar=dark]:hover:bg-topbar-item-bg-hover-dark group-data-[topbar=dark]:hover:text-topbar-item-hover-dark group-data-[topbar=brand]:bg-topbar-brand group-data-[topbar=brand]:hover:bg-topbar-item-bg-hover-brand group-data-[topbar=brand]:hover:text-topbar-item-hover-brand group-data-[topbar=dark]:dark:bg-zink-700 group-data-[topbar=dark]:dark:hover:bg-zink-600 group-data-[topbar=dark]:dark:text-zink-500 group-data-[topbar=dark]:dark:hover:text-zink-50"
-                            id="flagsDropdown" data-bs-toggle="dropdown">
-                            @switch(Session::get('lang'))
-
-                                @case('fr')
-                                    <img src="{{ URL::asset('build/images/flags/20/fr.svg') }}" alt=""
-                                        id="header-lang-img" class="h-5 rounded-sm">
-                                @break
-                                @default
-                                    <img src="{{ URL::asset('build/images/flags/20/us.svg') }}" alt=""
-                                        id="header-lang-img" class="h-5 rounded-sm">
-                            @endswitch
-                        </button>
-                        <div class="absolute z-50 hidden p-4 ltr:text-left rtl:text-right bg-white rounded-md shadow-md !top-4 dropdown-menu min-w-[10rem] flex flex-col gap-4 dark:bg-zink-600"
-                            aria-labelledby="flagsDropdown">
-                            <a href="{{ url('index/en') }}" class="flex items-center gap-3 group/items language" data-lang="en"
-                                title="English">
-                                <img src="{{ URL::asset('build/images/flags/20/us.svg') }}" alt=""
-                                    class="object-cover h-4 rounded-full">
-                                <h6
-                                    class="transition-all duration-200 ease-linear font-15medium text- text-slate-600 dark:text-zink-200 group-hover/items:text-custom-500">
-                                    English</h6>
-                            </a>
-                            
-                            <a href="{{ url('index/fr') }}" class="flex items-center gap-3 group/items language" data-lang="fr"
-                                title="French">
-                                <img src="{{ URL::asset('build/images/flags/20/fr.svg') }}" alt=""
-                                    class="object-cover h-4 rounded-full">
-                                <h6
-                                    class="transition-all duration-200 ease-linear font-15medium text- text-slate-600 dark:text-zink-200 group-hover/items:text-custom-500">
-                                    French</h6>
-                            </a>
-                        </div>
-                    </div>
+               
+                
 
                     <div class="relative flex items-center h-header">
                         <button type="button"

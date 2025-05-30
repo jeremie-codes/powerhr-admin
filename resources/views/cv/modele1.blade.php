@@ -35,10 +35,10 @@
                 <h2 class="text-lg font-semibold border-b border-gray-300 my-2">Informations Personnelles</h2>
                 <p><span class="font-semibold pl-5">Nom :</span> {{ $cv->firstname ? $cv->firstname . ' ' . $cv->lastname : $candidat->name }}</p>
                 <p><span class="font-semibold pl-5">Emil :</span> {{ $cv->email ?? $candidat->email }}</p>
-                <p><span class="font-semibold pl-5">Nationalité :</span> {{ $cv->nationalité ?? 'Congolais' }}</p>
-                <p><span class="font-semibold pl-5">État-civil :</span> {{ $cv->etatcivil ?? 'Non defini' }}</p> 
-                <p><span class="font-semibold pl-5">Lieu &  Date Naiss. :</span>  {{ $cv->lieunaissance ?? 'Kinshasa' }}, 
-                    {{ \Carbon\Carbon::parse($cv->birthday)->locale('fr')->translatedFormat('d M Y') ?? '12 Oct. 2013' }}</p>
+                <p><span class="font-semibold pl-5">Nationalité :</span> {{ $cv->nationalité ?? 'Non défini' }}</p>
+                <p><span class="font-semibold pl-5">État-civil :</span> {{ $cv->etatcivil ?? 'Non défini' }}</p> 
+                <p><span class="font-semibold pl-5">Lieu &  Date Naiss. :</span>  {{ $cv->lieunaissance ?? 'Non défini' }}, 
+                    {{ \Carbon\Carbon::parse($cv->birthday)->locale('fr')->translatedFormat('d M Y') ?? 'Non défini' }}</p>
                 
             </div>
 
@@ -53,18 +53,7 @@
                             <p class="pl-3">{{ $formation->title }} {{ $formation->school }}</p>
                        </li>
                     @empty
-                        <li class="mb-1">
-                            <span class="italic text-xs text-gray-600 capitalize">Oct. 2013 – Juin 2015</span>
-                            <p class="pl-3">Diplôme d'État de médiateur familial à Université Paris Nanterre</p>
-                        </li>
-                        <li class="mb-1">
-                            <span class="italic text-xs text-gray-600 capitalize">Oct. 2013 – Juin 2015</span>
-                            <p class="pl-3">Diplôme d'État de médiateur familial à Université Paris Nanterre</p>
-                        </li>
-                        <li class="mb-1">
-                            <span class="italic text-xs text-gray-600 capitalize">Oct. 2013 – Juin 2015</span>
-                            <p class="pl-3">Diplôme d'État de médiateur familial à Université Paris Nanterre</p>
-                        </li>
+                        
                     @endforelse
                 </ul>
             </div>
@@ -81,18 +70,7 @@
                             <p class="pl-3">{{ $experience->job_title }} {{ $experience->company }}</p>
                        </li>
                     @empty
-                        <li class="mb-1">
-                            <span class="italic text-xs text-gray-600 capitalize">Oct. 2013 – Juin 2015</span>
-                            <p class="pl-3">Titre du travail à Université Paris Nanterre</p>
-                        </li>
-                        <li class="mb-1">
-                            <span class="italic text-xs text-gray-600 capitalize">Oct. 2013 – Juin 2015</span>
-                            <p class="pl-3">Titre du travail à Université Paris Nanterre</p>
-                        </li>
-                        <li class="mb-1">
-                            <span class="italic text-xs text-gray-600 capitalize">Oct. 2013 – Juin 2015</span>
-                            <p class="pl-3">Titre du travail à Université Paris Nanterre</p>
-                        </li>
+                        
                     @endforelse
                 </ul>
             </div>
@@ -106,11 +84,6 @@
                             <li class="mb-1">{{ $competence }}</li>                        
                         @endforeach
                     @else
-                        <li class="mb-1">Médiation familiale</li>
-                        <li class="mb-1">Entretiens d'information</li>
-                        <li class="mb-1">Suivi administratif</li>
-                        <li class="mb-1">Gestion de projet</li>
-                        <li class="mb-1">Gestion de projet</li>
                     @endif
                 </ul>
             </div>
@@ -124,9 +97,7 @@
                             <li class="mb-1">{{ $langue }}</li>                        
                         @endforeach
                     @else
-                        <li class="mb-1">Lingala</li>
-                        <li class="mb-1">Français</li>
-                        <li class="mb-1">Anglais</li>
+                        
                     @endif
                 </ul>
             </div>

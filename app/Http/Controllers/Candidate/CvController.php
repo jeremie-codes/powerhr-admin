@@ -38,8 +38,22 @@ class CvController extends Controller
     {
         $candidat = User::with('candidate', 'profile', 'personne')->findOrFail(auth()->user()->id);
         $cv = Curriculum::where('user_id', auth()->user()->id)->first();
+
+        $model = 'cv.modele1';
+
+        if ($cv && $cv->model == 2) {
+            $model = 'cv.modele2';
+        }
+        if ($cv && $cv->model == 3) {
+            $model = 'cv.modele3';
+        }
+        if ($cv && $cv->model == 4) {
+            $model = 'cv.modele4';
+        }
         
-        $pdf = Pdf::loadView('cv.modele1', compact('candidat'));
+        $pdf = Pdf::loadView($model, compact('candidat', 'cv'));
+        
+        // $pdf = Pdf::loadView('cv.modele1', compact('candidat', 'cv'));
 
         if ($cv && $cv->cv_path && Storage::disk('public')->exists($cv->cv_path)) {
             return response()->download(storage_path('app/public/' . $cv->cv_path), 'cv_' . $candidat->name . '.pdf');

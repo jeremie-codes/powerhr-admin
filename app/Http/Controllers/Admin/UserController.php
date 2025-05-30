@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use App\Models\AccountRating;
+use App\Models\Curriculum;
 use App\Models\User;
 use App\Models\Job;
 use Illuminate\Contracts\View\View;
@@ -70,9 +71,15 @@ class UserController extends Controller
         $minutes = 5;
         views($user)->cooldown($minutes)->record();
         $view = views($user)->count();
+
+        $candidat = User::with('candidate', 'profile', 'personne')->findOrFail($id);
+        $cv = Curriculum::with('experience', 'formation')->where('user_id', $id)->first();
+
         return view('admin.member.show', [
             'user' => $user,
-            'view' => $view
+            'view' => $view,
+            'candidat' => $candidat,
+            'cv' => $cv,
         ]);
     }
 

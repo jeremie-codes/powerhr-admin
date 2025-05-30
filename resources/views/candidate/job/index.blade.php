@@ -59,7 +59,7 @@
             </div>
             <div
                 class="px-4 py-3 mb-4 text-sm text-green-500 border border-green-200 rounded-md bg-green-50 dark:bg-green-400/20 dark:border-green-500/50">
-                <span class="font-bold">Consulter tout les offres disponibles, </span> qui pourront vous interressés
+                <span class="font-bold">Consultez toutes les offres disponibles </span> qui pourront vous interresser!
                 <a href="#!" class="px-2.5 py-0.5 text-xs font-medium inline-block rounded border transition-all duration-200 ease-linear bg-green-100 border-transparent text-green-500 hover:bg-green-200 dark:bg-green-400/20 dark:hover:bg-green-400/30 dark:border-transparent ltr:ml-1 rtl:mr-1">
                     mainteneant !</a>
             </div>

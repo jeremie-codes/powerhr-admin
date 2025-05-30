@@ -38,10 +38,10 @@
                 <h2 class="text-lg font-semibold text-white pb-2 border-b border-gray-300 my-4">Informations <br> Personnelles</h2>
                 <p><span class="font-semibold">Nom :</span> {{ $cv->firstname ? $cv->firstname . ' ' . $cv->lastname : $candidat->name }}</p>
                 <p><span class="font-semibold">Emil :</span> {{ $cv->email ?? $candidat->email }}</p>
-                <p><span class="font-semibold">Nationalité :</span> {{ $cv->nationalité ?? 'Congolais' }}</p>
+                <p><span class="font-semibold">Nationalité :</span> {{ $cv->nationalité ?? 'Non défini' }}</p>
                 <p><span class="font-semibold">État-civil :</span> {{ $cv->etatcivil ?? 'Non defini' }}</p> 
-                <p><span class="font-semibold">Lieu &  Date Naiss. :</span>  {{ $cv->lieunaissance ?? 'Kinshasa' }}, 
-                    {{ \Carbon\Carbon::parse($cv->birthday)->locale('fr')->translatedFormat('d M Y') ?? '12 Oct. 2013' }}</p>
+                <p><span class="font-semibold">Lieu &  Date Naiss. :</span>  {{ $cv->lieunaissance ?? 'Non défini' }}, 
+                    {{ \Carbon\Carbon::parse($cv->birthday)->locale('fr')->translatedFormat('d M Y') ?? 'Non défini' }}</p>
                 
             </div>
             
@@ -54,11 +54,7 @@
                             <li class="mb-2">{{ $competence }}</li>                        
                         @endforeach
                     @else
-                        <li class="mb-2">Médiation familiale</li>
-                        <li class="mb-2">Entretiens d'information</li>
-                        <li class="mb-2">Suivi administratif</li>
-                        <li class="mb-2">Gestion de projet</li>
-                        <li class="mb-2">Gestion de projet</li>
+                       
                     @endif
                 </ul>
             </div>
@@ -72,9 +68,6 @@
                             <li class="mb-2">{{ $langue }}</li>                        
                         @endforeach
                     @else
-                        <li class="mb-2">Lingala</li>
-                        <li class="mb-2">Français</li>
-                        <li class="mb-2">Anglais</li>
                     @endif
                 </ul>
             </div>
@@ -86,7 +79,7 @@
             <!-- Profil -->
             <div>
                 <h2 class="text-lg border-b pb-2 border-gray-300 my-4">Profil</h2>
-                <p>{{ $cv->description ?? 'Description de votre profil professionnel... Lorem ipsum dolor sit amet, consectetur adipisicing elit. Veniam optio perspiciatis unde aliquam aut praesentium voluptate sint! Culpa voluptatem quisquam eveniet dolorem earum eius suscipit rerum.' }}</p>
+                <p>{{ $cv->description ?? 'Description de votre profil non défini' }}</p>
             </div>
 
             <!-- Formation -->
@@ -101,21 +94,7 @@
                             <p class="pl-3">à <span style="font-weight: 500">{{ $formation->school }}</span></p>
                        </li>
                     @empty
-                        <li class="mb-2">
-                            <span style="font-size: 17px; font-weight: 600">Diplôme d'État de médiateur familial</span>
-                            <p class="italic text-xs text-gray-600 pl-3">Oct. 2013 – Juin 2015</p>
-                            <p class="pl-3">àUniversité Paris Nanterre</p>
-                        </li>
-                        <li class="mb-2">
-                            <span style="font-size: 17px; font-weight: 600">Diplôme d'État de médiateur familial</span>
-                            <p class="italic text-xs text-gray-600 pl-3">Oct. 2013 – Juin 2015</p>
-                            <p class="pl-3">àUniversité Paris Nanterre</p>
-                        </li>
-                        <li class="mb-2">
-                            <span style="font-size: 17px; font-weight: 600">Diplôme d'État de médiateur familial</span>
-                            <p class="italic text-xs text-gray-600 pl-3">Oct. 2013 – Juin 2015</p>
-                            <p class="pl-3">àUniversité Paris Nanterre</p>
-                        </li>
+                       
                     @endforelse
                 </ul>
             </div>
@@ -133,21 +112,7 @@
                             <p class="pl-3">à <span style="font-weight: 500">{{ $experience->company }}</span></p>
                        </li>
                     @empty
-                        <li class="mb-2">
-                            <span style="font-size: 17px; font-weight: 600">Diplôme d'État de médiateur familial</span>
-                            <p class="italic text-xs text-gray-600 pl-3">Oct. 2013 – Juin 2015</p>
-                            <p class="pl-3">àUniversité Paris Nanterre</p>
-                        </li>
-                        <li class="mb-2">
-                            <span style="font-size: 17px; font-weight: 600">Diplôme d'État de médiateur familial</span>
-                            <p class="italic text-xs text-gray-600 pl-3">Oct. 2013 – Juin 2015</p>
-                            <p class="pl-3">àUniversité Paris Nanterre</p>
-                        </li>
-                        <li class="mb-2">
-                            <span style="font-size: 17px; font-weight: 600">Diplôme d'État de médiateur familial</span>
-                            <p class="italic text-xs text-gray-600 pl-3">Oct. 2013 – Juin 2015</p>
-                            <p class="pl-3">àUniversité Paris Nanterre</p>
-                        </li>
+                       
                     @endforelse
                 </ul>
             </div>

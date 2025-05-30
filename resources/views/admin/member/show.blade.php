@@ -3,6 +3,7 @@
     {{ __('Account') }}
 @endsection
 @section('content')
+
     <div class="mt-1 -ml-3 -mr-3 rounded-none card">
         <div class="card-body !px-2.5">
             <div class="grid grid-cols-1 gap-5 lg:grid-cols-12 2xl:grid-cols-12">
@@ -152,12 +153,6 @@
                         Cv
                     </a>
                 </li>
-                {{-- <li class="group">
-                    <a href="javascript:void(0);" data-tab-toggle data-target="projectsTabs"
-                        class="inline-block px-4 py-2 text-base transition-all duration-300 ease-linear rounded-t-md text-slate-500 dark:text-zink-200 border-b border-transparent group-[.active]:text-custom-500 dark:group-[.active]:text-custom-500 group-[.active]:border-b-custom-500 dark:group-[.active]:border-b-custom-500 hover:text-custom-500 dark:hover:text-custom-500 active:text-custom-500 dark:active:text-custom-500 -mb-[1px]">
-                        {{ __('t-projects') }}
-                    </a>
-                </li> --}}
             </ul>
         </div>
     </div><!--end card-->
@@ -318,19 +313,20 @@
                 <h5 class="underline grow">Documents</h5>
             </div>
             <div class="overflow-x-auto">
-                {{-- CV --}}
-                @if($user->candidate->cv_fichier)
-                    <a href="{{ route('cv.telecharger.pdf', $user->candidates->id) }}"
-                        class="text-white btn bg-custom-500 border-custom-500 hover:text-white hover:bg-custom-600 hover:border-custom-600 focus:text-white focus:bg-custom-600 focus:border-custom-600 focus:ring focus:ring-custom-100 active:text-white active:bg-custom-600 active:border-custom-600 active:ring active:ring-custom-100 dark:ring-custom-400/20">
-                        Télécharger le CV
+                @if($cv && $cv->cv_path)                        
+                    <iframe src="{{ Storage::url($cv->cv_path) }}" class="w-full h-[500px] border rounded mt-5" frameborder="0"></iframe>
+                @elseif($cv && !$cv->cv_path)
+                    <a href="{{ route('cv.download.pdf', $user->id) }}"
+                        class="text-white btn bg-green-500 border-green-500 hover:text-white hover:bg-green-600 hover:border-green-600 focus:text-white focus:bg-green-600 focus:border-green-600 focus:ring focus:ring-green-100 active:text-white active:bg-green-600 active:border-green-600 active:ring active:ring-green-100 dark:ring-custom-400/20">
+                        <i data-lucide="download" class="inline-block size-4 mr-1"></i>
+                        <span class="align-middle">Télécharger</span>
                     </a>
-                    
-                    <iframe src="{{ route('cv.generer.pdf', $user->candidates->id) }}" class="w-full h-[500px] border rounded mt-5" frameborder="0"></iframe>
-            
+                    <iframe src="{{ route('cv.view.pdf', $user->id ) }}" class="w-full h-[500px] border rounded mt-5" frameborder="0"></iframe>
                 @else
-                    <p class="text-gray-500 italic">Aucun CV disponible pour ce candidat.</p>
+                    <div class="flex items-center justify-center w-full h-[500px] border rounded mt-5">
+                        <p class="text-gray-500 italic">Aucun CV disponible pour ce candidat.</p>
+                    </div>
                 @endif
-            </div>
         </div><!--end tab pane-->
         
         

@@ -6,7 +6,7 @@
             </div>
             <div class="hidden lg:block">
                 <div class="ltr:text-right rtl:text-left">
-                    Design & Develop by Mastagate
+                    Designed  by MastaGate
                 </div>
             </div>
         </div>

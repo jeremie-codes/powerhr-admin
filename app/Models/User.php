@@ -111,4 +111,9 @@ class User extends Authenticatable implements ReviewRateable, Viewable
         return $this->hasOne(Candidat::class);
     }
 
+    public function cv(): HasOne
+    {
+        return $this->hasOne(Curriculum::class);
+    }
+
 }

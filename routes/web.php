@@ -6,11 +6,12 @@ use App\Http\Controllers\RouteController ;
 use App\Http\Controllers\TailwickController;
 use App\Http\Controllers\Admin\AdminController;
 use App\Http\Controllers\Admin\ClientController;
+use App\Http\Controllers\Admin\CvController as AdminCvController;
+use App\Http\Controllers\Candidate\CvController;
 use App\Http\Controllers\Admin\JobController;
 use App\Http\Controllers\Admin\ProspetController;
 use App\Http\Controllers\Admin\UserController;
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\Candidate\CvController;
 use App\Http\Controllers\Candidate\CandidateController;
 use App\Http\Controllers\Candidate\GenerateController;
 use App\Http\Controllers\Candidate\JobController as CandidatJobController;
@@ -34,11 +35,11 @@ Route::get('/access-denied', function () {
     return view('denied.show');
 })->name('access-denied');
 
-Route::domain('powerhr.site')->group(function () {
+Route::domain('localhost')->group(function () {
     Route::get("/", [RouteController::class, 'index'])->name('pages.index');
 });
 
-Route::domain('admin.powerhr.site')->group(function () {
+Route::domain('admin.localhost')->group(function () {
     Route::middleware(['auth:sanctum', config('jetstream.auth_session'), 'verified', 'admin'])->group(function () {
         Route::resource('customers', ClientController::class);
         Route::resource('users', UserController::class)->only([
@@ -63,10 +64,14 @@ Route::domain('admin.powerhr.site')->group(function () {
         });
         Route::get("/", [AdminRouteController::class, 'index'])->name('dashboard');
         Route::get("{any}", [AdminRouteController::class, 'routes']);
+
+        Route::get('/cv/view/{id}', [AdminCvController::class, 'view'])->name('cv.view.pdf');
+        Route::get('/cv/{id}/download', [AdminCvController::class, 'download'])->name('cv.download.pdf');
+
     });
 });
 
-Route::domain('client.powerhr.site')->group(function () {
+Route::domain('client.localhost')->group(function () {
     Route::middleware(['auth:sanctum', config('jetstream.auth_session'), 'verified', 'client'])->group(function () {
     
         Route::post('account/register', [ClientUserController::class, 'create'])->name('account.register');
@@ -90,7 +95,7 @@ Route::domain('client.powerhr.site')->group(function () {
     });
 });
 
-Route::domain('candidat.powerhr.site')->group(function () {
+Route::domain('candidat.localhost')->group(function () {
     Route::middleware(['auth:sanctum', config('jetstream.auth_session'), 'verified', 'candidate'])->group(function () {
     
         Route::get("/", [CandidateController::class, 'index'])->name('candidate.index');

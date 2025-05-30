@@ -41,22 +41,27 @@
                             @if ($user->profile?->bio != '')
                                 {{ $user->profile?->bio }}
                             @else
-                                {{ __('t-overview-no-profile') }}
+                                {{ __('Aucune information dans la bio, modifier dans Autres informations !') }}
                             @endif
+                            
                         </p>
                         <div class="flex gap-2 mt-4">
-                            <a href="{{ $user->profile?->twitter }}"
+                            <a href="{{ $user->profile?->twitter ?? '#!' }}"
                                 class="flex items-center justify-center transition-all duration-200 ease-linear rounded size-9 text-sky-500 bg-sky-100 hover:bg-sky-200 dark:bg-sky-500/20 dark:hover:bg-sky-500/30">
                                 <i data-lucide="twitter" class="size-4"></i>
                             </a>
 
-                            <a href="{{ $user->profile?->linkedin }}"
+                            <a href="{{ $user->profile?->linkedin ?? '#!' }}"
                                 class="flex items-center justify-center transition-all duration-200 ease-linear rounded text-custom-500 bg-custom-100 size-9 hover:bg-custom-200 dark:bg-custom-500/20 dark:hover:bg-custom-500/30">
                                 <i data-lucide="linkedin" class="size-4"></i>
                             </a>
-                            <a href="{{ $user->profile?->github }}"
+                            <a href="{{ $user->profile?->github ?? '#!' }}"
                                 class="flex items-center justify-center transition-all duration-200 ease-linear rounded size-9 text-slate-500 bg-slate-100 hover:bg-slate-200 dark:bg-zink-600 dark:hover:bg-zink-500">
                                 <i data-lucide="github" class="size-4"></i>
+                            </a>
+                            <a href="{{ $user->profile?->website ?? '#!' }}"
+                                class="flex items-center justify-center transition-all duration-200 ease-linear rounded size-9 text-custom-500 bg-custom-100 hover:bg-custom-200 dark:bg-zink-600 dark:hover:bg-zink-500">
+                                <i data-lucide="globe" class="size-4"></i>
                             </a>
                         </div>
                     </div>
@@ -88,6 +93,10 @@
                                 class="flex items-center justify-center transition-all duration-200 ease-linear rounded size-9 text-slate-500 bg-slate-100 hover:bg-slate-200 dark:bg-zink-600 dark:hover:bg-zink-500">
                                 <i data-lucide="github" class="size-4"></i>
                             </a>
+                            <a href="#!"
+                                class="flex items-center justify-center transition-all duration-200 ease-linear rounded size-9 text-custom-500 bg-custom-100 hover:bg-custom-200 dark:bg-zink-600 dark:hover:bg-zink-500">
+                                <i data-lucide="globe" class="size-4"></i>
+                            </a>
                         </div>
                     </div>
                 @endif
@@ -108,6 +117,10 @@
                     <a href="javascript:void(0);" data-tab-toggle data-target="otherInfo"
                         class="inline-block px-4 py-2 text-base transition-all duration-300 ease-linear rounded-t-md text-slate-500 dark:text-zink-200 border-b border-transparent group-[.active]:text-custom-500 dark:group-[.active]:text-custom-500 group-[.active]:border-b-custom-500 dark:group-[.active]:border-b-custom-500 hover:text-custom-500 dark:hover:text-custom-500 active:text-custom-500 dark:active:text-custom-500 -mb-[1px]">{{ __('Autres Informations') }}</a>
                 </li>
+                <li class="group">
+                    <a href="javascript:void(0);" data-tab-toggle data-target="documentsTab"
+                        class="inline-block px-4 py-2 text-base transition-all duration-300 ease-linear rounded-t-md text-slate-500 dark:text-zink-200 border-b border-transparent group-[.active]:text-custom-500 dark:group-[.active]:text-custom-500 group-[.active]:border-b-custom-500 dark:group-[.active]:border-b-custom-500 hover:text-custom-500 dark:hover:text-custom-500 active:text-custom-500 dark:active:text-custom-500 -mb-[1px]">{{ __('Mes Documents') }}</a>
+                </li>
             </ul>
         </div>
     </div><!--end card-->
@@ -115,13 +128,13 @@
     <div class="tab-content">
         <div class="block tab-pane" id="overviewTabs">
             <div class="grid grid-cols-1 gap-x-5 2xl:grid-cols-12">
-                <div class="2xl:col-span-9">
+                <div class="2xl:col-span-12">
                     <div class="grid grid-cols-1 gap-x-5 xl:grid-cols-12">
-                        <div class="xl:col-span-9">
+                        <div class="xl:col-span-12">
                             @if ($user->profile)
                                 <div class="card">
                                     <div class="card-body">
-                                        <h6 class="mb-3 text-15">{{ __('t-viewer') }}</h6>
+                                        <h6 class="mb-3 text-15">{{ __('Aperçu') }}</h6>
                                         <p class="mb-2 text-slate-500 dark:text-zink-200">
                                             @if ($user->profile?->bio != '')
                                                 {{ $user->profile?->bio }}
@@ -157,7 +170,7 @@
                                                     </td>
                                                 </tr>
                                                 <tr>
-                                                    <th class="py-2 font-semibold ps-0" scope="row">Phone No</th>
+                                                    <th class="py-2 font-semibold ps-0" scope="row">Téléphone</th>
                                                     <td class="py-2 text-right text-slate-500 dark:text-zink-200">
                                                         @if ($user->personne?->telephone != '')
                                                             {{ $user->personne?->telephone }}
@@ -167,7 +180,7 @@
                                                     </td>
                                                 </tr>
                                                 <tr>
-                                                    <th class="py-2 font-semibold ps-0" scope="row">Birth of Date</th>
+                                                    <th class="py-2 font-semibold ps-0" scope="row">Date de naissance</th>
                                                     <td class="py-2 text-right text-slate-500 dark:text-zink-200">
                                                         @if ($user->personne?->dateNaissance != '2007-02-25')
                                                             {{ $user->personne?->dateNaissance }}
@@ -177,7 +190,7 @@
                                                     </td>
                                                 </tr>
                                                 <tr>
-                                                    <th class="py-2 font-semibold ps-0" scope="row">Website</th>
+                                                    <th class="py-2 font-semibold ps-0" scope="row">Site web</th>
                                                     <td class="py-2 text-right text-slate-500 dark:text-zink-200">
                                                         @if ($user->profile?->website != '')
                                                             <a href="{{ $user->profile?->website }}" target="_blank"
@@ -193,7 +206,7 @@
                                                         {{ $user->email }}</td>
                                                 </tr>
                                                 <tr>
-                                                    <th class="py-2 font-semibold ps-0" scope="row">Location</th>
+                                                    <th class="py-2 font-semibold ps-0" scope="row">Adresse</th>
                                                     <td class="py-2 text-right text-slate-500 dark:text-zink-200">
                                                         @if ($user->personne?->adresse != '')
                                                             {{ $user->personne?->adresse }}
@@ -211,21 +224,7 @@
                         </div><!--end col-->
 
 
-                        <div class="text-center card bg-custom-500 xl:col-span-3">
-                            <div class="flex flex-col h-full card-body">
-                                <img src="{{ URL::asset('build/images/medal.png') }}" alt="" class="w-2/6 mx-auto">
-                                <div class="mt-5 mb-auto">
-                                    <h5 class="mb-1 text-white">{{ __('t-good-news') }}</h5>
-                                    <p class="text-custom-200">{{ __('t-congratulation-message-1') }} {{ $user->name }}
-                                        {{ __('t-congratulation-message-2') }}</p>
-                                </div>
-                                <div class="p-3 mt-5 rounded-md bg-custom-600">
-                                    <h2 class="mb-1 text-white">1054</h2>
-                                    <p class="text-custom-200">{{ __('t-congratulation-message-3') }}
-                                    </p>
-                                </div>
-                            </div>
-                        </div><!--end col-->
+                        <!--end col-->
                     </div><!--end grid-->
                 </div><!--end col-->
             </div><!--end grid-->
@@ -257,7 +256,7 @@
                                         required>
                                 </div>
                                 <div class="mb-4">
-                                    <label for="lastNameInput2" class="inline-block mb-2 text-base font-medium">Postnom
+                                    <label for="lastNameInput2" class="inline-block mb-2 text-base font-medium">Post-nom
                                         <span class="text-red-500">*</span></label>
                                     <input type="text" name="postNom"
                                         class="form-input border-slate-200 dark:border-zink-500 focus:outline-none focus:border-custom-500 disabled:bg-slate-100 dark:disabled:bg-zink-600 disabled:border-slate-300 dark:disabled:border-zink-500 dark:disabled:text-zink-200 disabled:text-slate-500 dark:text-zink-100 dark:bg-zink-700 dark:focus:border-custom-800 placeholder:text-slate-400 dark:placeholder:text-zink-200"
@@ -266,7 +265,7 @@
                                         required>
                                 </div>
                                 <div class="mb-4">
-                                    <label for="UsernameInput" class="inline-block mb-2 text-base font-medium">Mobile
+                                    <label for="UsernameInput" class="inline-block mb-2 text-base font-medium">Téléphone
                                         <span class="text-red-500">*</span></label>
                                     <input type="text" name="telephone"
                                         class="form-input border-slate-200 dark:border-zink-500 focus:outline-none focus:border-custom-500 disabled:bg-slate-100 dark:disabled:bg-zink-600 disabled:border-slate-300 dark:disabled:border-zink-500 dark:disabled:text-zink-200 disabled:text-slate-500 dark:text-zink-100 dark:bg-zink-700 dark:focus:border-custom-800 placeholder:text-slate-400 dark:placeholder:text-zink-200"
@@ -275,14 +274,14 @@
                                         required>
                                 </div>
                                 <div class="mb-4">
-                                    <label for="cityInput" class="inline-block mb-2 text-base font-medium">SkillSet <span
+                                    <label for="cityInput" class="inline-block mb-2 text-base font-medium">Compétences <span
                                             class="text-red-500">*</span>(skill1, skill2,... )</label>
                                     <input type="text" name="SkillSet"
                                         class="form-input border-slate-200 dark:border-zink-500 focus:outline-none focus:border-custom-500 disabled:bg-slate-100 dark:disabled:bg-zink-600 disabled:border-slate-300 dark:disabled:border-zink-500 dark:disabled:text-zink-200 disabled:text-slate-500 dark:text-zink-100 dark:bg-zink-700 dark:focus:border-custom-800 placeholder:text-slate-400 dark:placeholder:text-zink-200"
                                         value="{{ $user->candidate?->SkillSet }}" required>
                                 </div>
                                 <div class="mb-4">
-                                    <label for="stateInput" class="inline-block mb-2 text-base font-medium">Experiences
+                                    <label for="stateInput" class="inline-block mb-2 text-base font-medium">Expériences
                                         <span class="text-red-500">*</span></label>
                                     <select
                                         class="form-select border-slate-200 dark:border-zink-500 focus:outline-none focus:border-custom-500 disabled:bg-slate-100 dark:disabled:bg-zink-600 disabled:border-slate-300 dark:disabled:border-zink-500 dark:disabled:text-zink-200 disabled:text-slate-500 dark:text-zink-100 dark:bg-zink-700 dark:focus:border-custom-800 placeholder:text-slate-400 dark:placeholder:text-zink-200"
@@ -298,20 +297,18 @@
                                     <small>Valeur actuel: <span class="text-red-500">{{ $user->candidate?->ExperienceDetails }} </span></small>
                                 </div>
                                 <div class="mb-4">
-                                    <label for="zipInput" class="inline-block mb-2 text-base font-medium">Expected
-                                        salary
+                                    <label for="zipInput" class="inline-block mb-2 text-base font-medium">Prétention salariale
                                         <span class="text-red-500">*</span></label>
                                     <input type="number" name="salary"
                                         class="form-input border-slate-200 dark:border-zink-500 focus:outline-none focus:border-custom-500 disabled:bg-slate-100 dark:disabled:bg-zink-600 disabled:border-slate-300 dark:disabled:border-zink-500 dark:disabled:text-zink-200 disabled:text-slate-500 dark:text-zink-100 dark:bg-zink-700 dark:focus:border-custom-800 placeholder:text-slate-400 dark:placeholder:text-zink-200"
                                         placeholder="Enter your salary" value="{{ $user->candidate?->salary }}" >
                                 </div>
                                 <div class="mb-4">
-                                    <label for="stateInput" class="inline-block mb-2 text-base font-medium">Highest
-                                        Qualification Held <span class="text-red-500">*</span></label>
+                                    <label for="stateInput" class="inline-block mb-2 text-base font-medium">Diplome le plus élevé détenu<span class="text-red-500">*</span></label>
                                     <select
                                         class="form-select border-slate-200 dark:border-zink-500 focus:outline-none focus:border-custom-500 disabled:bg-slate-100 dark:disabled:bg-zink-600 disabled:border-slate-300 dark:disabled:border-zink-500 dark:disabled:text-zink-200 disabled:text-slate-500 dark:text-zink-100 dark:bg-zink-700 dark:focus:border-custom-800 placeholder:text-slate-400 dark:placeholder:text-zink-200"
                                         name="HighestQualificationHeld">
-                                        <option  selected="" disabled="" value="">Choisisez...</option>
+                                        <option  selected="" disabled="" value="">Choisissez...</option>
                                         <option >Certificat primaire</option>
                                         <option >Diplome d'Etat</option>
                                         <option >Diplome de graduat</option>
@@ -366,22 +363,22 @@
                                         placeholder="Username" required value="{{ $user->personne?->adresse }}">
                                 </div>
                                 <div class="mb-4">
-                                    <label for="cityInput" class="inline-block mb-2 text-base font-medium">City <span
+                                    <label for="cityInput" class="inline-block mb-2 text-base font-medium">Cité <span
                                             class="text-red-500">*</span></label>
                                     <input type="text" id="cityInput" name="ville"
                                         class="form-input border-slate-200 dark:border-zink-500 focus:outline-none focus:border-custom-500 disabled:bg-slate-100 dark:disabled:bg-zink-600 disabled:border-slate-300 dark:disabled:border-zink-500 dark:disabled:text-zink-200 disabled:text-slate-500 dark:text-zink-100 dark:bg-zink-700 dark:focus:border-custom-800 placeholder:text-slate-400 dark:placeholder:text-zink-200"
                                         placeholder="Enter city" required value="{{ $user->personne?->ville }}">
                                 </div>
                                 <div class="mb-4">
-                                    <label for="zipInput" class="inline-block mb-2 text-base font-medium">Zip <span
+                                    <label for="zipInput" class="inline-block mb-2 text-base font-medium">Code postal <span
                                             class="text-red-500"></span></label>
                                     <input type="number" id="zipInput" name="codePostal"
                                         class="form-input border-slate-200 dark:border-zink-500 focus:outline-none focus:border-custom-500 disabled:bg-slate-100 dark:disabled:bg-zink-600 disabled:border-slate-300 dark:disabled:border-zink-500 dark:disabled:text-zink-200 disabled:text-slate-500 dark:text-zink-100 dark:bg-zink-700 dark:focus:border-custom-800 placeholder:text-slate-400 dark:placeholder:text-zink-200"
-                                        placeholder="Enter zip code" required value="{{ $user->personne?->codePostal }}">
+                                        placeholder="Enter zip code" value="{{ $user->personne?->codePostal }}">
                                 </div>
                                 <div class="mb-4">
                                     <label for="zipInput" class="inline-block mb-2 text-base font-medium">Date d'anniversaire <span
-                                            class="text-red-500"></span></label>
+                                            class="text-red-500">*</span></label>
                                     <input type="date" id="birthday" name="dateNaissance"
                                         class="form-input border-slate-200 dark:border-zink-500 focus:outline-none focus:border-custom-500 disabled:bg-slate-100 dark:disabled:bg-zink-600 disabled:border-slate-300 dark:disabled:border-zink-500 dark:disabled:text-zink-200 disabled:text-slate-500 dark:text-zink-100 dark:bg-zink-700 dark:focus:border-custom-800 placeholder:text-slate-400 dark:placeholder:text-zink-200"
                                         required value="{{ $user->personne?->dateNaissance }}">
@@ -397,14 +394,14 @@
 
                 <div class="card">
                     <div class="card-body">
-                        <form action="{{ route('candidate.store') }}" method="POST">
+                       <form action="{{ route('candidate.store') }}" method="POST">
                             @csrf
                             <div class="grid grid-cols-1 gap-x-5 md:grid-cols-2 xl:grid-cols-3">
                                 <div class="mb-4">
                                     <label for="bio" class="inline-block mb-2 text-base font-medium">Bio</label>
                                     <input type="text" id="bio"
                                         class="form-input border-slate-200 dark:border-zink-500 focus:outline-none focus:border-custom-500 disabled:bg-slate-100 dark:disabled:bg-zink-600 disabled:border-slate-300 dark:disabled:border-zink-500 dark:disabled:text-zink-200 disabled:text-slate-500 dark:text-zink-100 dark:bg-zink-700 dark:focus:border-custom-800 placeholder:text-slate-400 dark:placeholder:text-zink-200"
-                                        placeholder="..." name="webite" value="{{ $user->profile?->bio }}" >
+                                        placeholder="votre biographie" name="bio" value="{{ $user->profile?->bio }}" >
                                 </div>
                                 <div class="mb-4">
                                     <label for="website" class="inline-block mb-2 text-base font-medium">Site web</label>
@@ -413,29 +410,193 @@
                                         placeholder="https://www.monsite.com" name="webite" value="{{ $user->profile?->website }}" >
                                 </div>
                                 <div class="mb-4">
-                                    <label for="linkedin" class="inline-block mb-2 text-base font-medium">Linked in</label>
+                                    <label for="linkedin" class="inline-block mb-2 text-base font-medium">Linkedin</label>
                                     <input type="text" name="linkedin"
                                         class="form-input border-slate-200 dark:border-zink-500 focus:outline-none focus:border-custom-500 disabled:bg-slate-100 dark:disabled:bg-zink-600 disabled:border-slate-300 dark:disabled:border-zink-500 dark:disabled:text-zink-200 disabled:text-slate-500 dark:text-zink-100 dark:bg-zink-700 dark:focus:border-custom-800 placeholder:text-slate-400 dark:placeholder:text-zink-200"
-                                        placeholder="linkedin" required value="{{ $user->profile?->linkedin }}">
+                                        placeholder="lien linkedin" value="{{ $user->profile?->linkedin }}">
                                 </div>
                                 <div class="mb-4">
-                                    <label for="twitter" class="inline-block mb-2 text-base font-medium">Twitter</label>
+                                    <label for="twitter" class="inline-block mb-2 text-base font-medium">Twitter (X)</label>
                                     <input type="text" id="twitter" name="twitter"
                                         class="form-input border-slate-200 dark:border-zink-500 focus:outline-none focus:border-custom-500 disabled:bg-slate-100 dark:disabled:bg-zink-600 disabled:border-slate-300 dark:disabled:border-zink-500 dark:disabled:text-zink-200 disabled:text-slate-500 dark:text-zink-100 dark:bg-zink-700 dark:focus:border-custom-800 placeholder:text-slate-400 dark:placeholder:text-zink-200"
-                                        placeholder="twitter" required value="{{ $user->profile?->twitter }}">
+                                        placeholder="lien twitter" value="{{ $user->profile?->twitter }}">
                                 </div>
                                 <div class="mb-4">
                                     <label for="github" class="inline-block mb-2 text-base font-medium">Github</label>
-                                    <input type="number" id="github" name="github"
+                                    <input type="text" id="github" name="github"
                                         class="form-input border-slate-200 dark:border-zink-500 focus:outline-none focus:border-custom-500 disabled:bg-slate-100 dark:disabled:bg-zink-600 disabled:border-slate-300 dark:disabled:border-zink-500 dark:disabled:text-zink-200 disabled:text-slate-500 dark:text-zink-100 dark:bg-zink-700 dark:focus:border-custom-800 placeholder:text-slate-400 dark:placeholder:text-zink-200"
-                                        placeholder="Github" required value="{{ $user->profile?->github }}">
+                                        placeholder="lien github" value="{{ $user->profile?->github }}">
                                 </div>
+                                
                             </div>
                             <div class="flex justify-end gap-2">
                                 <button type="submit"
                                     class="text-white transition-all duration-200 ease-linear btn bg-custom-500 border-custom-500 hover:text-white hover:bg-custom-600 hover:border-custom-600 focus:text-white focus:bg-custom-600 focus:border-custom-600 focus:ring focus:ring-custom-100 active:text-white active:bg-custom-600 active:border-custom-600 active:ring active:ring-custom-100">Enregistrer</button>
                             </div>
                         </form>
+                    </div>
+                </div>
+            </div>
+        </div><!--end tab pane-->
+
+        <div class="hidden tab-pane" id="documentsTab">
+            <div class="overflow-x-auto">
+                <div class="card">
+                    <div class="card-body">
+                        {{-- <form action="{{ route('documents.upload') }}" method="POST" enctype="multipart/form-data"> --}}
+                        <form action="{{ route('candidate.store') }}" method="POST" enctype="multipart/form-data" x-data="{ fileName: null, filePreview: null }">
+                            @csrf
+
+                            <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                                <!-- Sélecteur de type de document -->
+                                <div>
+                                    <label for="document_type" class="block text-sm font-medium text-gray-700">Type de document *</label>
+                                    <select name="document_type" id="document_type" required class="w-full border rounded p-2">
+                                        <option value="">-- Sélectionner un document --</option>
+                                        <option value="attestation_bonne_vie">Attestation de bonne vie et mœurs</option>
+                                        <option value="certificat_aptitude">Certificat d’aptitude professionnelle</option>
+                                        <option value="photo_pro">Photo professionnelle</option>
+                                        <option value="acte_naissance">Acte de naissance</option>
+                                        <option value="attestations_emplois">Attestations des précédents emplois</option>
+                                        <option value="aptitude_physique">Aptitude physique</option>
+                                        <option value="piece_identite">Pièce d’identité</option>
+                                        <option value="attestation_residence">Attestation de résidence</option>
+                                        <option value="acte_mariage">Acte de mariage</option>
+                                        <option value="certificat_medical">Certificat médical</option>
+                                        <option value="carte_travail">Carte de travail</option>
+                                        <option value="visa_travail">Visa de travail</option>
+                                    </select>
+                                </div>
+
+                            </div>
+
+                            <div class="px-4 py-5 sm:p-6 shadow {{ isset($actions) ? 'sm:rounded-tl-md sm:rounded-tr-md' : 'sm:rounded-md' }}">
+                                <div class="flex items-center relative overflow-hidden justify-center bg-white border border-dashed rounded-md cursor-pointer dropzone border-slate-300 dropzone2 dark:bg-zink-700 dark:border-zink-500 w-full">
+                                    <div class="fallback">
+                                        <input name="file" type="file" dropzone="file" class="border absolute opacity-0 w-full h-full cursor-pointer"
+                                            wire:model.live="file" x-ref="file" style="top: 0"
+                                            x-on:change="fileName = $refs.file.files[0].name;const reader = new FileReader();
+                                            reader.onload = (e) => {
+                                                filePreview = e.target.result;
+                                            };
+                                            reader.readAsDataURL($refs.file.files[0]);" required
+                                        />
+                                    </div>
+                                    <div class="w-full py-5 text-lg text-center dz-message needsclick">
+                                        <div class="mb-3" x-show="!filePreview">
+                                            <i data-lucide="upload-cloud"
+                                                class="block size-12 mx-auto text-slate-500 fill-slate-200 dark:text-zink-200 dark:fill-zink-500"></i>
+                                        </div>
+                                        
+                                        <div class="mt-2" x-show="!filePreview">
+                                            <h5 class="mb-0 font-normal text-slate-500 text-15">Cliquez pour choisir <a href="#!">votre fichier</a> ici ! <br> pdf ou Image(png, jpeg, jpg) </h5>
+                                        </div>
+            
+                                            <div class="mt-2" x-show="filePreview" style="display: none;">
+                                            <i data-lucide="file"
+                                                class="block size-12 mx-auto text-slate-500 fill-slate-200 dark:text-zink-200 dark:fill-zink-500"></i>
+                                        </div>
+            
+                                        <div class="mt-2" x-show="filePreview">
+                                            <h5 class="mb-0 font-normal text-slate-500 text-15">Fichier chargé, cliquez sur charger ! </h5>
+                                        </div>
+                                    </div>    
+                                </div>
+                            </div> 
+            
+                            <div class="flex items-center justify-end px-4 py-3 bg-slate-50 dark:bg-zink-600 text-end sm:px-6 shadow sm:rounded-bl-md sm:rounded-br-md">
+                                <x-button wire:loading.attr="disabled" x-show="filePreview" variant="green" wire:target="file">
+                                    {{ __('Charger') }}
+                                </x-button>
+                            </div>
+                        </form>
+
+                        {{-- Tableau des documents --}}
+                        <div class="mt-8 grid grid-cols-1 md:grid-cols-1">
+                            <h3 class="text-lg font-semibold mb-3">Documents chargés</h3>
+
+                            <table class="min-w-full divide-y divide-gray-200 border">
+                                <thead class="bg-gray-50">
+                                    <tr>
+                                        <th class="px-4 py-2 text-left text-xs font-medium text-gray-500 uppercase">Nom du document</th>
+                                        <th class="px-4 py-2 text-left text-xs font-medium text-gray-500 uppercase">Date ajout</th>
+                                        <th class="px-4 py-2 text-left text-xs font-medium text-gray-500 uppercase">Actions</th>
+                                    </tr>
+                                </thead>
+                                <tbody class="bg-white divide-y divide-gray-100">
+                                    {{-- @foreach ($documents as $doc)
+                                        <tr>
+                                            <td class="px-4 py-2">{{ ucfirst(str_replace('_', ' ', $doc->type)) }}</td>
+                                            <td class="px-4 py-2">{{ $doc->created_at->format('d/m/Y H:i') }}</td>
+                                            <td class="px-4 py-2 flex items-center gap-3">
+                                                <a href="{{ asset('storage/documents/' . $doc->filename) }}" arget="_blank"
+                                                    class="text-blue-600 hover:underline flex items-center">
+                                                     <i data-lucide="file" class="block size-4 mx-auto text-slate-500 fill-slate-200 dark:text-zink-200 dark:fill-zink-500"></i>
+                                                     <span>Voir</span>
+                                                </a>
+
+                                                <a href="#!" target="_blank"
+                                                    class="text-blue-600 hover:underline flex items-center">
+                                                     <i data-lucide="download" class="block size-4 mx-auto text-slate-500 fill-slate-200 dark:text-zink-200 dark:fill-zink-500"></i>
+                                                </a>
+
+                                                <!-- Bouton Supprimer -->
+                                                <button onclick="openModal({{ $doc->id }})" data-lucide="trash" class="text-red-600 hover:underline flex items-center size-4"></button>
+                                            </td>
+                                        </tr>
+                                    @endforeach --}}
+                                        <tr>
+                                            <td class="px-4 py-2">Titre du document </td>
+                                            <td class="px-4 py-2">{{ now()->format('d/m/Y H:i') }}</td>
+                                            <td class="px-4 py-2 flex items-center gap-3">
+                                                <a href="#!" target="_blank"
+                                                    class="text-blue-600 hover:underline flex items-center">
+                                                     <i data-lucide="file" class="block size-4 mx-auto text-slate-500 fill-slate-200 dark:text-zink-200 dark:fill-zink-500"></i>
+                                                     <span>Voir</span>
+                                                </a>
+
+                                                <a href="#!" target="_blank"
+                                                    class="text-blue-600 hover:underline flex items-center">
+                                                     <i data-lucide="download" class="block size-4 mx-auto text-slate-500 fill-slate-200 dark:text-zink-200 dark:fill-zink-500"></i>
+                                                </a>
+
+                                                <!-- Bouton Supprimer -->
+                                                <button onclick="openModal({{ '1' }})" data-lucide="trash" class="text-red-600 hover:underline flex items-center size-4"></button>
+                                            </td>
+                                        </tr>
+                                </tbody>
+                            </table>
+                        </div>
+
+                        <!-- Modal de confirmation -->
+                        <div id="deleteModal" class="fixed z-50 inset-0 bg-black bg-opacity-50 hidden flex items-center justify-center">
+                            <div class="bg-white p-6 rounded shadow-lg max-w-md w-full">
+                                <h2 class="text-lg font-semibold mb-4">Confirmer la suppression</h2>
+                                <p class="mb-4">Êtes-vous sûr de vouloir supprimer ce document ? Cette action est irréversible.</p>
+                                {{-- <form method="POST" action="{{ route('documents.delete') }}"> --}}
+                                <form method="POST" action="{{ url('') }}">
+                                    @csrf
+                                    @method('DELETE')
+                                    <input type="hidden" name="document_id" id="document_id">
+                                    <div class="flex justify-end gap-2">
+                                        <button type="button" onclick="closeModal()" class="px-4 py-2 bg-gray-200 rounded">Annuler</button>
+                                        <button type="submit" class="px-4 py-2 bg-red-600 text-white rounded hover:bg-red-700">Supprimer</button>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+
+                        <script>
+                            function openModal(id) {
+                                document.getElementById('document_id').value = id;
+                                document.getElementById('deleteModal').classList.remove('hidden');
+                            }
+
+                            function closeModal() {
+                                document.getElementById('deleteModal').classList.add('hidden');
+                            }
+                        </script>
+
                     </div>
                 </div>
             </div>

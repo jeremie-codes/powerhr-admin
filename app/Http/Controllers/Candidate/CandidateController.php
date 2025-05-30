@@ -58,7 +58,7 @@ class CandidateController extends Controller
         $personne = Personne::where('user_id', $user->id)->first();
         $candidate = Candidat::where('user_id', $user->id)->first();
         $profile = Profile::where('user_id', $user->id)->first();
-        // dd($candidate);
+        // dd($profile);
 
         // if (!$personne && !$candidate && !$profile) {
         //     return redirect()->back()->with('error', 'User not found');
@@ -97,14 +97,21 @@ class CandidateController extends Controller
                 ['user_id' => $user->id],
                 $candidateData
             );
-            
-            if (!$profile) {
-                Profile::updateOrInsert(
-                    ['user_id' => $user->id],
-                );
-            }
 
-            return redirect()->back()->with('success', 'Your informations have been updated.');
+             $candidatProfileData = $request->only([
+                'bio', 'website','linkedin', 'twitter', 'github'
+            ]);
+            
+            $candidatProfileData = array_filter($candidatProfileData, function($value) {
+                return !is_null($value) && $value !== '';
+            });
+            
+            $candidatProfile = Profile::updateOrInsert(
+                ['user_id' => $user->id],
+                $candidatProfileData
+            );
+            
+            return redirect()->back()->with('success', 'Vos informations sont mise à jour avec succès.');
             
         } catch (\Throwable $th) {
             return redirect()->back()->with('error', $th->getMessage());

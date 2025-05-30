@@ -15,7 +15,7 @@
                         <i data-lucide="check"></i></div>
                     <div class="grow">
                         <h5 class="mb-1 text-16"><span class="counter-value" data-target="{{ $approved ?? 0 }}">0</span></h5>
-                        <p class="text-slate-500 dark:text-zink-200">Candidatures approuvés</p>
+                        <p class="text-slate-500 dark:text-zink-200">Candidatures approuvées</p>
                     </div>
                 </div>
             </div>
@@ -28,7 +28,7 @@
                         <i data-lucide="x-octagon"></i></div>
                     <div class="grow">
                         <h5 class="mb-1 text-16"><span class="counter-value" data-target="{{ $rejected ?? 0 }}">0</span></h5>
-                        <p class="text-slate-500 dark:text-zink-200">Candidatures rejettés</p>
+                        <p class="text-slate-500 dark:text-zink-200">Candidatures rejetées</p>
                     </div>
                 </div>
             </div>
@@ -41,7 +41,7 @@
                         <i data-lucide="refresh-cw"></i></div>
                     <div class="grow">
                         <h5 class="mb-1 text-16"><span class="counter-value" data-target="{{ $waiting ?? 0 }}">0</span></h5>
-                        <p class="text-slate-500 dark:text-zink-200">Candidature en attente</p>
+                        <p class="text-slate-500 dark:text-zink-200">Candidatures en attente</p>
                     </div>
                 </div>
             </div>

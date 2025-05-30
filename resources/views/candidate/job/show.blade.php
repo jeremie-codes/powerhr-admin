@@ -10,10 +10,7 @@
                 <div class="lg:col-span-12 2xl:col-span-9 gap-x-5">
 
                     <div class="flex gap-3 mb-4">
-                        <p class="text-slate-500 dark:text-zink-200"><i data-lucide="map-pin"
-                            class="inline-block size-4 ltr:mr-1 rtl:ml-1 text-slate-500 dark:text-zink-200 fill-slate-100 dark:fill-zink-500"></i>
-                            {{$job->user->customer->city ?? "not defined"}}, {{$job->user->customer->adress  ?? "not defined"}}
-                        </p>
+                        
                     </div>
                     <ul
                         class="flex flex-wrap gap-3 mt-4 text-center divide-x divide-slate-200 dark:divide-zink-500 rtl:divide-x-reverse">
@@ -71,7 +68,7 @@
                 <div class="2xl:col-span-9">
                     <div class="card">
                         <div class="card-body">
-                            <h6 class="mb-3 text-15">Overview</h6>
+                            <h6 class="mb-3 text-15">Aperçu </h6>
                             
                             <p class="mb-2 text-slate-500 dark:text-zink-200">
                                 {{$job->description}}
@@ -84,7 +81,7 @@
                         <div class="card-body">
                             <div class="flex items-center mb-3">
                                 <h6 class="grow text-15">
-                                    Skills
+                                    Compétences
                                 </h6>
                             </div>
                             <div
@@ -97,7 +94,7 @@
                     </div>
                     <div class="card">
                         <div class="card-body">
-                            <h6 class="mb-4 text-15">Earning Reports</h6>
+                            <h6 class="mb-4 text-15">Détails de l'offre</h6>
 
                             <div class="divide-y divide-slate-200 dark:divide-zink-500">
                                 <div class="flex items-center gap-3 pb-3">
@@ -129,7 +126,7 @@
                                         @endif
                                         
                                         <p class="text-slate-500 dark:text-zink-200">
-                                            Durée
+                                            Durée en mois
                                         </p>
                                     </div>
                                 </div>
@@ -143,7 +140,7 @@
                                             {{$job->work_type}}
                                         </h6>
                                         <p class="text-slate-500 dark:text-zink-200">
-                                            Type
+                                            Mode de travail 
                                         </p>
                                     </div>
                                 </div>
@@ -161,20 +158,7 @@
                                         </p>
                                     </div>
                                 </div>
-                                <div class="flex items-center gap-3 pt-3">
-                                    <div
-                                        class="flex items-center justify-center size-12 rounded-full bg-slate-100 dark:bg-zink-600">
-                                        <i data-lucide="package" class="size-5 text-slate-500 dark:text-zink-200"></i>
-                                    </div>
-                                    <div>
-                                        <h6 class="text-lg">
-                                            {{$job->contract_type}}
-                                        </h6>
-                                        <p class="text-slate-500 dark:text-zink-200">
-                                            Type de Contrat
-                                        </p>
-                                    </div>
-                                </div>
+                               
                             </div>
                         </div>
                     </div> <!--end card-->

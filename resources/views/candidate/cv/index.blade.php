@@ -153,7 +153,7 @@
         </a>
 
         <iframe src="{{ Storage::url($cv->cv_path) }}" class="w-full h-[500px] border rounded mt-5" frameborder="0"></iframe>
-    @elseif(!$cv->cv_path)
+    @elseif($cv && !$cv->cv_path)
         <iframe src="{{ route('cv.generer.pdf') }}" class="w-full h-[500px] border rounded mt-5" frameborder="0"></iframe>
     @else
             
@@ -175,7 +175,7 @@
                 <img src="{{ URL::asset('build/images/delete.png') }}" alt="" class="block h-12 mx-auto">
                 <div class="mt-5 text-center">
                     <h5 class="mb-1">Êtes-vous sûre?</h5>
-                    <p class="text-slate-500 dark:text-zink-200">Etes-vous de supprimer ce cv ?</p>
+                    <p class="text-slate-500 dark:text-zink-200">Souhaitez-vous supprimer ce cv ?</p>
                     <div class="flex justify-center gap-2 mt-6">
                         <button type="reset" data-modal-close="deleteModal"
                             class="bg-white text-slate-500 btn hover:text-slate-500 hover:bg-slate-100 focus:text-slate-500 focus:bg-slate-100 active:text-slate-500 active:bg-slate-100 dark:bg-zink-600 dark:hover:bg-slate-500/10 dark:focus:bg-slate-500/10 dark:active:bg-slate-500/10">Annuler</button>
