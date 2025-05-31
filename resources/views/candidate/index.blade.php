@@ -529,13 +529,13 @@
                                             <td class="px-4 py-2">{{ ucfirst(str_replace('_', ' ', $doc->type)) }}</td>
                                             <td class="px-4 py-2">{{ $doc->created_at->format('d/m/Y H:i') }}</td>
                                             <td class="px-4 py-2 flex items-center gap-3">
-                                                <a href="{{ asset('storage/documents/' . $doc->filename) }}" arget="_blank"
+                                                <a href="{{ route('documents.view', $doc->id) }}" arget="_blank"
                                                     class="text-blue-600 hover:underline flex items-center">
                                                      <i data-lucide="file" class="block size-4 mx-auto text-slate-500 fill-slate-200 dark:text-zink-200 dark:fill-zink-500"></i>
                                                      <span class="align-midlle">Voir</span>
                                                 </a>
 
-                                                <a href="#!" target="_blank"
+                                                <a href="{{ route('documents.download', $doc->id) }}" target="_blank"
                                                     class="text-blue-600 hover:underline flex items-center">
                                                      <i data-lucide="download" class="block size-4 mx-auto text-slate-500 fill-slate-200 dark:text-zink-200 dark:fill-zink-500"></i>
                                                 </a>
@@ -567,8 +567,9 @@
                                                             <button type="reset" data-modal-close="deleteModal{{ $doc->id }}"
                                                                 class="bg-white text-slate-500 btn hover:text-slate-500 hover:bg-slate-100 focus:text-slate-500 focus:bg-slate-100 active:text-slate-500 active:bg-slate-100 dark:bg-zink-600 dark:hover:bg-slate-500/10 dark:focus:bg-slate-500/10 dark:active:bg-slate-500/10">Annuler</button>
                                                             <form method="POST" action="{{ route('documents.delete', $doc->id) }}">
-                                                                @csrf
                                                                 @method('DELETE')
+                                                                @csrf
+                                                                <input type="hidden" name="document_id" value="{{ $doc->id }}">
                                                                 <button type="submit"
                                                                     class="text-white bg-red-500 border-red-500 btn hover:text-white hover:bg-red-600 hover:border-red-600 focus:text-white focus:bg-red-600 focus:border-red-600 focus:ring focus:ring-red-100 active:text-white active:bg-red-600 active:border-red-600 active:ring active:ring-red-100 dark:ring-custom-400/20">
                                                                     Oui, Supprimer!

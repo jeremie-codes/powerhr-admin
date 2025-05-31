@@ -13,10 +13,8 @@ class DocumentController extends Controller
     {
         $request->validate([
             'document_type' => 'required|string',
-            'file' => 'required|file|max:5120', // max 5MB
+            'file' => 'required|file|mimes:pdf,jpg,jpeg,png|max:2120', // max 5MB
         ]);
-
-        // dd($request->all());
 
         $path = $request->file('file')->store('documents', 'public');
 
@@ -29,8 +27,11 @@ class DocumentController extends Controller
         return back()->with('success', 'Document uploadé avec succès.');
     }
 
+
     public function delete(Request $request)
     {
+
+        // dd($request->all());    
         $request->validate([
             'document_id' => 'required|exists:documents,id',
         ]);
@@ -47,5 +48,6 @@ class DocumentController extends Controller
         $document->delete();
 
         return back()->with('success', 'Document supprimé.');
+
     }
 }
