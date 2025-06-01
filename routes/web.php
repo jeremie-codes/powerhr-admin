@@ -71,6 +71,31 @@ Route::domain('admin.powerhr.site')->group(function () {
         Route::get('/cv/view/{id}', [AdminCvController::class, 'view'])->name('cv.view.pdf');
         Route::get('/cv/{id}/download', [AdminCvController::class, 'download'])->name('cv.download.pdf');
 
+               
+        Route::get('/documents/download/{id}', function ($id) {
+            $document = \App\Models\Document::findOrFail($id);
+
+            $filePath = 'documents/' . $document->filename;
+
+            if (Storage::disk('public')->exists($filePath)) {
+                return Storage::disk('public')->download($filePath, $document->filename);
+            }
+
+            abort(404, 'Fichier introuvable');
+        })->name('document.download');
+
+
+        Route::get('/documents/view/{id}', function ($id) {
+            $document = \App\Models\Document::findOrFail($id);
+            $filePath = 'documents/' . $document->filename;
+
+            if (Storage::disk('public')->exists($filePath)) {
+                return Storage::disk('public')->response($filePath);
+            }
+
+            abort(404, 'Fichier introuvable');
+        })->name('document.view');
+
     });
 });
 

@@ -153,6 +153,12 @@
                         Cv
                     </a>
                 </li>
+                <li class="group">
+                    <a href="javascript:void(0);" data-tab-toggle data-target="otherdocumentsTabs"
+                        class="inline-block px-4 py-2 text-base transition-all duration-300 ease-linear rounded-t-md text-slate-500 dark:text-zink-200 border-b border-transparent group-[.active]:text-custom-500 dark:group-[.active]:text-custom-500 group-[.active]:border-b-custom-500 dark:group-[.active]:border-b-custom-500 hover:text-custom-500 dark:hover:text-custom-500 active:text-custom-500 dark:active:text-custom-500 -mb-[1px]">
+                        Autres Documents
+                    </a>
+                </li>
             </ul>
         </div>
     </div><!--end card-->
@@ -328,8 +334,66 @@
                     </div>
                 @endif
         </div><!--end tab pane-->
+        </div><!--end tab pane-->
+
+        <div class="hidden tab-pane" id="otherdocumentsTabs">
+           <div class="overflow-x-auto">
+                <div class="card">
+                    <div class="card-body">
+                        {{-- Tableau des documents --}}
+                        <div class="mt-8 grid grid-cols-1 md:grid-cols-1">
+                            <h3 class="text-lg font-semibold mb-3">Documents chargés</h3>
+
+                            <table class="min-w-full divide-y divide-gray-200 border">
+                                <thead class="bg-gray-50">
+                                    <tr>
+                                        <th class="px-4 py-2 text-left text-xs font-medium text-gray-500 uppercase">Nom du document</th>
+                                        <th class="px-4 py-2 text-left text-xs font-medium text-gray-500 uppercase">Date ajout</th>
+                                        <th class="px-4 py-2 text-left text-xs font-medium text-gray-500 uppercase">Actions</th>
+                                    </tr>
+                                </thead>
+                                <tbody class="bg-white divide-y divide-gray-100">
+                                    @forelse ($documents as $doc)
+                                        <tr>
+                                            <td class="px-4 py-2">{{ ucfirst(str_replace('_', ' ', $doc->type)) }}</td>
+                                            <td class="px-4 py-2">{{ $doc->created_at->format('d/m/Y H:i') }}</td>
+                                            <td class="px-4 py-2 flex items-center gap-3">
+                                                <a href="{{ route('document.view', $doc->id) }}" arget="_blank"
+                                                    class="text-blue-600 hover:underline flex items-center">
+                                                     <i data-lucide="file" class="block size-4 mx-auto text-slate-500 fill-slate-200 dark:text-zink-200 dark:fill-zink-500"></i>
+                                                     <span class="align-midlle">Voir</span>
+                                                </a>
+
+                                                <a href="{{ route('document.download', $doc->id) }}" target="_blank"
+                                                    class="text-blue-600 hover:underline flex items-center">
+                                                     <i data-lucide="download" class="block size-4 mx-auto text-slate-500 fill-slate-200 dark:text-zink-200 dark:fill-zink-500"></i>
+                                                </a>
+
+                                                <!-- Bouton Supprimer -->
+                                                <a data-modal-target="deleteModal{{ $doc->id }}"
+                                                    class="block px-2 text-base transition-all duration-200 ease-linear text-red-600 dropdown-item hover:bg-red-100 hover:text-red-500 focus:bg-red-100 focus:text-red-500 dark:text-zink-100 dark:hover:bg-zink-500 dark:hover:text-zink-200 dark:focus:bg-zink-500 dark:focus:text-zink-200"
+                                                    href="#!">
+                                                    <i data-lucide="trash-2"
+                                                        class="inline-block size-4 ltr:mr-1 rtl:ml-1"></i>
+                                                </a>
+                                            </td>
+                                        </tr>
+
+                                    @empty
+                                        <tr>
+                                            <td colspan="3" class="px-4 py-2 text-center text-gray-500">Aucun document trouvé !</td>
+                                        </tr>
+                                    @endforelse
+                                </tbody>
+                            </table>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </div><!--end tab pane-->
         
-        
+        documentsTabs
     </div><!--end tab content-->
 
 

@@ -29,7 +29,7 @@ class JobController extends Controller
         $jobs = Job::where('is_open', true)->get();
         $hireds = JobUser::where('is_active', true)->with('user', 'job')->where('client_approved_at', '!=', null)->get();
         $users = User:: with('personne', 'profile')->get();
-        // dd($users);
+        
         return view('admin.job.add',[
             'jobs' => $jobs,
             'hireds' => $hireds,

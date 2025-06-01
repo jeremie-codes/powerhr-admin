@@ -71,6 +71,7 @@ class UserController extends Controller
         $minutes = 5;
         views($user)->cooldown($minutes)->record();
         $view = views($user)->count();
+        $documents = \App\Models\Document::where('user_id', $id)->get();
 
         $candidat = User::with('candidate', 'profile', 'personne')->findOrFail($id);
         $cv = Curriculum::with('experience', 'formation')->where('user_id', $id)->first();
@@ -80,6 +81,7 @@ class UserController extends Controller
             'view' => $view,
             'candidat' => $candidat,
             'cv' => $cv,
+            'documents' => $documents
         ]);
     }
 
