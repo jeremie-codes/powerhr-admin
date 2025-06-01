@@ -21,7 +21,7 @@ File: Common Plugins Js File
       }
     
       loadScriptIfElementsExist("[data-toast]", 'build/libs/toastify-js/src/toastify.js');
-      loadScriptIfElementsExist("[data-provider]", 'build/libs/flatpickr/flatpickr.min.js');
+    //   loadScriptIfElementsExist("[data-provider]", 'build/libs/flatpickr/flatpickr.min.js');
 
     function pluginData() {
  
@@ -156,9 +156,9 @@ File: Common Plugins Js File
                     dates.push(isFlatpickerVal["data-week-number"].value);
                     dateData.weekNumbers = true
                 }
-                setTimeout(() => {
-                    flatpickr(item, dateData);
-                }, 750);
+                // setTimeout(() => {
+                //     flatpickr(item, dateData);
+                // }, 750);
             } else if (item.getAttribute("data-provider") == "timepickr") {
                 var timeData = {};
                 var isTimepickerVal = item.attributes;

@@ -10,7 +10,7 @@ class Formation extends Model
 {
     use HasFactory, SoftDeletes;
 
-        protected $fillable = [
+    protected $fillable = [
         'curriculum_id',
         'title',
         'start_date',

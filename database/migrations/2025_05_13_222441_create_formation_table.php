@@ -14,10 +14,10 @@ return new class extends Migration
     {
         Schema::create('formations', function (Blueprint $table) {
             $table->id();
-            $table->foreignIdFor(Curriculum::class);
+            $table->foreignIdFor(Curriculum::class)->references('id')->on('curriculums')->onDelete('cascade');
             $table->string('title');
-            $table->timestamp('start_date');
-            $table->timestamp('end_date');
+            $table->dateTime('start_date');
+            $table->dateTime('end_date');
             $table->string('school');
             $table->timestamps();
             $table->softDeletes();

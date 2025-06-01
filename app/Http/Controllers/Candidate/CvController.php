@@ -219,6 +219,8 @@ class CvController extends Controller
             // stockage des données de la table experience
             $experienceData = $request->only(['job_title', 'company', 'start_date', 'end_date']);
 
+            // dd($experienceData);
+
             // Compter le nombre d'expériences à insérer
             $count = count($experienceData['job_title']);
 
@@ -266,7 +268,7 @@ class CvController extends Controller
                     ) {
                         $formation = Formation::create([
                             'curriculum_id' => $cvId,
-                            'title'  => $formationData['job_title'][$i],
+                            'title'  => $formationData['title'][$i],
                             'school'    => $formationData['school'][$i],
                             // 'start_date' => $formationData['start_date'][$i],
                             // 'end_date'   => $formationData['end_date'][$i],
@@ -275,12 +277,12 @@ class CvController extends Controller
                         ]);
                     }
                 }
-                dd($formation);
             }
 
             return redirect()->back()->with('success', 'Vos informations sont bien mise à jour !');
             
         } catch (\Throwable $th) {
+            // dd($request->all());
             return redirect()->back()->with('error', $th->getMessage());
         }
 

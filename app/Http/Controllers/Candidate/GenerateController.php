@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Candidate;
 use App\Http\Controllers\Controller;
 use App\Models\Candidat;
 use App\Models\Curriculum;
+use App\Models\Formation;
 use App\Models\User;
 use App\Models\Personne;
 use App\Models\Profile;
@@ -20,7 +21,7 @@ class GenerateController extends Controller
     {
         // $user = User::with('candidate', 'profile', 'personne')->findOrFail(Auth::user()->id);
         $user = User::with('candidate', 'profile', 'personne')->findOrFail(Auth::user()->id);
-        $cv = Curriculum::where('user_id', Auth::user()->id)->with('user')->first();
+        $cv = Curriculum::where('user_id', Auth::user()->id)->with('user', 'formation', 'experience')->first();
         
         return view('candidate.cv.index', compact('user', 'cv'));
     }
@@ -30,10 +31,13 @@ class GenerateController extends Controller
     public function create()
     {
         $user = User::with('candidate', 'profile', 'personne')->findOrFail(Auth::user()->id);
-        $cv = Curriculum::where('user_id', Auth::user()->id)->with('user')->first();
+        // $cv = Curriculum::where('user_id', Auth::user()->id)->with('user')->first();
+        $cv = Curriculum::where('user_id', Auth::user()->id)->with('user', 'formation', 'experience')->first();
         $langues = json_decode($cv->langue ?? '[]', true);
         $competences = json_decode($cv->competence ?? '[]', true);
 
+        // dd($cv);
+    
         return view('candidate.cv.form', compact('user', 'cv', 'langues', 'competences'));
     }
      

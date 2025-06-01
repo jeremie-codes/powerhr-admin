@@ -17,8 +17,8 @@ return new class extends Migration
             $table->id();
             $table->foreignIdFor(Curriculum::class);
             $table->string('job_title');
-            $table->timestamp('start_date');
-            $table->timestamp('end_date');
+            $table->dateTime('start_date');
+            $table->dateTime('end_date');
             $table->string('company');
             $table->timestamps();
             $table->softDeletes();
