@@ -354,10 +354,11 @@
     
 @endsection
 @push('scripts')
-    <script src="{{ URL::asset('build/js/pages/invoice-create.init.js') }}"></script>
-    <!-- App js -->
+<!-- App js -->
     <script src="{{ URL::asset('build/js/app.js') }}"></script>
 
+    <script src="{{ URL::asset('build/js/pages/cv-create.init.js') }}"></script>
+    
     <script>
         @if(!empty($langues) || !empty($cv->competences) || !empty($cv->experiences) || !empty($cv->formations))
             remove();
