@@ -74,8 +74,8 @@
                                         Lieu d'affectation</th>
                                     <th data-sort="product_state" class="product_state px-3.5 py-2.5 font-semibold border-b border-slate-200 dark:border-zink-500">
                                         État</th>
-                                    <th class="px-3.5 py-2.5 font-semibold border-b border-slate-200 dark:border-zink-500">
-                                        Action</th>
+                                    {{-- <th class="px-3.5 py-2.5 font-semibold border-b border-slate-200 dark:border-zink-500">
+                                        Action</th> --}}
                                 </tr>
                             </thead>
                             <tbody class="list">
@@ -98,18 +98,18 @@
                                                             data-lucide="x" class="size-4"></i></a>
                                                 @else                                                
                                                     <a href="#!"
-                                                        class="flex items-center justify-center size-8 text-orange-500 transition-all duration-200 ease-linear bg-orange-100 rounded-md hover:text-white hover:bg-green-500 dark:bg-green-500/20 dark:hover:bg-green-500"><i
+                                                        class="flex items-center justify-center size-8 text-orange-500 transition-all duration-200 ease-linear bg-orange-100 rounded-md"><i
                                                             data-lucide="clock" class="size-4"></i></a>
                                                 @endif
                                             </div>
                                         </td>
-                                        <td class="px-3.5 py-2.5 border-y border-slate-200 dark:border-zink-500">
+                                        {{-- <td class="px-3.5 py-2.5 border-y border-slate-200 dark:border-zink-500">
                                             <div class="flex gap-2">
                                                 <a href="#!"
                                                     class="flex items-center justify-center size-8 text-red-500 transition-all duration-200 ease-linear bg-red-100 rounded-md hover:text-white hover:bg-red-500 dark:bg-red-500/20 dark:hover:bg-red-500">
                                                     <i data-lucide="trash" class="size-4"></i></a>
                                             </div>
-                                        </td>
+                                        </td> --}}
                                     </tr>
                                 @empty
                                     <div class="noresult">

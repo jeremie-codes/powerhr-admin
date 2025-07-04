@@ -1,3 +1,9 @@
+@php
+    $competences = is_string($cv->competence) ? json_decode($cv->competence, true) : $cv->competence;
+    $langues = is_string($cv->langue) ? json_decode($cv->langue, true) : $cv->langue;
+    $experiences = is_string($cv->experience) ? json_decode($cv->experience, true) : $cv->experience;
+    $formations = is_string($cv->formation) ? json_decode($cv->formation, true) : $cv->formation;
+@endphp
 <!DOCTYPE html>
 <html lang="fr">
 <head>
@@ -54,16 +60,17 @@
             <div>
                 <h2 class="text-lg font-semibold border-b pb-4 border-gray-300 my-4">Formation</h2>
                 <ul class="list-disc list-inside text-sm space-y-1">
-                    @forelse ($cv->formation as $formation)
-                        <li class="mb-2">
-                            <span style="font-size: 17px; font-weight: 600">{{ $formation->title }}</span>
-                            <p class="italic text-xs text-gray-600 pl-3">{{ \Carbon\Carbon::parse($formation->start_date)->locale('fr')->translatedFormat('d M Y') }} 
-                                – {{ \Carbon\Carbon::parse($formation->end_date)->locale('fr')->translatedFormat('d M Y') }}</p>
-                            <p class="pl-3">à <span style="font-weight: 500">{{ $formation->school }}</span></p>
-                       </li>
-                    @empty
-                        
-                    @endforelse
+                    @if (is_array($formations) && count($formation))
+                        @forelse ($formations as $formation)
+                            <li class="mb-2">
+                                <span style="font-size: 17px; font-weight: 600">{{ $formation->title }}</span>
+                                <p class="italic text-xs text-gray-600 pl-3">{{ \Carbon\Carbon::parse($formation->start_date)->locale('fr')->translatedFormat('d M Y') }} 
+                                    – {{ \Carbon\Carbon::parse($formation->end_date)->locale('fr')->translatedFormat('d M Y') }}</p>
+                                <p class="pl-3">à <span style="font-weight: 500">{{ $formation->school }}</span></p>
+                        </li>
+                        @empty
+                        @endforelse
+                    @endif
                 </ul>
             </div>
 
@@ -72,16 +79,17 @@
                 <h2 class="text-lg font-semibold border-b pb-4 border-gray-300 my-4">Expérience professionnelle</h2>
 
                 <ul class="list-disc list-inside text-sm space-y-1">
-                    @forelse ($cv->experience as $experience)
-                        <li class="mb-2">
-                            <span style="font-size: 17px; font-weight: 600">{{ $experience->job_title }}</span>
-                            <p class="italic text-xs text-gray-600 pl-3">{{ \Carbon\Carbon::parse($experience->start_date)->locale('fr')->translatedFormat('d M Y') }} 
-                                – {{ \Carbon\Carbon::parse($experience->end_date)->locale('fr')->translatedFormat('d M Y') }}</p>
-                            <p class="pl-3">à <span style="font-weight: 500">{{ $experience->company }}</span></p>
-                       </li>
-                    @empty
-                       
-                    @endforelse
+                    @if (is_array($experiences) && count($experiences))
+                        @forelse ($experiences as $experience)
+                            <li class="mb-2">
+                                <span style="font-size: 17px; font-weight: 600">{{ $experience->job_title }}</span>
+                                <p class="italic text-xs text-gray-600 pl-3">{{ \Carbon\Carbon::parse($experience->start_date)->locale('fr')->translatedFormat('d M Y') }} 
+                                    – {{ \Carbon\Carbon::parse($experience->end_date)->locale('fr')->translatedFormat('d M Y') }}</p>
+                                <p class="pl-3">à <span style="font-weight: 500">{{ $experience->company }}</span></p>
+                        </li>
+                        @empty
+                        @endforelse
+                    @endif
                 </ul>
             </div>
         </div>
@@ -103,7 +111,7 @@
             <div>
                 <h2 class="text-lg font-semibold border-b pb-4 border-gray-300 my-4">Compétences</h2>
                 <ul class="list-disc list-inside text-sm space-y-1">
-                    @if ($cv->competence)
+                    @if (is_array($competences) && count($competences))
                         @foreach(json_decode($cv->competence) as $competence)
                             <li class="mb-2">{{ $competence }}</li>                        
                         @endforeach
@@ -117,7 +125,7 @@
             <div>
                 <h2 class="text-lg font-semibold border-b pb-4 border-gray-300 my-4">Langue parlées</h2>
                 <ul class="list-disc list-inside text-sm space-y-1">
-                    @if ($cv->langue)
+                    @if (is_array($langues) && count($langues))
                         @foreach(json_decode($cv->langue) as $langue)
                             <li class="mb-2">{{ $langue }}</li>                        
                         @endforeach
