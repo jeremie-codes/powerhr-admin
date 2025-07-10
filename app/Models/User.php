@@ -86,6 +86,13 @@ class User extends Authenticatable implements ReviewRateable, Viewable
         return $this->hasOne(JobUser::class);
     }
 
+    // Dans app/Models/User.php
+    public function jobs()
+    {
+        return $this->belongsToMany(Job::class, 'job_users')->withTimestamps();
+    }
+
+
     public function profile(): HasOne
     {
         return $this->hasOne(Profile::class);

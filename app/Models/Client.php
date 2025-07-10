@@ -17,7 +17,7 @@ class Client extends Model
      */
     protected $fillable = [
         'name', 'adress', 'activity', 'phone', 'logo', 'contact_name', 'contact_phone', 'contact_email', 'website', 'description', 'city',
-        'country', 'user_id'
+        'country', 'user_id', 'profile_mail'
     ];
 
     public function user(): BelongsTo

@@ -9,35 +9,35 @@
                 <div class="lg:col-span-2 2xl:col-span-1">
                     <div
                         class="relative inline-block size-20 rounded-full shadow-md bg-slate-100 profile-user xl:size-28">
-                        <img src="{{$customer->customer->logo}}" alt=""
+                        <img src="{{ asset('storage/' . $customer?->user?->profile_photo_path) }}" alt=""
                             class="object-cover border-0 rounded-full img-thumbnail user-profile-image">
                         
                     </div>
                 </div><!--end col-->
                 <div class="lg:col-span-10 2xl:col-span-9">
-                    <h5 class="mb-1">{{$customer->customer->name}} <i data-lucide="badge-check"
+                    <h5 class="mb-1">{{$customer?->customer?->name}} <i data-lucide="badge-check"
                             class="inline-block size-4 text-sky-500 fill-sky-100 dark:fill-custom-500/20"></i></h5>
                     <div class="flex gap-3 mb-4">
                         <p class="text-slate-500 dark:text-zink-200"><i data-lucide="user-circle"
                                 class="inline-block size-4 ltr:mr-1 rtl:ml-1 text-slate-500 dark:text-zink-200 fill-slate-100 dark:fill-zink-500"></i>
-                                {{$customer->customer->activity}}</p>
+                                {{$customer?->customer?->activity}}</p>
                         <p class="text-slate-500 dark:text-zink-200"><i data-lucide="map-pin"
                                 class="inline-block size-4 ltr:mr-1 rtl:ml-1 text-slate-500 dark:text-zink-200 fill-slate-100 dark:fill-zink-500"></i>
-                                {{$customer->customer->city}}</p>
+                                {{$customer?->customer?->city}}, {{ $customer?->customer->adress }} {{ $customer?->customer->country }}</p>
                     </div>
                     <ul
-                        class="flex flex-wrap gap-3 mt-4 text-center divide-x divide-slate-200 dark:divide-zink-500 rtl:divide-x-reverse">
+                        class="flex flex-wrap gap-3 mt-4 text-left divide-x divide-slate-200 dark:divide-zink-500 rtl:divide-x-reverse">
                         <li class="px-5">
-                            <h5>{{$customer->customer->contact_email}}</h5>
-                            <p class="text-slate-500 dark:text-zink-200">Mail</p>
+                            <h5>Mail</h5>
+                            <p class="text-slate-500 dark:text-zink-200">{{$customer?->customer?->profile_mail}}</p>
                         </li>
                         <li class="px-5">
-                            <h5>{{$customer->customer->contact_phone}}</h5>
-                            <p class="text-slate-500 dark:text-zink-200">Phone</p>
+                            <h5>Phone</h5>
+                            <p class="text-slate-500 dark:text-zink-200">{{$customer?->customer?->phone}}</p>
                         </li>
                         <li class="px-5">
-                            <a href="{{$customer->customer->website}}" > Lien</a>
-                            <p class="text-slate-500 dark:text-zink-200">Site Web</p>
+                            <h5>Site Web</h5>
+                            <a href="{{ $customer?->customer?->website }}" > Lien</a>
                         </li>
                     </ul>
                 </div>
@@ -61,7 +61,7 @@
                 <div class="2xl:col-span-9"><!--end grid-->
                     <div class="card">
                         <div class="card-body">
-                            <h6 class="mb-3 text-15">Overview</h6>
+                            <h6 class="mb-3 text-15">Déscription</h6>
                             <p class="mb-2 text-slate-500 dark:text-zink-200">
                                 {{$customer->customer->description}}
                             </p>
@@ -71,7 +71,7 @@
                 <div class="2xl:col-span-3">
                     <div class="card">
                         <div class="card-body">
-                            <h6 class="mb-4 text-15">Personal Information</h6>
+                            <h6 class="mb-4 text-15">Responsable Contact</h6>
                             <div class="overflow-x-auto">
                                 <table class="w-full ltr:text-left rtl:ext-right">
                                     <tbody>
@@ -79,6 +79,41 @@
                                             <th class="py-2 font-semibold ps-0" scope="row">Referent</th>
                                             <td class="py-2 text-right text-slate-500 dark:text-zink-200">
                                                 {{$customer->customer->contact_name}}
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <th class="py-2 font-semibold ps-0" scope="row">Contact phone</th>
+                                            <td class="py-2 text-right text-slate-500 dark:text-zink-200">
+                                                {{$customer->customer->contact_phone}}
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div> <!--end card-->
+                    <div class="card">
+                        <div class="card-body">
+                            <h6 class="mb-4 text-15">Compte Utilisateur attaché</h6>
+                            <div class="overflow-x-auto">
+                                <table class="w-full ltr:text-left rtl:ext-right">
+                                    <tbody>
+                                        <tr>
+                                            <th class="py-2 font-semibold ps-0" scope="row">Nom complet</th>
+                                            <td class="py-2 text-right text-slate-500 dark:text-zink-200">
+                                                {{$customer->name}}
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <th class="py-2 font-semibold ps-0" scope="row">Email</th>
+                                            <td class="py-2 text-right text-slate-500 dark:text-zink-200">
+                                                {{$customer->email}}
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <th class="py-2 font-semibold ps-0" scope="row">Joining Date</th>
+                                            <td class="py-2 text-right text-slate-500 dark:text-zink-200">
+                                                {{ date('d-m-Y', strtotime($customer->created_at)) }}
                                             </td>
                                         </tr>
                                     </tbody>

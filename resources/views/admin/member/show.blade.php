@@ -127,14 +127,14 @@
                     @endif
                 </div>
                 <div class="lg:col-span-12 2xl:col-span-2">
-                    <div class="flex gap-2 2xl:justify-end">
+                    <div class="flex gap-2 2xl:justify-end items-center">
                         <a href="mailto:{{$user->email}}"
                             class="flex items-center justify-center size-[37.5px] p-0 text-slate-500 btn bg-slate-100 hover:text-white hover:bg-slate-600 focus:text-white focus:bg-slate-600 focus:ring focus:ring-slate-100 active:text-white active:bg-slate-600 active:ring active:ring-slate-100 dark:bg-slate-500/20 dark:text-slate-400 dark:hover:bg-slate-500 dark:hover:text-white dark:focus:bg-slate-500 dark:focus:text-white dark:active:bg-slate-500 dark:active:text-white dark:ring-slate-400/20"><i
                                 data-lucide="mail" class="size-4"></i></a>
-                        <button type="button" data-modal-target="addDocuments"
+                        {{-- <button type="button" data-modal-target="addDocuments"
                             class="text-white transition-all duration-200 ease-linear btn bg-custom-500 border-custom-500 hover:text-white hover:bg-custom-600 hover:border-custom-600 focus:text-white focus:bg-custom-600 focus:border-custom-600 focus:ring focus:ring-custom-100 active:text-white active:bg-custom-600 active:border-custom-600 active:ring active:ring-custom-100 dark:ring-custom-400/20">
                             {{__('t-rating')}}
-                        </button>
+                        </button> --}}
                     </div>
                 </div>
             </div><!--end grid-->

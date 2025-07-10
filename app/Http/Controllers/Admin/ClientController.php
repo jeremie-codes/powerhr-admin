@@ -14,9 +14,12 @@ class ClientController extends Controller
     public function index()
     {
         $customers = User::role('customer')->with('customer')->paginate(20);
+
+        // dd($customers);
         return view('admin.customer.index', [
             'customers' => $customers
         ]);
+
     }
 
     /**
@@ -40,7 +43,9 @@ class ClientController extends Controller
      */
     public function show(string $id)
     {
-        $customer = User::with('customer')->findOrFail($id);
+        $customer = User::role('customer')->with('customer')->findOrFail($id);
+
+        // dd($customer);
 
         return view('admin.customer.show', [
             'customer' => $customer

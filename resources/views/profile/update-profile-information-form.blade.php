@@ -36,12 +36,12 @@
                 </div>
 
                 <x-secondary-button class="mt-2 me-2" variant="green" type="button" x-on:click.prevent="$refs.photo.click()">
-                    {{ __('Select A New Photo') }}
+                    {{ __('Nouvelle Photo') }}
                 </x-secondary-button>
 
                 @if ($this->user->profile_photo_path)
                     <x-secondary-button type="button" variant="red" class="mt-2" wire:click="deleteProfilePhoto">
-                        {{ __('Remove Photo') }}
+                        {{ __('Supprimer Celle-ci') }}
                     </x-secondary-button>
                 @endif
 

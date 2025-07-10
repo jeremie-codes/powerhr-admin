@@ -123,7 +123,8 @@
                                             {{__('t-phone-number')}}
                                         </th>
                                         <th class="px-3.5 py-2.5 first:pl-5 last:pr-5 font-semibold sort"
-                                            data-sort="joining-date">Joining Date</th>
+                                            data-sort="joining-date">Joining Date
+                                        </th>
                                         <th class="px-3.5 py-2.5 first:pl-5 last:pr-5 font-semibold">Action</th>
                                     </tr>
                                 </thead>
@@ -139,10 +140,10 @@
                                                 </div>
                                             </td>
                                             <td class="px-3.5 py-2.5 first:pl-5 last:pr-5">
-                                                @if($member->personne)
-                                                <a href="{{route('users.show', $member->id)}}"
+                                                @if($member?->user->personne)
+                                                <a href="{{route('users.show', $member?->user->id)}}"
                                                     class="transition-all duration-150 ease-linear text-custom-500 hover:text-custom-600 user-id">
-                                                    {{$member->personne->matricule}}
+                                                    {{$member?->user->personne->matricule}}
                                                 </a>
                                                 @else
                                                     ---
@@ -157,43 +158,43 @@
                                                     </div>
                                                     <div class="grow">
                                                         <h6 class="mb-1">
-                                                            <a href="{{route('users.show', $member->id)}}" class="name">
-                                                                @if($member->personne)
-                                                                    {{$member->personne->nom}} {{$member->personne->postNom}} {{$member->personne->prenom}}
+                                                            <a href="{{route('users.show', $member?->user->id)}}" class="name">
+                                                                @if($member?->user->personne)
+                                                                    {{$member?->user->personne->nom}} {{$member?->user->personne->postNom}} {{$member?->user->personne->prenom}}
                                                                 @else
-                                                                    {{$member->name}}
+                                                                    {{$member?->user->name}}
                                                                 @endif
                                                             </a>
                                                         </h6>
                                                         <p class="text-slate-500 dark:text-zink-200">
-                                                            @if($member->profile)
-                                                                {{$member->profile->title}}
+                                                            @if($member?->user->profile)
+                                                                {{$member?->user->profile->title}}
                                                             @endif
                                                         </p>
                                                     </div>
                                                 </div>
                                             </td>
                                             <td class="px-3.5 py-2.5 first:pl-5 last:pr-5 location">
-                                                @if($member->profile)
-                                                    {{$member->profile->location}}
+                                                @if($member?->user->profile)
+                                                    {{$member?->user->profile->location}}
                                                 @else
                                                     ---
                                                 @endif
                                             </td>
                                             <td class="px-3.5 py-2.5 first:pl-5 last:pr-5 email">
-                                                {{$member->email}}
+                                                {{$member?->user->email}}
                                             </td>
                                             <td class="px-3.5 py-2.5 first:pl-5 last:pr-5 phone-number">
-                                                @if($member->personne)
-                                                {{$member->personne->telephone}}
+                                                @if($member?->user->personne)
+                                                {{$member?->user->personne->telephone}}
                                                 @endif
                                             </td>
                                             <td class="px-3.5 py-2.5 first:pl-5 last:pr-5 joining-date">
-                                                {{date('d-m-Y', strtotime($member->created_at))}}
+                                                {{date('d-m-Y', strtotime($member?->user->created_at))}}
                                             </td>
                                             <td class="px-3.5 py-2.5 first:pl-5 last:pr-5 text-center">
                                                 <a class="block px-4 py-1.5 text-base transition-all duration-200 ease-linear text-slate-600 dropdown-item bg-slate-100 hover:bg-slate-200 hover:text-slate-500 focus:bg-slate-200 focus:text-slate-500 dark:text-zink-100 dark:hover:bg-zink-500 dark:hover:text-zink-200 dark:focus:bg-zink-500 dark:focus:text-zink-200"
-                                                    href="{{ route('candidates.show', $member->id) }}">
+                                                    href="{{ route('candidates.show', $member?->user->id) }}">
                                                     <i data-lucide="eye" class="inline-block size-3 ltr:mr-1 rtl:ml-1"></i>
                                                 </a>
                                             </td>

@@ -34,12 +34,12 @@
                             </h5>
                             <p class="text-slate-500 dark:text-zink-200">Candidatures</p>
                         </li>
-                        <li class="px-5">
+                        {{-- <li class="px-5">
                             <h5>
                                 {{$view}}
                             </h5>
                             <p class="text-slate-500 dark:text-zink-200">Consultations</p>
-                        </li>
+                        </li> --}}
                         @if ($job->is_open)
                             <li class="px-5">
                                 <h5>OPEN</h5>

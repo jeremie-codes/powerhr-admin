@@ -47,18 +47,26 @@
                                             <div class="flex items-center gap-2">
                                                 <div
                                                     class="flex items-center justify-center size-10 font-medium rounded-full shrink-0 bg-slate-200 text-slate-800 dark:text-zink-50 dark:bg-zink-600">
-                                                    <img src="{{ $customer?->customer?->logo }}" alt=""
+                                                    <img src="{{ asset('storage/'. $customer?->profile_photo_path) }}" alt=""
                                                         class="h-10 rounded-full">
                                                 </div>
                                                 <div class="grow">
                                                     <h6 class="mb-1">
-                                                        <a href="{{ route('customers.show', $customer->id) }}"
-                                                            class="name">
-                                                            {{ $customer?->customer?->name ?? "Undefined" }}
-                                                        </a>
+                                                        @if ($customer->customer)
+                                                            <a href="{{ route('customers.show', $customer->id) }}" class="name">
+                                                                {{ $customer->customer->name }}
+                                                            </a>
+                                                        @else
+                                                            <span class="name">({{ $customer->name }})</span>
+                                                        @endif
+
                                                     </h6>
                                                     <p class="text-slate-500 dark:text-zink-200">
-                                                        {{ $customer?->customer?->activity ?? "Undefined" }}
+                                                         @if ($customer->customer)
+                                                            {{ $customer?->customer?->activity ?? "Undefined" }}
+                                                        @else
+                                                            Profil société non renseigné
+                                                        @endif
                                                     </p>
                                                 </div>
                                             </div>
@@ -73,7 +81,7 @@
                                             {{ $customer?->customer?->contact_phone ?? "Undefined" }}
                                         </td>
                                         <td class="px-3.5 py-2.5 first:pl-5 last:pr-5 joining-date">
-                                            {{ date('d-m-Y', strtotime($customer?->customer?->created_at)) ?? "Undefined" }}
+                                            {{ date('d-m-Y', strtotime($customer?->created_at)) ?? "Undefined" }}
                                         </td>
                                         <td class="px-3.5 py-2.5 first:pl-5 last:pr-5"><span
                                             class="px-2.5 py-0.5 text-xs font-medium rounded border bg-green-100 border-transparent text-green-500 dark:bg-green-500/20 dark:border-transparent inline-flex items-center status">

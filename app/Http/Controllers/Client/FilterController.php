@@ -3,29 +3,27 @@
 namespace App\Http\Controllers\Client;
 
 use App\Http\Controllers\Controller;
-use App\Models\Skill;
+use App\Models\Job;
 use App\Models\User;
 use Illuminate\Contracts\Session\Session;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Spatie\Searchable\Search;
 
 class FilterController extends Controller
 {
     public function create()
     {
-        // $skills = Skill::all();
 
-
-        // return view('client.filter.create', [
-        //     'skills' => $skills
-        // ]);
         return view('client.filter.create',);
+        
     }
 
     public function search(Request $request)
     {
         try {
-            $users = User::with('personne','profile','candidate')->role(['candidate', 'employee']);
+            $users = Job::with('user', 'category', 'candidates') -> where('user_id',Auth::user()->id)->latest();
+
             $skills = $request->input('skills');
 
             
@@ -33,7 +31,7 @@ class FilterController extends Controller
                 $users->whereHas('candidate', function($query) use ($skills) {
                     $query->where('SkillSet',  'like', '%'.$skills.'%');
                 });
-            }
+            } 
 
             if ($request->name != null){
                 $users->where(function($query) use ($request) {
