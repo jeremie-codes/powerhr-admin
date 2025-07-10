@@ -1,3 +1,6 @@
+@php
+    $statJobs = App\Models\Job::where('is_current', true)->latest()->get();
+@endphp
 <header id="page-topbar"
     class="ltr:md:left-vertical-menu rtl:md:right-vertical-menu group-data-[sidebar-size=md]:ltr:md:left-vertical-menu-md group-data-[sidebar-size=md]:rtl:md:right-vertical-menu-md group-data-[sidebar-size=sm]:ltr:md:left-vertical-menu-sm group-data-[sidebar-size=sm]:rtl:md:right-vertical-menu-sm group-data-[layout=horizontal]:ltr:left-0 group-data-[layout=horizontal]:rtl:right-0 fixed right-0 z-[1000] left-0 print:hidden group-data-[navbar=bordered]:m-4 group-data-[navbar=bordered]:[&.is-sticky]:mt-0 transition-all ease-linear duration-300 group-data-[navbar=hidden]:hidden group-data-[navbar=scroll]:absolute group/topbar group-data-[layout=horizontal]:z-[1004]">
     <div class="layout-width">
@@ -37,6 +40,53 @@
                 </button>
 
                 <div class="flex gap-3 ms-auto">
+
+                    <div class="relative flex items-center dropdown h-header">
+                        <button type="button"
+                            class="inline-block p-0 transition-all duration-200 ease-linear bg-topbar rounded-full text-topbar-item dropdown-toggle btn hover:bg-topbar-item-bg-hover hover:text-topbar-item-hover group-data-[topbar=dark]:text-topbar-item-dark group-data-[topbar=dark]:bg-topbar-dark group-data-[topbar=dark]:hover:bg-topbar-item-bg-hover-dark group-data-[topbar=dark]:hover:text-topbar-item-hover-dark group-data-[topbar=brand]:bg-topbar-brand group-data-[topbar=brand]:hover:bg-topbar-item-bg-hover-brand group-data-[topbar=brand]:hover:text-topbar-item-hover-brand group-data-[topbar=dark]:dark:bg-zink-700 group-data-[topbar=dark]:dark:hover:bg-zink-600 group-data-[topbar=brand]:text-topbar-item-brand group-data-[topbar=dark]:dark:hover:text-zink-50 group-data-[topbar=dark]:dark:text-zink-200"
+                            id="dropdownMenuButton" data-bs-toggle="dropdown">
+                            <i data-lucide="bell"
+                                class="inline-block w-5 h-5 stroke-1 fill-slate-100 group-data-[topbar=dark]:fill-topbar-item-bg-hover-dark group-data-[topbar=brand]:fill-topbar-item-bg-hover-brand"></i>
+                        
+                                <span class="badge {{ 1 > 0 ? 'bg-red-200' : '' }} absolute right-0 top-3 px-1 rounded-full">{{ $statJobs->count() }}</span>
+                        </button>
+                        <div class="absolute z-50 hidden p-0 ltr:text-left rtl:text-right bg-white rounded-md shadow-md !top-4 dropdown-menu min-w-[20rem] dark:bg-zink-600"
+                            aria-labelledby="dropdownMenuButton">
+                            <div>
+                                <a class="block hover:text-slate-100 p-4 bg-custom-400 dark:bg-custom-500/20 text-white text-base font-medium transition-all duration-200 ease-linear text-slate-600 dropdown-item hover:text-gray-200 focus:text-gray-200 dark:text-zink-200 dark:hover:text-gray-200 dark:focus:text-gray-200">
+                                    <i data-lucide="bell" class="inline-block size-4 ltr:mr-2 rtl:ml-2"></i> 
+                                    {{ $statJobs->count() }} nouvelles offres ajoutées
+                                </a>
+                            </div>
+                            <ul class="p-4">
+                                
+                                @forelse ($statJobs as $job)
+                                    <li class="pt-2 mb-2 border-b border-slate-200 dark:border-zink-500">
+                                        <a href="{{ route('listjobs.show', $job->matricule) }}"
+                                            class="block ltr:pr-4 rtl:pl-4 py-1.5 text-base font-medium transition-all duration-200 ease-linear text-slate-600 dropdown-item hover:text-custom-500 focus:text-custom-500 dark:text-zink-200 dark:hover:text-custom-500 dark:focus:text-custom-500">
+                                            {{ $job->title }}   <small class="text-gray-500">
+                                                                    {{ $job->created_at->diffForHumans() }}
+                                                                </small>
+                                                <br> <small class="text-gray-500 dark:text-">{{ $job?->category?->name }}</small>
+                                        </a>
+                                    </li>
+                                @empty
+                                    <li class="pt-2 mb-2 border-b border-slate-200 dark:border-zink-500">
+                                        <span class="block ltr:pr-4 rtl:pl-4 py-1.5 text-base font-medium transition-all duration-200 ease-linear text-slate-600 dropdown-item hover:text-custom-500 focus:text-custom-500 dark:text-zink-200 dark:hover:text-custom-500 dark:focus:text-custom-500">
+                                            Pas de nouvelle offre
+                                        </span>
+                                    </li>    
+                                @endforelse
+
+                            </ul>
+                            <div>
+                                <a href="{{ route('listjobs.index') }}" class="block hover:text-slate-100 p-4 bg-custom-100 dark:bg-custom-500/20  text-base font-medium transition-all duration-200 ease-linear text-slate-600 dropdown-item hover:text-custom-500 focus:text-custom-500 dark:text-zink-200 dark:hover:text-custom-500 dark:focus:text-custom-500">
+                                    <i data-lucide="eye" class="inline-block size-4 ltr:mr-2 rtl:ml-2"></i> 
+                                    Voir tous les offres
+                                </a>
+                            </div>
+                        </div>
+                    </div>
                     
                     <div class="relative flex items-center h-header">
                         <button type="button"

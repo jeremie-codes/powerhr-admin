@@ -16,6 +16,9 @@ class JobController extends Controller
     public function index()
     {
         $jobs = Job::with('user', 'category')->latest()-> paginate(10);
+
+        Job::where('is_current', true)->update(['is_current' => false]);
+
         return view('admin.job.index',[
             'jobs' => $jobs
         ]);
@@ -94,6 +97,10 @@ class JobController extends Controller
     {
         $job = Job::with('user', 'candidates')-> where('matricule', $matricule)->firstOrFail();
         // $matchingUsers = $job->findMatchingUsers();
+        if ($job->is_current) {
+            $job->update(['is_current' => false]);
+        }
+
         $minutes = 5;
         $view = views($job)->cooldown($minutes)->record();
         return view('admin.job.show',[
