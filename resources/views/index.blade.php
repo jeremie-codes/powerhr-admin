@@ -140,7 +140,7 @@
                                             <a
                                                 class="twm-nav-sign-up"
                                                 data-bs-toggle="modal"
-                                                href="{{url('https://candidat.powerhr.site/login')}}"
+                                                href="{{url('https://candidat.powerhr-drc.com/login')}}"
                                                 role="button">
                                                 <i class="feather-log-in"></i>
                                                 Postuler
@@ -150,7 +150,7 @@
                                         <div
                                             class="twm-nav-btn-right">
                                             <a
-                                                href="{{url('https://client.powerhr.site/login')}}"
+                                                href="{{url('https://client.powerhr-drc.com/login')}}"
                                                 class="twm-nav-post-a-job">
                                                 <i class="feather-briefcase"></i>
                                                 Engager
